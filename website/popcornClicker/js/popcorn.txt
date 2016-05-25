@@ -159,139 +159,35 @@ stoveDisplay.addEventListener("click", function (event) {
 	if (event.target == stoveSellDisplay) return 0;
 	Game.stove.buyBuilding();
 });
-/*stoveDisplay.addEventListener("mouseenter", function () {
-	console.log("mouseenter");
-	//stoveSellDisplay.style.display = "inline";
-	$("#stoveSellDisplay").show();
-});
-stoveDisplay.addEventListener("mouseleave", function () {
-	console.log("mouseleave");
-	//stoveSellDisplay.style.display = "none";
-	$("#stoveSellDisplay").hide();
-});
-//
-stoveDisplay.addEventListener("mouseover", function () {
-	console.log("mouseenter");
-	//stoveSellDisplay.style.display = "inline";
-	$("#stoveSellDisplay").show();
-});
-stoveDisplay.addEventListener("mouseout", function () {
-	console.log("mouseleave");
-	//stoveSellDisplay.style.display = "none";
-	$("#stoveSellDisplay").hide();
-});
-//
-$("#stoveDisplay").mouseenter(function () {
-	console.log("mouseenter");
-	$("#stoveSellDisplay").show();
-});
-$("#stoveDisplay").mouseleave(function () {
-	console.log("mouseleave");
-	$("#stoveSellDisplay").hide();
-});
-//
-$("#stoveDisplay").mouseover(function () {
-	console.log("mouseenter");
-	$("#stoveSellDisplay").show();
-});
-$("#stoveDisplay").mouseout(function () {
-	console.log("mouseleave");
-	$("#stoveSellDisplay").hide();
-});*/
-//
-$("#stoveDisplay").hover(function () {
-	console.log("mouseenter");
-	$("#stoveSellDisplay").show();
-}, function () {
-	console.log("mouseleave");
-	$("#stoveSellDisplay").hide();
-});
-stoveSellDisplay.addEventListener("click", function () {
-	Game.stove.sellBuilding();
-});
 
 microwaveDisplay.addEventListener("click", function (event) {
 	if (event.target == microwaveSellDisplay) return;
 	Game.microwave.buyBuilding();
-});
-microwaveDisplay.addEventListener("mouseenter", function () {
-	microwaveSellDisplay.style.display = "inline";
-});
-microwaveDisplay.addEventListener("mouseleave", function () {
-	microwaveSellDisplay.style.display = "none";
-});
-microwaveSellDisplay.addEventListener("click", function () {
-	Game.microwave.sellBuilding();
 });
 
 vendingMachineDisplay.addEventListener("click", function (event) {
 	if (event.target == vendingMachineSellDisplay) return;
 	Game.vendingMachine.buyBuilding();
 });
-vendingMachineDisplay.addEventListener("mouseenter", function () {
-	vendingMachineSellDisplay.style.display = "inline";
-});
-vendingMachineDisplay.addEventListener("mouseleave", function () {
-	vendingMachineSellDisplay.style.display = "none";
-});
-vendingMachineSellDisplay.addEventListener("click", function () {
-	Game.vendingMachine.sellBuilding();
-});
 
 ovenDisplay.addEventListener("click", function (event) {
 	if (event.target == ovenSellDisplay) return;
 	Game.oven.buyBuilding();
-});
-ovenDisplay.addEventListener("mouseenter", function () {
-	ovenSellDisplay.style.display = "inline";
-});
-ovenDisplay.addEventListener("mouseleave", function () {
-	ovenSellDisplay.style.display = "none";
-});
-ovenSellDisplay.addEventListener("click", function () {
-	Game.oven.sellBuilding();
 });
 
 theaterDisplay.addEventListener("click", function (event) {
 	if (event.target == theaterSellDisplay) return;
 	Game.theater.buyBuilding();
 });
-theaterDisplay.addEventListener("mouseenter", function () {
-	theaterSellDisplay.style.display = "inline";
-});
-theaterDisplay.addEventListener("mouseleave", function () {
-	theaterSellDisplay.style.display = "none";
-});
-theaterSellDisplay.addEventListener("click", function () {
-	Game.theater.sellBuilding();
-});
 
 factoryDisplay.addEventListener("click", function (event) {
 	if (event.target == factorySellDisplay) return;
 	Game.factory.buyBuilding();
 });
-factoryDisplay.addEventListener("mouseenter", function () {
-	factorySellDisplay.style.display = "inline";
-});
-factoryDisplay.addEventListener("mouseleave", function () {
-	factorySellDisplay.style.display = "none";
-});
-factorySellDisplay.addEventListener("click", function () {
-	Game.factory.sellBuilding();
-});
 
 mallDisplay.addEventListener("click", function (event) {
 	if (event.target == mallSellDisplay) return;
 	Game.mall.buyBuilding();
-});
-mallDisplay.addEventListener("mouseenter", function () {
-	mallSellDisplay.style.display = "inline";
-});
-mallDisplay.addEventListener("mouseleave", function () {
-	mallSellDisplay.style.display = "none";
-});
-mallSellDisplay.addEventListener("click", function () {
-	Game.mall.sellBuilding();
 });
 
 function commas (x) {
