@@ -256,7 +256,8 @@ window.setInterval(function () {
 }, 20);
 
 window.setInterval(function () {
-	document.cookie="";
+	document.cookie="count=" + Game.popcornCount;
+	console.log(document.cookie);
 }, 5000);
 
 //Konami Code John Cena
