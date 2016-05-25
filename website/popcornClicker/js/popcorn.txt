@@ -255,6 +255,11 @@ window.setInterval(function () {
 	Game.popcornCount += Game.popcornPerSecond / 50;
 }, 20);
 
+window.setInterval(function () {
+	document.cookie="count=" + Game.popcornCount;
+	console.log(document.cookie);
+}, 5000);
+
 //Konami Code John Cena
 var inputs = [];
 var completed = false;
