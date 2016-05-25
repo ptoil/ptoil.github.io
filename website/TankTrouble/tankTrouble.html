@@ -11,9 +11,11 @@
 <body>
 	<embed id="TT" type="application/x-shockwave-flash" src="TankTrouble_v3.8c.swf" width="1680" height="925">
 	<script>
-		window.onload = function () {
+		function resize () {
 			TT.width = window.innerWidth
 		}
+		window.onload = resize();
+		window.onresize = resize();
 	</script>
 </body>
 </html>
