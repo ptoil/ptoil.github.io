@@ -1,5 +1,27 @@
 window.onload = function () {
-	//collect cookies and import into game
+	Game.popcornCount = getCookie("popcorn");
+	Game.stove.count = getCookie("stove");
+	Game.microwave.count = getCookie("microwave");
+	Game.vendingMachine.count = getCookie("vendingMachine");
+	Game.oven.count = getCookie("oven");
+	Game.theater.count = getCookie("theater");
+	Game.factory.count = getCookie("factory");
+	Game.mall.count = getCookie("mall");
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
 }
 
 var Game = function () {
