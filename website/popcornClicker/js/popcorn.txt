@@ -256,7 +256,14 @@ window.setInterval(function () {
 }, 20);
 
 window.setInterval(function () {
-	document.cookie = "popcorn=" + Game.popcornCount + "; stove=" + Game.stove.count + "; " + "microwave=" + Game.microwave.count + "; " + "vendingMachine=" + Game.vendingMachine.count + "; " + "oven=" + Game.oven.count + "; " + "theater=" + Game.theater.count + "; " + "factory=" + Game.factory.count + "; " + "mall=" + Game.mall.count + "; ";
+	document.cookie = "popcorn=" + Game.popcornCount + "; ";
+	document.cookie = "stove=" + Game.stove.count + "; ";
+	document.cookie = "microwave=" + Game.microwave.count + "; ";
+	document.cookie = "vendingMachine=" + Game.vendingMachine.count + "; ";
+	document.cookie = "oven=" + Game.oven.count + "; ";
+	document.cookie = "theater=" + Game.theater.count + "; ";
+	document.cookie = "factory=" + Game.factory.count + "; ";
+	document.cookie = "mall=" + Game.mall.count + "; ";
 	console.log(document.cookie);
 }, 5000);
 
