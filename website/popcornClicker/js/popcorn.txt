@@ -155,41 +155,6 @@ function fadePopcorn (count) {
 	}, 20000);
 }
 
-stoveDisplay.addEventListener("click", function (event) {
-	if (event.target == stoveSellDisplay) return 0;
-	Game.stove.buyBuilding();
-});
-
-microwaveDisplay.addEventListener("click", function (event) {
-	if (event.target == microwaveSellDisplay) return;
-	Game.microwave.buyBuilding();
-});
-
-vendingMachineDisplay.addEventListener("click", function (event) {
-	if (event.target == vendingMachineSellDisplay) return;
-	Game.vendingMachine.buyBuilding();
-});
-
-ovenDisplay.addEventListener("click", function (event) {
-	if (event.target == ovenSellDisplay) return;
-	Game.oven.buyBuilding();
-});
-
-theaterDisplay.addEventListener("click", function (event) {
-	if (event.target == theaterSellDisplay) return;
-	Game.theater.buyBuilding();
-});
-
-factoryDisplay.addEventListener("click", function (event) {
-	if (event.target == factorySellDisplay) return;
-	Game.factory.buyBuilding();
-});
-
-mallDisplay.addEventListener("click", function (event) {
-	if (event.target == mallSellDisplay) return;
-	Game.mall.buyBuilding();
-});
-
 function commas (x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -213,10 +178,6 @@ window.setInterval(function () {
 		stoveDisplay.style = "background-color: blue; cursor: pointer";
 	else
 		stoveDisplay.style = "background-color: #0000b3; cursor: auto";
-	if (Game.stove.count > 0)
-		stoveSellDisplay.style = "background-color: red; color: #cccccc; cursor: pointer";
-	else
-		stoveSellDisplay.style = "background-color: #990000; color: #999999; cursor: auto";
 
 	microwaveCountDisplay.innerHTML = "Microwave: " + Game.microwave.count;
 	microwaveCostDisplay.innerHTML = "Cost: " + commas(Game.microwave.cost);
@@ -224,10 +185,6 @@ window.setInterval(function () {
 		microwaveDisplay.style = "background-color: blue; cursor: pointer";
 	else
 		microwaveDisplay.style = "background-color: #0000b3; cursor: auto";
-	if (Game.microwave.count > 0)
-		microwaveSellDisplay.style = "background-color: red; color: #cccccc; cursor: pointer";
-	else
-		microwaveSellDisplay.style = "background-color: #990000; color: #999999; cursor: auto";
 
 	vendingMachineCountDisplay.innerHTML = "Vending Machine: " + Game.vendingMachine.count;
 	vendingMachineCostDisplay.innerHTML = "Cost: " + commas(Game.vendingMachine.cost);
@@ -235,10 +192,6 @@ window.setInterval(function () {
 		vendingMachineDisplay.style = "background-color: blue; cursor: pointer";
 	else
 		vendingMachineDisplay.style = "background-color: #0000b3; cursor: auto";
-	if (Game.vendingMachine.count > 0)
-		vendingMachineSellDisplay.style = "background-color: red; color: #cccccc; cursor: pointer";
-	else
-		vendingMachineSellDisplay.style = "background-color: #990000; color: #999999; cursor: auto";
 
 	ovenCountDisplay.innerHTML = "Oven: " + Game.oven.count;
 	ovenCostDisplay.innerHTML = "Cost: " + commas(Game.oven.cost);
@@ -246,10 +199,6 @@ window.setInterval(function () {
 		ovenDisplay.style = "background-color: blue; cursor: pointer";
 	else
 		ovenDisplay.style = "background-color: #0000b3; cursor: auto";
-	if (Game.oven.count > 0)
-		ovenSellDisplay.style = "background-color: red; color: #cccccc; cursor: pointer";
-	else
-		ovenSellDisplay.style = "background-color: #990000; color: #999999; cursor: auto";
 
 	theaterCountDisplay.innerHTML = "Theater: " + Game.theater.count;
 	theaterCostDisplay.innerHTML = "Cost: " + commas(Game.theater.cost);
@@ -257,10 +206,6 @@ window.setInterval(function () {
 		theaterDisplay.style = "background-color: blue; cursor: pointer";
 	else
 		theaterDisplay.style = "background-color: #0000b3; cursor: auto";
-	if (Game.theater.count > 0)
-		theaterSellDisplay.style = "background-color: red; color: #cccccc; cursor: pointer";
-	else
-		theaterSellDisplay.style = "background-color: #990000; color: #999999; cursor: auto";
 
 	factoryCountDisplay.innerHTML = "Factory: " + Game.factory.count;
 	factoryCostDisplay.innerHTML = "Cost: " + commas(Game.factory.cost);
@@ -268,10 +213,6 @@ window.setInterval(function () {
 		factoryDisplay.style = "background-color: blue; cursor: pointer";
 	else
 		factoryDisplay.style = "background-color: #0000b3; cursor: auto";
-	if (Game.factory.count > 0)
-		factorySellDisplay.style = "background-color: red; color: #cccccc; cursor: pointer";
-	else
-		factorySellDisplay.style = "background-color: #990000; color: #999999; cursor: auto";
 
 	mallCountDisplay.innerHTML = "Mall: " + Game.mall.count;
 	mallCostDisplay.innerHTML = "Cost: " + commas(Game.mall.cost);
@@ -279,10 +220,6 @@ window.setInterval(function () {
 		mallDisplay.style = "background-color: blue; cursor: pointer";
 	else
 		mallDisplay.style = "background-color: #0000b3; cursor: auto";
-	if (Game.mall.count > 0)
-		mallSellDisplay.style = "background-color: red; color: #cccccc; cursor: pointer";
-	else
-		mallSellDisplay.style = "background-color: #990000; color: #999999; cursor: auto";
 }, 5);
 
 window.setInterval(function () {
