@@ -1,0 +1,116 @@
+body {
+	background: url("images/kernals.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	overflow: hidden;
+}
+#johnCenaGIF {
+	height: 100%;
+	width: 100%;
+}
+#wrapper {		
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+}
+#leftColumn {
+	height: 100%;
+	width: 14.5%;
+	float: left;
+	left: 0px;
+	background-color: #331100;
+}
+#midColumn {
+	height: 100%;
+	width: 60%;
+	float: left;
+	left: 15%;
+}
+#rightColumn {
+	height: 100%;
+	width: 24.5%;
+	float: left;
+	left: 74.5%;
+	background-color: #c3823c;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.columnDivider {
+	height: 100%;
+	width: .5%;
+	float: left;
+	background-color: #992600;
+}
+.unselectable {
+	user-drag: none; 
+	user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+#popcornDisplay {
+	color: white;
+	font-size: 40px;
+	font-weight: bold;
+}
+#popcornPerSecondDisplay {
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
+#popZone {
+	height: 100%;
+	cursor: pointer;
+}
+#instruction {
+	position: absolute;
+	font-size: 30px;
+	bottom: 0px;
+	width: inherit;
+	text-align: center;
+	background-color: #f5f5dc;
+}
+#storeTitle {
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+	font-weight: bold;
+	font-size: 40px;
+	color: white;
+}
+.storeDivider {
+	background-color: #992600;
+	height: 5px;
+}
+.storeItems {
+	background-color: #0000b3;
+	height: 90px;
+	line-height: 90px;
+	font-size: 20px;
+	color: white;
+}
+.storeItemParts {
+	height: 50%;
+	line-height: 45px;;
+}
+.sellButton {
+	height: 45px;
+	width: 45px;
+	line-height: 45px;
+	background-color: #990000;
+
+	font-size: 66px;
+	color: #999999;
+	text-align: center;
+	position: absolute;
+
+	left: 85%;
+}

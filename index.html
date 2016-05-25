@@ -1,23 +1,198 @@
----
-layout: default
----
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="replacee/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="replacee/css/templatemo-style.css">
+<!--
+Puzzle Template
+http://www.templatemo.com/tm-477-puzzle
+-->
+    <title>REPLACE NAME</title>
+</head>
 
-<div class="home">
+<body>
+    <div class="fixed-header">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand" href="#">REPLACE NAME</a>
+            </div>
+            <nav class="main-menu">
+                <ul>
+                    <li><a id="toSite">To BenUnblocked</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">About</a></li>
+                    <li><a href="#clients">Information</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="container">
+        <section class="col-md-12 content" id="home">
+           <div class="col-lg-6 col-md-6 content-item">
+               <img src="replacee/images/1.jpg" alt="Image" class="tm-image">
+           </div>
+           <div class="col-lg-6 col-md-6 content-item content-item-1 background">
+               <h2 class="main-title text-center dark-blue-text">This Organization is Great</h2>
+               <p>Information about our organization below.</p>
+               <p>Useless buttons.</p>               
+               <button type="button" class="btn btn-big dark-blue-bordered-btn">More Information</button>
+               <button type="button" class="btn btn-big dark-blue-btn">Contact Us</button>
+           </div>
+       </section>
 
-  <h1 class="page-heading">Posts</h1>
+       <section class="col-md-12 content padding" id="services">
+        <div class="col-lg-6 col-md-6 col-md-push-6 content-item">
+           <img src="replacee/images/2.jpg" alt="Image" class="tm-image">
+       </div>
+       <div class="col-lg-6 col-md-6 col-md-pull-6 content-item background flexbox">
+           <h2 class="section-title">About Us</h2>
+           <p class="section-text">We strive to help. Here are some things about us:</p>
+           <ul class="dark-blue-text">
+               <li>+ We don't care about you</li>
+               <li>+ This site doesn't matter</li>
+               <li>+ I don't know what to put here</li>
+               <li>+ Enjoy this beautiful website</li>
+           </ul>
+           <p>By seeing the things we do to help, you can see that we are amazing. </p>
+           <p>You don't need to know anymore. </p>
+       </div>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+   </section>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+   <section class="col-md-12 content" id="clients">
+       <div class="col-lg-6 col-md-6 content-item">
+           <img src="replacee/images/3.jpg" alt="Image" class="tm-image">
+       </div>
+       <div class="col-lg-6 col-md-6 content-item background flexbox">
+           <h2 class="section-title">More Information</h2>
+           <p>If you read the previous section, you would know that none of this matters and that you don't need to know about us. </p>
+           <p>This is more filler. We are a great organization that helps people. Please donate to our nonexistent cause to help people around the world.</p>
+           <p>The following buttons are useful to you because they don't do anything. Please enjoy clicking pointlessly for your entertainment. </p>
+           <div>
+               <button type="button" class="btn dark-blue-bordered-btn normal-btn">About Us</button>
+               <button type="button" class="btn yellow-btn normal-btn">Donate</button>
+               <button type="button" class="btn green-btn normal-btn">Contact Us</button>    
+           </div>             
+       </div>
+   </section>
+
+
+   <section class="col-md-12 content" id="contact">
+       <div class="col-lg-6 col-md-6 col-md-push-6 content-item">
+           <img src="replacee/images/4.jpg" alt="Image" class="tm-image">
+       </div>
+       <div class="col-lg-6 col-md-6 col-md-pull-6 content-item background flexbox">
+           <h2 class="section-title">Contact Us</h2>
+           <p class="margin-b-25">I'm not sure if this actually sends an email but if it does I will stop it from doing so.</p>
+
+           <!--<div class="row"> -->
+           <form method="post" name="contact-form" class="contact-form">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <input name="name" type="text" class="form-control" id="name" placeholder="Your Name..." required>
+                </div>    
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad-l-3">
+                <div class="form-group contact-field">
+                    <input name="email" type="email" class="form-control" id="email" placeholder="Your Email..." required>
+                </div>    
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group contact-field">
+                    <input name="subject" type="text" class="form-control" id="subject" placeholder="Your Subject..." required>
+                </div>    
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group contact-field">
+                    <textarea name="message" rows="5" class="form-control" id="message" placeholder="Write your message..." required></textarea>
+                </div>    
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group margin-b-0">
+                    <button type="submit" id="form-submit" class="btn no-bg btn-contact">Submit</button>
+                </div>    
+            </div>
+        </form>
+        <!--</div> -->
+        <div id="msgSubmit" class="h3 text-center hidden">Message Submitted!</div>
+
+    </div>
+
+</section>
+
+<footer class="col-md-12 content" id="externals">
+ <div class="col-lg-6 col-md-6 last">
+   <img src="replacee/images/5.png" alt="Image" class="tm-image">
+</div>
+<div class="col-lg-6 col-md-6 background last about-text-container">
+   <h2 class="section-title">About This Website</h2>
+   <p class="about-text">It is a fake.</p> 
+   <p class="about-text">Page Template: <a href="http://www.templatemo.com/tm-477-puzzle" target="_parent">Here</a></p>      
+</div>
+</footer>
 
 </div>
+
+<div class="text-center footer">
+	<div class="container">
+		Nonexistant Copyright Information
+    </div>
+</div>
+
+<script src="replacee/js/jquery.min.txt"></script>
+<script src="replacee/js/bootstrap.min.txt"></script>
+<script src="replacee/js/jquery.singlePageNav.min.txt"></script>
+
+<script>
+
+// Check scroll position and add/remove background to navbar
+function checkScrollPosition() {
+    if($(window).scrollTop() > 50) {
+      $(".fixed-header").addClass("scroll");
+  } else {        
+      $(".fixed-header").removeClass("scroll");
+  }
+}
+
+$(document).ready(function () {   
+    // Single page nav
+    $('.fixed-header').singlePageNav({
+        offset: 59,
+        filter: ':not(.external)',
+        updateHash: true        
+    });
+
+    checkScrollPosition();
+
+    // nav bar
+    $('.navbar-toggle').click(function(){
+        $('.main-menu').toggleClass('show');
+    });
+
+    $('.main-menu a').click(function(){
+        $('.main-menu').removeClass('show');
+    });
+});
+
+$(window).on("scroll", function() {
+    checkScrollPosition();    
+});
+
+//realIndex redirect //href doesn't work 
+toSite.addEventListener("click", function () {
+    window.location = "./website/realIndex.html";
+});
+</script>
+</body>
+</html>
