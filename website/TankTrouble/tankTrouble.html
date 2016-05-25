@@ -4,6 +4,11 @@
 	<title>Tank Trouble</title>
 </head>
 <body>
-	<embed type="application/x-shockwave-flash" src="TankTrouble_v3.8c.swf" width="1680" height="925">
+	<embed id="TT" type="application/x-shockwave-flash" src="TankTrouble_v3.8c.swf" width="1680" height="925">
+	<script>
+		window.onload = function () {
+			TT.width = window.innerWidth
+		}
+	</script>
 </body>
 </html>
