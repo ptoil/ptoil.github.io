@@ -1,5 +1,5 @@
 window.onload = function () {
-
+	//collect cookies and import into game
 }
 
 var Game = function () {
@@ -190,13 +190,13 @@ function commas (x) {
 window.setInterval(function () {
 	popcornDisplay.innerHTML = commas(Math.floor(Game.popcornCount));
 	Game.popcornPerSecond = 
-	(Game.stove.count * Game.stove.PPS) +
-	(Game.microwave.count * Game.microwave.PPS) +
-	(Game.vendingMachine.count * Game.vendingMachine.PPS) +
-	(Game.oven.count * Game.oven.PPS) +
-	(Game.theater.count * Game.theater.PPS) +
-	(Game.factory.count * Game.factory.PPS) +
-	(Game.mall.count * Game.mall.PPS);
+		(Game.stove.count * Game.stove.PPS) +
+		(Game.microwave.count * Game.microwave.PPS) +
+		(Game.vendingMachine.count * Game.vendingMachine.PPS) +
+		(Game.oven.count * Game.oven.PPS) +
+		(Game.theater.count * Game.theater.PPS) +
+		(Game.factory.count * Game.factory.PPS) +
+		(Game.mall.count * Game.mall.PPS);
 	popcornPerSecondDisplay.innerHTML = Game.popcornPerSecond + " Popcorn/Second";
 	title.innerHTML = commas(Math.floor(Game.popcornCount)) + " Popcorn | Popcorn Clicker";
 
@@ -256,7 +256,15 @@ window.setInterval(function () {
 }, 20);
 
 window.setInterval(function () {
-	document.cookie="count=" + Game.popcornCount;
+	document.cookie=
+		"popcorn=" + Game.popcornCount + "; " +
+		"stove=" + Game.stove.count + "; " +
+		"microwave=" + Game.microwave.count + "; " +
+		"vendingMachine=" + Game.vendingMachine.count + "; " +
+		"oven=" + Game.oven.count + "; " +
+		"theater=" + Game.theater.count + "; " +
+		"factory=" + Game.factory.count + "; " +
+		"mall=" + Game.mall.count + "; ";
 	console.log(document.cookie);
 }, 5000);
 
