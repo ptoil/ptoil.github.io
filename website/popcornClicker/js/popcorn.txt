@@ -155,6 +155,34 @@ function fadePopcorn (count) {
 	}, 20000);
 }
 
+stoveDisplay.addEventListener("click", function (event) {
+	Game.stove.buyBuilding();
+});
+
+microwaveDisplay.addEventListener("click", function (event) {
+	Game.microwave.buyBuilding();
+});
+
+vendingMachineDisplay.addEventListener("click", function (event) {
+	Game.vendingMachine.buyBuilding();
+});
+
+ovenDisplay.addEventListener("click", function (event) {
+	Game.oven.buyBuilding();
+});
+
+theaterDisplay.addEventListener("click", function (event) {
+	Game.theater.buyBuilding();
+});
+
+factoryDisplay.addEventListener("click", function (event) {
+	Game.factory.buyBuilding();
+});
+
+mallDisplay.addEventListener("click", function (event) {
+	Game.mall.buyBuilding();
+});
+
 function commas (x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -199,6 +227,7 @@ window.setInterval(function () {
 		ovenDisplay.style = "background-color: blue; cursor: pointer";
 	else
 		ovenDisplay.style = "background-color: #0000b3; cursor: auto";
+
 
 	theaterCountDisplay.innerHTML = "Theater: " + Game.theater.count;
 	theaterCostDisplay.innerHTML = "Cost: " + commas(Game.theater.cost);
