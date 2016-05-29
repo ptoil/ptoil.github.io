@@ -296,12 +296,14 @@ window.setInterval(function () {
 		mallDisplay.style = "background-color: blue; cursor: pointer";
 	else
 		mallDisplay.style = "background-color: #0000b3; cursor: auto";
+	console.log("long");
 }, 5);
 
 //default: when site is in viewport
 window.setInterval(function () {
 	if (document.visibilityState == "hidden") return;
 	Game.popcornCount += Game.popcornPerSecond / 50;
+	console.log("visible");
 }, 20);
 
 //when site isn't in viewport
@@ -309,6 +311,7 @@ window.setInterval(function () {
 	if (document.visibilityState == "visible") return;
 	Game.popcornCount += Game.popcornPerSecond;
 	popcornDisplay.innerHTML = commas(Math.floor(Game.popcornCount));
+	console.log("hidden");
 }, 1000);
 
 //Konami Code John Cena
