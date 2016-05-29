@@ -7,7 +7,8 @@ window.onload = function () {
 	Game.theater.count = getCookie("theater");
 	Game.factory.count = getCookie("factory");
 	Game.mall.count = getCookie("mall");*/
-	console.log(getCookie("popcorn"));
+	var popcorna = getCookie("popcorn");
+	console.log(typeof popcorna);
 }
 
 function getCookie(cname) {
