@@ -308,6 +308,7 @@ window.setInterval(function () {
 window.setInterval(function () {
 	if (document.visibilityState == "visible") return;
 	Game.popcornCount += Game.popcornPerSecond;
+	popcornDisplay.innerHTML = commas(Math.floor(Game.popcornCount));
 }, 1000);
 
 //Konami Code John Cena
