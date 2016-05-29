@@ -7,6 +7,22 @@ window.onload = function () {
 	Game.theater.count = Number(getCookie("theater"));
 	Game.factory.count = Number(getCookie("factory"));
 	Game.mall.count = Number(getCookie("mall"));
+
+	window.setInterval(function () {
+		var now = new Date();
+		var time = now.getTime();
+		time += 157680000 * 1000; //5 years
+		now.setTime(time);
+		document.cookie = "popcorn=" + Math.floor(Game.popcornCount) + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "stove=" + Game.stove.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "microwave=" + Game.microwave.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "vendingMachine=" + Game.vendingMachine.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "oven=" + Game.oven.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "theater=" + Game.theater.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "factory=" + Game.factory.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "mall=" + Game.mall.count + "; expires=" + now.toUTCString() + ";";
+		console.log("cookies saved");
+	}, 5000);
 }
 
 function getCookie(cname) {
@@ -276,22 +292,6 @@ window.setInterval(function () {
 window.setInterval(function () {
 	Game.popcornCount += Game.popcornPerSecond / 50;
 }, 20);
-
-window.setInterval(function () {
-	var now = new Date();
-	var time = now.getTime();
-	time += 157680000 * 1000; //5 years
-	now.setTime(time);
-	document.cookie = "popcorn=" + Math.floor(Game.popcornCount) + "; expires=" + now.toUTCString() + ";";
-	document.cookie = "stove=" + Game.stove.count + "; expires=" + now.toUTCString() + ";";
-	document.cookie = "microwave=" + Game.microwave.count + "; expires=" + now.toUTCString() + ";";
-	document.cookie = "vendingMachine=" + Game.vendingMachine.count + "; expires=" + now.toUTCString() + ";";
-	document.cookie = "oven=" + Game.oven.count + "; expires=" + now.toUTCString() + ";";
-	document.cookie = "theater=" + Game.theater.count + "; expires=" + now.toUTCString() + ";";
-	document.cookie = "factory=" + Game.factory.count + "; expires=" + now.toUTCString() + ";";
-	document.cookie = "mall=" + Game.mall.count + "; expires=" + now.toUTCString() + ";";
-	console.log("cookies saved");
-}, 5000);
 
 //Konami Code John Cena
 var inputs = [];
