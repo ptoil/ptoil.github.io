@@ -1,12 +1,13 @@
 window.onload = function () {
-	Game.popcornCount = getCookie("popcorn");
+	/*Game.popcornCount = getCookie("popcorn");
 	Game.stove.count = getCookie("stove");
 	Game.microwave.count = getCookie("microwave");
 	Game.vendingMachine.count = getCookie("vendingMachine");
 	Game.oven.count = getCookie("oven");
 	Game.theater.count = getCookie("theater");
 	Game.factory.count = getCookie("factory");
-	Game.mall.count = getCookie("mall");
+	Game.mall.count = getCookie("mall");*/
+	console.log(getCookie("popcorn"));
 }
 
 function getCookie(cname) {
