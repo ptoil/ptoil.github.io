@@ -8,6 +8,14 @@ window.onload = function () {
 	Game.factory.count = Number(getCookie("factory"));
 	Game.mall.count = Number(getCookie("mall"));
 
+	Game.stove.count.calcCost();
+	Game.microwave.count.calcCost();
+	Game.vendingMachine.count.calcCost();
+	Game.oven.count.calcCost();
+	Game.theater.count.calcCost();
+	Game.factory.count.calcCost();
+	Game.mall.count.calcCost();
+
 	window.setInterval(function () {
 		var now = new Date();
 		var time = now.getTime();
