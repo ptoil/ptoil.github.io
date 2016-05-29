@@ -1,14 +1,12 @@
 window.onload = function () {
-	/*Game.popcornCount = getCookie("popcorn");
-	Game.stove.count = getCookie("stove");
-	Game.microwave.count = getCookie("microwave");
-	Game.vendingMachine.count = getCookie("vendingMachine");
-	Game.oven.count = getCookie("oven");
-	Game.theater.count = getCookie("theater");
-	Game.factory.count = getCookie("factory");
-	Game.mall.count = getCookie("mall");*/
-	var popcorna = getCookie("popcorn");
-	console.log(typeof popcorna);
+	Game.popcornCount = Number(getCookie("popcorn"));
+	Game.stove.count = Number(getCookie("stove"));
+	Game.microwave.count = Number(getCookie("microwave"));
+	Game.vendingMachine.count = Number(getCookie("vendingMachine"));
+	Game.oven.count = Number(getCookie("oven"));
+	Game.theater.count = Number(getCookie("theater"));
+	Game.factory.count = Number(getCookie("factory"));
+	Game.mall.count = Number(getCookie("mall"));
 }
 
 function getCookie(cname) {
