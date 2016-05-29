@@ -8,13 +8,13 @@ window.onload = function () {
 	Game.factory.count = Number(getCookie("factory"));
 	Game.mall.count = Number(getCookie("mall"));
 
-	Game.stove.count.calcCost();
-	Game.microwave.count.calcCost();
-	Game.vendingMachine.count.calcCost();
-	Game.oven.count.calcCost();
-	Game.theater.count.calcCost();
-	Game.factory.count.calcCost();
-	Game.mall.count.calcCost();
+	Game.stove.calcCost();
+	Game.microwave.calcCost();
+	Game.vendingMachine.calcCost();
+	Game.oven.calcCost();
+	Game.theater.calcCost();
+	Game.factory.calcCost();
+	Game.mall.calcCost();
 
 	window.setInterval(function () {
 		var now = new Date();
