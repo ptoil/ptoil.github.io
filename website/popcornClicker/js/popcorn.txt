@@ -302,7 +302,6 @@ window.setInterval(function () {
 window.setInterval(function () {
 	if (document.visibilityState == "hidden") return;
 	Game.popcornCount += Game.popcornPerSecond / 50;
-	console.log("visible");
 }, 20);
 
 //when site isn't in viewport
@@ -310,7 +309,6 @@ window.setInterval(function () {
 	if (document.visibilityState == "visible") return;
 	Game.popcornCount += Game.popcornPerSecond;
 	popcornDisplay.innerHTML = commas(Math.floor(Game.popcornCount));
-	console.log("hidden");
 }, 1000);
 
 //Konami Code John Cena
