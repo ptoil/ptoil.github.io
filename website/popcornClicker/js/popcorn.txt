@@ -234,6 +234,7 @@ function commas (x) {
 }
 
 window.setInterval(function () {
+	if (document.visibilityState == "hidden") return;
 	popcornDisplay.innerHTML = commas(Math.floor(Game.popcornCount));
 	Game.popcornPerSecond = 
 		(Game.stove.count * Game.stove.PPS) +
@@ -297,9 +298,17 @@ window.setInterval(function () {
 		mallDisplay.style = "background-color: #0000b3; cursor: auto";
 }, 5);
 
+//default: when site is in viewport
 window.setInterval(function () {
+	if (document.visibilityState == "hidden") return;
 	Game.popcornCount += Game.popcornPerSecond / 50;
 }, 20);
+
+//when site isn't in viewport
+window.setInterval(function () {
+	if (document.visibilityState == "visible") return;
+	Game.popcornCount += Game.popcornPerSecond;
+}, 1000);
 
 //Konami Code John Cena
 var inputs = [];
