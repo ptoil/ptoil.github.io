@@ -296,7 +296,6 @@ window.setInterval(function () {
 		mallDisplay.style = "background-color: blue; cursor: pointer";
 	else
 		mallDisplay.style = "background-color: #0000b3; cursor: auto";
-	console.log("long");
 }, 5);
 
 //default: when site is in viewport
