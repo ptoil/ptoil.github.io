@@ -22,7 +22,7 @@ window.onload = function () {
 		document.cookie = "factory=" + Game.factory.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "mall=" + Game.mall.count + "; expires=" + now.toUTCString() + ";";
 		console.log("cookies saved");
-	}, 5000);
+	}, 1);
 }
 
 function getCookie(cname) {
