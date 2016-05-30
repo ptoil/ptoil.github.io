@@ -201,31 +201,31 @@ function fadePopcorn (count) {
 	}, 20000);
 }
 
-stoveDisplay.addEventListener("click", function (event) {
+stoveDisplay.addEventListener("click", function () {
 	Game.stove.buyBuilding();
 });
 
-microwaveDisplay.addEventListener("click", function (event) {
+microwaveDisplay.addEventListener("click", function () {
 	Game.microwave.buyBuilding();
 });
 
-vendingMachineDisplay.addEventListener("click", function (event) {
+vendingMachineDisplay.addEventListener("click", function () {
 	Game.vendingMachine.buyBuilding();
 });
 
-ovenDisplay.addEventListener("click", function (event) {
+ovenDisplay.addEventListener("click", function () {
 	Game.oven.buyBuilding();
 });
 
-theaterDisplay.addEventListener("click", function (event) {
+theaterDisplay.addEventListener("click", function () {
 	Game.theater.buyBuilding();
 });
 
-factoryDisplay.addEventListener("click", function (event) {
+factoryDisplay.addEventListener("click", function () {
 	Game.factory.buyBuilding();
 });
 
-mallDisplay.addEventListener("click", function (event) {
+mallDisplay.addEventListener("click", function () {
 	Game.mall.buyBuilding();
 });
 
@@ -317,17 +317,17 @@ var completed = false;
 document.addEventListener("keydown", function (event) {
 	inputs.push(event.keyCode);
 	for (i = 0; i < inputs.length; i++) {
-		if (inputs[i]     == 38) {
-		if (inputs[i + 1] == 38) {
-		if (inputs[i + 2] == 40) {
-		if (inputs[i + 3] == 40) {
-		if (inputs[i + 4] == 37) {
-		if (inputs[i + 5] == 39) {
-		if (inputs[i + 6] == 37) {
-		if (inputs[i + 7] == 39) {
-		if (inputs[i + 8] == 66) {
-		if (inputs[i + 9] == 65) {
-		if (inputs[i +10] == 13) {
+		if (inputs[i]     == 38) { //up
+		if (inputs[i + 1] == 38) { //up
+		if (inputs[i + 2] == 40) { //down
+		if (inputs[i + 3] == 40) { //down
+		if (inputs[i + 4] == 37) { //left
+		if (inputs[i + 5] == 39) { //right
+		if (inputs[i + 6] == 37) { //left
+		if (inputs[i + 7] == 39) { //right
+		if (inputs[i + 8] == 66) { //b
+		if (inputs[i + 9] == 65) { //a
+		if (inputs[i +10] == 13) { //enter
 		if (!completed) {
 			completed = true;
 			wrapper.style.display = "none";
