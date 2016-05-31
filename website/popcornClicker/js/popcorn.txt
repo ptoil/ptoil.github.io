@@ -204,30 +204,27 @@ function fadePopcorn (count) {
 stoveDisplay.addEventListener("click", function () {
 	Game.stove.buyBuilding();
 });
-
 microwaveDisplay.addEventListener("click", function () {
 	Game.microwave.buyBuilding();
 });
-
 vendingMachineDisplay.addEventListener("click", function () {
 	Game.vendingMachine.buyBuilding();
 });
-
 ovenDisplay.addEventListener("click", function () {
 	Game.oven.buyBuilding();
 });
-
 theaterDisplay.addEventListener("click", function () {
 	Game.theater.buyBuilding();
 });
-
 factoryDisplay.addEventListener("click", function () {
 	Game.factory.buyBuilding();
 });
-
 mallDisplay.addEventListener("click", function () {
 	Game.mall.buyBuilding();
 });
+inductionFurnaceDisplay.addEventListener("click", function () {
+	Game.inductionFurnace.buyBuilding();
+})
 
 function commas (x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -243,7 +240,8 @@ window.setInterval(function () {
 		(Game.oven.count * Game.oven.PPS) +
 		(Game.theater.count * Game.theater.PPS) +
 		(Game.factory.count * Game.factory.PPS) +
-		(Game.mall.count * Game.mall.PPS);
+		(Game.mall.count * Game.mall.PPS) +
+		(Game.inductionFurnace.count * Game.inductionFurnace.PPS);
 	popcornPerSecondDisplay.innerHTML = Game.popcornPerSecond + " Popcorn/Second";
 	title.innerHTML = commas(Math.floor(Game.popcornCount)) + " Popcorn | Popcorn Clicker";
 
@@ -296,6 +294,13 @@ window.setInterval(function () {
 		mallDisplay.style = "background-color: blue; cursor: pointer";
 	else
 		mallDisplay.style = "background-color: #0000b3; cursor: auto";
+
+	inductionFurnaceCountDisplay.innerHTML = "Induction Furnace: " + Game.inductionFurnace.count;
+	inductionFurnaceCostDisplay.innerHTML = "Cost: " + commas(Game.inductionFurnace.cost);
+	if (Game.popcornCount - Game.inductionFurnace.cost >= 0)
+		inductionFurnaceDisplay.style = "background-color: blue; cursor: pointer";
+	else
+		inductionFurnaceDisplay.style = "background-color: #0000b3; cursor: auto";
 }, 5);
 
 //default: when site is in viewport
