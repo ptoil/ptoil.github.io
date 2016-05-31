@@ -51,14 +51,14 @@ function getCookie(cname) {
 var Game = function () {
 	this.popcornCount = 0;
 	this.popcornPerSecond = 0;
-	this.stove = new Building(20, 1);
-	this.microwave = new Building(400, 4);
-	this.vendingMachine = new Building(7430, 20);
-	this.oven = new Building(47200, 98);
-	this.theater = new Building(758857, 437);
-	this.factory = new Building(3000765, 1744);
-	this.mall = new Building("temp", 0);
-	this.inductionFurnace = new Building("temp", 0);
+	this.stove            = new Building(20, .2);
+	this.microwave        = new Building(200, 1);
+	this.vendingMachine   = new Building(6430, 15);
+	this.oven             = new Building(48200, 67);
+	this.theater          = new Building(428857, 359);
+	this.factory          = new Building(2000765, 1344);
+	this.mall             = new Building(50000001, 3111);
+	this.inductionFurnace = new Building(631000631, 9452);
 }
 
 var Building = function (baseCost, pps) {
@@ -87,7 +87,7 @@ var Building = function (baseCost, pps) {
 var Game = new Game();
 
 var BUILDING_MULTIPLIER = 1.16;
-var SELL_MULTIPLIER = 0.5;
+var SELL_MULTIPLIER = .5;
 
 var poppedCount = 0;
 popZone.addEventListener("click", function (event) {
@@ -242,7 +242,7 @@ window.setInterval(function () {
 		(Game.factory.count * Game.factory.PPS) +
 		(Game.mall.count * Game.mall.PPS) +
 		(Game.inductionFurnace.count * Game.inductionFurnace.PPS);
-	popcornPerSecondDisplay.innerHTML = Game.popcornPerSecond + " Popcorn/Second";
+	popcornPerSecondDisplay.innerHTML = commas(Game.popcornPerSecond) + " Popcorn/Second";
 	title.innerHTML = commas(Math.floor(Game.popcornCount)) + " Popcorn | Popcorn Clicker";
 
 	stoveCountDisplay.innerHTML = "Stove: " + Game.stove.count;
