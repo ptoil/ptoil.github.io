@@ -242,7 +242,7 @@ window.setInterval(function () {
 		(Game.factory.count * Game.factory.PPS) +
 		(Game.mall.count * Game.mall.PPS) +
 		(Game.inductionFurnace.count * Game.inductionFurnace.PPS);
-	popcornPerSecondDisplay.innerHTML = commas(Game.popcornPerSecond) + " Popcorn/Second";
+	popcornPerSecondDisplay.innerHTML = (Math.round(commas(Game.popcornPerSecond) * 10) / 10) + " Popcorn/Second";
 	title.innerHTML = commas(Math.floor(Game.popcornCount)) + " Popcorn | Popcorn Clicker";
 
 	stoveCountDisplay.innerHTML = "Stove: " + Game.stove.count;
