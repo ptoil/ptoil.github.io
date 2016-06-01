@@ -200,6 +200,17 @@ function fadePopcorn (count) {
 		$(id).fadeOut(3000);
 	}, 20000);
 }
+var shown = true;
+dropButton.addEventListener("click", function () {
+	for (element in buildings.childnodes) {
+		if (shown == true) {
+			element.style.display = "none";
+		} else {
+			element.style.display = "initial";
+		}
+	}
+	shown = !shown;
+}
 
 stoveDisplay.addEventListener("click", function () {
 	Game.stove.buyBuilding();
