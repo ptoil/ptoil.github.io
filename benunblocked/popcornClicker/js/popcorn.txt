@@ -202,7 +202,7 @@ function fadePopcorn (count) {
 }
 var shown = true;
 buildingDropdown.addEventListener("click", function () {
-	console.log(building.childnodes);
+	console.log(buildings.childnodes);
 	for (element in buildings.childnodes) {
 		if (shown == true) {
 			element.style.display = "none";
