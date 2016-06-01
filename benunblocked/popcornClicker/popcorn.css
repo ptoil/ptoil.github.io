@@ -94,6 +94,12 @@ body {
 	background-color: #cc3300;
 	height: 10px;
 }
+.dropButton {
+	position: relative;
+	background-color: blue;
+	height: 5px;
+	width: 5px;
+}
 .storeItems {
 	background-color: #0000b3;
 	height: 90px;
