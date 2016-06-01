@@ -102,6 +102,7 @@ body {
 	width: 15px;
 	top: -30%;
 	left: 80%;
+	cursor: pointer;
 }
 .storeItems {
 	background-color: #0000b3;
