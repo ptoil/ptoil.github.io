@@ -207,8 +207,10 @@ buildingDropdown.addEventListener("click", function () {
 	for (i = 0; i < elements.length; i++) {
 		if (shown == true) {
 			elements[i].style.display = "none";
+			console.log("hide");
 		} else {
 			elements[i].style.display = "initial";
+			console.log("show");
 		}
 	}
 	shown = !shown;
