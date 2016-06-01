@@ -223,6 +223,7 @@ buildingDropdown.addEventListener("click", function () {
 		factoryDisplay.style.display = "none";
 		mallDisplay.style.display = "none";
 		inductionFurnaceDisplay.style.display = "none";
+		console.log("hide");
 	} else {
 		stoveDisplay.style.display = "initial";
 		microwaveDisplay.style.display = "initial";
@@ -232,6 +233,7 @@ buildingDropdown.addEventListener("click", function () {
 		factoryDisplay.style.display = "initial";
 		mallDisplay.style.display = "initial";
 		inductionFurnaceDisplay.style.display = "initial";
+		console.log("none");
 	}
 	shown = !shown;
 });
