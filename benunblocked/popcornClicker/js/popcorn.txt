@@ -210,7 +210,7 @@ dropButton.addEventListener("click", function () {
 		}
 	}
 	shown = !shown;
-}
+});
 
 stoveDisplay.addEventListener("click", function () {
 	Game.stove.buyBuilding();
