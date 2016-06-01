@@ -204,11 +204,11 @@ var shown = true;
 buildingDropdown.addEventListener("click", function () {
 	console.log(document.getElementsByClassName("buildings"));
 	var elements = document.getElementsByClassName("buildings");
-	for (element in elements) {
+	for (i = 0; i < elements.length; i++) {
 		if (shown == true) {
-			element.style.display = "none";
+			elements[i].style.display = "none";
 		} else {
-			element.style.display = "initial";
+			elements[i].style.display = "initial";
 		}
 	}
 	shown = !shown;
