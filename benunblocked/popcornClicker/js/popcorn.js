@@ -104,92 +104,92 @@ popZone.addEventListener("click", function (event) {
 		var random360 = Math.floor(Math.random() * 360 + 1);
 		switch (random15) {
 			case 1:
-				//newPopcorn.src = "images/popcorn1.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn1.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 125 / 2;
 				y -= 116 / 2;
 				break;
 			case 2:
-				//newPopcorn.src = "images/popcorn2.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn2.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 125 / 2;
 				y -= 102 / 2;
 				break;
 			case 3:
-				//newPopcorn.src = "images/popcorn3.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn3.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 125 / 2;
 				y -= 102 / 2;
 				break;
 			case 4:
-				//newPopcorn.src = "images/popcorn4.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn4.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 122 / 2;
 				y -= 125 / 2;
 				break;
 			case 5:
-				//newPopcorn.src = "images/popcorn5.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn5.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 117 / 2;
 				y -= 125 / 2;
 				break;
 			case 6:
-				//newPopcorn.src = "images/popcorn6.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn6.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 125 / 2;
 				y -= 105 / 2;
 				break;
 			case 7:
-				//newPopcorn.src = "images/popcorn7.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn7.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 125 / 2;
 				y -= 193 / 2;
 				break;
 			case 8:
-				//newPopcorn.src = "images/popcorn8.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn8.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 111 / 2;
 				y -= 125 / 2;
 				break;
 			case 9:
-				//newPopcorn.src = "images/popcorn9.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn9.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 119 / 2;
 				y -= 125 / 2;
 				break;
 			case 10:
-				//newPopcorn.src = "images/popcorn10.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn10.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 125 / 2;
 				y -= 102 / 2;
 				break;
 			case 11:
-				//newPopcorn.src = "images/popcorn11.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn11.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 125 / 2;
 				y -= 85 / 2;
 				break;
 			case 12:
-				//newPopcorn.src = "images/popcorn12.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn12.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 125 / 2;
 				y -= 115 / 2;
 				break;
 			case 13:
-				//newPopcorn.src = "images/popcorn13.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn13.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 125 / 2;
 				y -= 87 / 2;
 				break;
 			case 14:
-				//newPopcorn.src = "images/popcorn14.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn14.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 125 / 2;
 				y -= 104 / 2;
 				break;
 			case 15:
-				//newPopcorn.src = "images/popcorn15.png";
-				newPopcorn.src = "images/suhailDoze.png";
+				newPopcorn.src = "images/popcorn15.png";
+				//newPopcorn.src = "images/suhailDoze.png";
 				x -= 108 / 2;
 				y -= 125 / 2;
 				break;
