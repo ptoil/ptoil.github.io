@@ -201,7 +201,7 @@ function fadePopcorn (count) {
 	}, 20000);
 }
 var shown = true;
-dropButton.addEventListener("click", function () {
+buildingDropdown.addEventListener("click", function () {
 	for (element in buildings.childnodes) {
 		if (shown == true) {
 			element.style.display = "none";
