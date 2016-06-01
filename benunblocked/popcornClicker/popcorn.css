@@ -60,7 +60,7 @@ body {
 	-ms-user-select: none;
 }
 #popcornDisplay {
-	color: #bfbfbf;
+	color: yellow;
 	font-size: 40px;
 	font-weight: bold;
 }
