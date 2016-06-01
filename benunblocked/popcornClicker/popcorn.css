@@ -93,13 +93,15 @@ body {
 .storeMenu {
 	background-color: #cc3300;
 	color: white;
-	height: 10px;
+	height: 30px;
 }
 .dropButton {
 	position: relative;
 	background-color: blue;
-	height: 5px;
-	width: 5px;
+	height: 15px;
+	width: 15px;
+	top: -22.5px;
+	left: 80%;
 }
 .storeItems {
 	background-color: #0000b3;
