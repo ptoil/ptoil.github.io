@@ -60,12 +60,12 @@ body {
 	-ms-user-select: none;
 }
 #popcornDisplay {
-	color: yellow;
+	color: #b3b300;
 	font-size: 40px;
 	font-weight: bold;
 }
 #popcornPerSecondDisplay {
-	color: yellow;
+	color: #b3b300;
 	font-size: 20px;
 	font-weight: bold;
 }
