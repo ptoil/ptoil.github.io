@@ -31,6 +31,7 @@ window.onload = function () {
 		document.cookie = "mall=" + Game.mall.count + "; expires=" + now.toUTCString() + ";";
 		console.log("cookies saved");
 	}, 5000);
+	//IDEA: create Game instance in onload to stop player from playing before page loads
 }
 
 function getCookie(cname) {
@@ -202,7 +203,7 @@ function fadePopcorn (count) {
 }
 var shown = true;
 buildingDropdown.addEventListener("click", function () {
-	console.log(document.getElementsByClassName("buildings"));
+	/*console.log(document.getElementsByClassName("buildings"));
 	var elements = document.getElementsByClassName("buildings");
 	for (i = 0; i < elements.length; i++) {
 		if (shown == true) {
@@ -212,6 +213,25 @@ buildingDropdown.addEventListener("click", function () {
 			elements[i].style.display = "initial";
 			console.log("show");
 		}
+	}*/
+	if (shown == true) {
+		stoveDisplay.style.display = "none";
+		microwaveDisplay.style.display = "none";
+		vendingMachineDisplay.style.display = "none";
+		ovenDisplay.style.display = "none";
+		theaterDisplay.style.display = "none";
+		factoryDisplay.style.display = "none";
+		mallDisplay.style.display = "none";
+		inductionFurnaceDisplay.style.display = "none";
+	} else {
+		stoveDisplay.style.display = "initial";
+		microwaveDisplay.style.display = "initial";
+		vendingMachineDisplay.style.display = "initial";
+		ovenDisplay.style.display = "initial";
+		theaterDisplay.style.display = "initial";
+		factoryDisplay.style.display = "initial";
+		mallDisplay.style.display = "initial";
+		inductionFurnaceDisplay.style.display = "initial";
 	}
 	shown = !shown;
 });
