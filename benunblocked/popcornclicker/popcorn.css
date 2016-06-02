@@ -71,9 +71,6 @@ body {
 }
 #popZone {
 	height: 100%;
-	width: 60%;
-	position: fixed;
-	top: 0px;
 	cursor: pointer;
 }
 #instruction {
