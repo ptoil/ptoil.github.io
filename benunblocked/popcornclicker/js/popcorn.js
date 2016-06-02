@@ -181,8 +181,8 @@ popZone.addEventListener("click", function (event) {
 				break;
 			default:
 				newPopcorn.src = "images/suhailDoze.png";
-				x -= 125 / 2;
-				y -= 125 / 2;
+				x -= 93 / 2;
+				y -= 100 / 2;
 				break;
 		}
 		newPopcorn.style.transform = "rotate(" + random360 + "deg)";
