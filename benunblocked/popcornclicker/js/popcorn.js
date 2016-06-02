@@ -190,7 +190,7 @@ popZone.addEventListener("click", function (event) {
 		newPopcorn.style.position = "absolute";
 		newPopcorn.style.left = x + "px";
 		newPopcorn.style.top = y + "px";
-		newPopcorn.zIndex = -1;
+		newPopcorn.style.zIndex = -1;
 		newPopcorn.id = "pop" + poppedCount;
 		newPopcorn.className = "unselectable";
 		popZone.appendChild(newPopcorn);
