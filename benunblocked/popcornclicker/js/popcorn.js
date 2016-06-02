@@ -94,9 +94,7 @@ var poppedCount = 0;
 popZone.addEventListener("click", function (event) {
 	Game.popcornCount++;
 	$(instruction).fadeOut(1000);
-	//adding a popped popcorn
 	var x = event.pageX, y = event.pageY;
-	//console.log("(" + x + ", " + y + ")");
 	var leftBound = $("#popZone").position().left, topBound = $("#popZone").position().top, rightBound = $("#popZone").position().left + $("#popZone").width();
 	if (!(x < leftBound || y < topBound || x > rightBound)) {
 		var newPopcorn = document.createElement("img");
