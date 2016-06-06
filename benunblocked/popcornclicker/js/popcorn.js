@@ -199,10 +199,8 @@ popZone.addEventListener("click", function (event) {
 	}
 });
 function fadePopcorn (count) {
-	setTimeout(function () {
-		var id = "#pop" + count;
-		$(id).fadeOut(3000);
-	}, 20000);
+	var id = "#pop" + (count - 30);
+	$(id).fadeOut(3000);
 }
 
 var shown = true;
@@ -237,7 +235,7 @@ buildingDropdown.addEventListener("click", function () {
 		factoryDisplay.style.display = "initial";
 		mallDisplay.style.display = "initial";
 		inductionFurnaceDisplay.style.display = "initial";
-		console.log("none");
+		console.log("show");
 	}
 	shown = !shown;
 });
