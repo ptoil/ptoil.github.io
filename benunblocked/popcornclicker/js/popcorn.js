@@ -204,8 +204,8 @@ function fadePopcorn (count) {
 }
 
 var shown = true;
-buildingDropdown.addEventListener("click", function () {
-	/*console.log(document.getElementsByClassName("buildings"));
+/*buildingDropdown.addEventListener("click", function () {
+	console.log(document.getElementsByClassName("buildings"));
 	var elements = document.getElementsByClassName("buildings");
 	for (i = 0; i < elements.length; i++) {
 		if (shown == true) {
@@ -215,7 +215,8 @@ buildingDropdown.addEventListener("click", function () {
 			elements[i].style.display = "initial";
 			console.log("show");
 		}
-	}*/
+	}
+
 	if (shown == true) {
 		stoveDisplay.style.display = "none";
 		microwaveDisplay.style.display = "none";
@@ -238,7 +239,7 @@ buildingDropdown.addEventListener("click", function () {
 		console.log("show");
 	}
 	shown = !shown;
-});
+});*/
 
 stoveDisplay.addEventListener("click", function () {
 	Game.stove.buyBuilding();
