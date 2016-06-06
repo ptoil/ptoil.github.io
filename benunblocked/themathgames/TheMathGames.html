@@ -1,0 +1,107 @@
+<!-------------\
+|The Math Games|
+\-------------->
+<!DOCtype html>
+<html>
+<head>
+	<title>The Math Games</title>
+	<script type="text/javascript" src="TheMathGames.js"></script>
+	<link rel="stylesheet" type="text/css" href="spreadsheet.css">
+	<link rel="shortcut icon" href="HOOPLA!.jpg">
+</head>
+<body>
+	<input id="play" type="button" value="Play" onClick="main();">
+	<div id="text" style="display:inline"></div>
+	<input id="ok1" type="button" value="Ok" style="display:none">
+	<input id="ok2" type="button" value="Ok" style="display:none">
+	<br>
+	<select id="selectOperation" style="display:none">
+		<option disabled selected>Operation</option>
+		<option value="+">Addition</option>
+		<option value="-">Subtraction</option>
+		<option value="*">Multiplication</option>
+		<option value="/">Division</option>
+	</select>
+	<select id="selectLevel" style="display:none">
+		<option disabled selected>Level</option>
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+	</select>
+	<select id="selectAgain" style="display:none">
+		<option value="yes">Yes</option>
+		<option value="no">No</option>
+	</select>
+	<input id="inputLine" type="text" style="display:none" onkeydown="if (event.keyCode == 13) enter.click()">
+	<input id="enter" type="submit" value="Enter" style="display:none">
+	<table align="center">
+		<caption><strong>The Math Games</strong></caption>
+		<tr>
+			<th>Problem</th>
+			<th>Correct Answer</th>
+			<th>Your Answer</th>
+			<th>Correct?</th>
+		</tr>
+		<tr>
+			<td class="problem" id="problem1"></td>
+			<td class="answer" id="answer1"></td>
+			<td class="userAnswer" id="userAnswer1"></td>
+			<td id="correct1"></td>
+		</tr>
+		<tr>
+			<td class="problem" id="problem2"></td>
+			<td class="answer" id="answer2"></td>
+			<td class="userAnswer" id="userAnswer2"></td>
+			<td id="correct2"></td>
+		</tr>
+		<tr>
+			<td class="problem" id="problem3"></td>
+			<td class="answer" id="answer3"></td>
+			<td class="userAnswer" id="userAnswer3"></td>
+			<td id="correct3"></td>
+		</tr>
+		<tr>
+			<td class="problem" id="problem4"></td>
+			<td class="answer" id="answer4"></td>
+			<td class="userAnswer" id="userAnswer4"></td>
+			<td id="correct4"></td>
+		</tr>
+		<tr>
+			<td class="problem" id="problem5"></td>
+			<td class="answer" id="answer5"></td>
+			<td class="userAnswer" id="userAnswer5"></td>
+			<td id="correct5"></td>
+		</tr>
+		<tr>
+			<td class="problem" id="problem6"></td>
+			<td class="answer" id="answer6"></td>
+			<td class="userAnswer" id="userAnswer6"></td>
+			<td id="correct6"></td>
+		</tr>
+		<tr>
+			<td class="problem" id="problem7"></td>
+			<td class="answer" id="answer7"></td>
+			<td class="userAnswer" id="userAnswer7"></td>
+			<td id="correct7"></td>
+		</tr>
+		<tr>
+			<td class="problem" id="problem8"></td>
+			<td class="answer" id="answer8"></td>
+			<td class="userAnswer" id="userAnswer8"></td>
+			<td id="correct8"></td>
+		</tr>
+		<tr>
+			<td class="problem" id="problem9"></td>
+			<td class="answer" id="answer9"></td>
+			<td class="userAnswer" id="userAnswer9"></td>
+			<td id="correct9"></td>
+		</tr>
+		<tr>
+			<td class="problem" id="problem10"></td>
+			<td class="answer" id="answer10"></td>
+			<td class="userAnswer" id="userAnswer10"></td>
+			<td id="correct10"></td>
+		</tr>
+	</table>
+</body>
+</html>
