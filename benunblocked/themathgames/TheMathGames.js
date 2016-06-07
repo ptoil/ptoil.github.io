@@ -56,7 +56,7 @@ function playAddMultiplyGame (operation, level) {
 		num1 = MDcreateNumbers(level);
 		num2 = MDcreateNumbers(level);
 		answer = num1 * num2;
-		text.innerHTML = "What is " + num1 + " × " + num2 + "?";
+		text.innerHTML = "What is " + num1 + " * " + num2 + "?";
 		problem = num1 + " * " + num2;
 	}
 	userAnswer = inputLine.value;
@@ -78,7 +78,7 @@ function playSubtractDivideGame (operation, level) {
 			subtravisor = MDcreateNumbers(level);
 			answer = MDcreateNumbers(level);
 			bigNum = subtravisor * answer;
-			text.innerHTML = "What is " +  bigNum + " ÷ " + subtravisor + "?";
+			text.innerHTML = "What is " +  bigNum + " / " + subtravisor + "?";
 			problem = bigNum + " / " + subtravisor;
 		}
 		userAnswer = inputLine.value;
@@ -256,60 +256,110 @@ function setGame () {
 								answer1.innerHTML = answer;
 								userAnswer1.innerHTML = userAnswer;
 								correct1.innerHTML = correct;
+								if (correct == "Yes") {
+									correct1.style.color = "#00ff00";
+								} else if (correct == "No") {
+									correct1.style.color = "red";
+								}
 								break;
 							case 1:
 								problem2.innerHTML = problem;
 								answer2.innerHTML = answer;
 								userAnswer2.innerHTML = userAnswer;
 								correct2.innerHTML = correct;
+								if (correct == "Yes") {
+									correct2.style.color = "#00ff00";
+								} else if (correct == "No") {
+									correct2.style.color = "red";
+								}
 								break;
 							case 2:
 								problem3.innerHTML = problem;
 								answer3.innerHTML = answer;
 								userAnswer3.innerHTML = userAnswer;
 								correct3.innerHTML = correct;
+								if (correct == "Yes") {
+									correct3.style.color = "#00ff00";
+								} else if (correct == "No") {
+									correct3.style.color = "red";
+								}
 								break;
 							case 3:
 								problem4.innerHTML = problem;
 								answer4.innerHTML = answer;
 								userAnswer4.innerHTML = userAnswer;
 								correct4.innerHTML = correct;
+								if (correct == "Yes") {
+									correct4.style.color = "#00ff00";
+								} else if (correct == "No") {
+									correct4.style.color = "red";
+								}
 								break;
 							case 4:
 								problem5.innerHTML = problem;
 								answer5.innerHTML = answer;
 								userAnswer5.innerHTML = userAnswer;
 								correct5.innerHTML = correct;
+								if (correct == "Yes") {
+									correct5.style.color = "#00ff00";
+								} else if (correct == "No") {
+									correct5.style.color = "red";
+								}
 								break;
 							case 5:
 								problem6.innerHTML = problem;
 								answer6.innerHTML = answer;
 								userAnswer6.innerHTML = userAnswer;
 								correct6.innerHTML = correct;
+								if (correct == "Yes") {
+									correct6.style.color = "#00ff00";
+								} else if (correct == "No") {
+									correct6.style.color = "red";
+								}
 								break;
 							case 6:
 								problem7.innerHTML = problem;
 								answer7.innerHTML = answer;
 								userAnswer7.innerHTML = userAnswer;
 								correct7.innerHTML = correct;
+								if (correct == "Yes") {
+									correct7.style.color = "#00ff00";
+								} else if (correct == "No") {
+									correct7.style.color = "red";
+								}
 								break;
 							case 7:
 								problem8.innerHTML = problem;
 								answer8.innerHTML = answer;
 								userAnswer8.innerHTML = userAnswer;
 								correct8.innerHTML = correct;
+								if (correct == "Yes") {
+									correct8.style.color = "#00ff00";
+								} else if (correct == "No") {
+									correct8.style.color = "red";
+								}
 								break;
 							case 8:
 								problem9.innerHTML = problem;
 								answer9.innerHTML = answer;
 								userAnswer9.innerHTML = userAnswer;
 								correct9.innerHTML = correct;
+								if (correct == "Yes") {
+									correct9.style.color = "#00ff00";
+								} else if (correct == "No") {
+									correct9.style.color = "red";
+								}
 								break;
 							case 9:
 								problem10.innerHTML = problem;
 								answer10.innerHTML = answer;
 								userAnswer10.innerHTML = userAnswer;
 								correct10.innerHTML = correct;
+								if (correct == "Yes") {
+									correct10.style.color = "#00ff00";
+								} else if (correct == "No") {
+									correct10.style.color = "red";
+								}
 								break;	
 						}
 						inputLine.value = "";
