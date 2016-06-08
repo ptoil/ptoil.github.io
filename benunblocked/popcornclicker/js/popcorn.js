@@ -240,6 +240,9 @@ var shown = true;
 	}
 	shown = !shown;
 });*/
+buildingDropdown.addEventListener("click", function (event) {
+	console.log(event);
+});
 
 stoveDisplay.addEventListener("click", function () {
 	Game.stove.buyBuilding();
