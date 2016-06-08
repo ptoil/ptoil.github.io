@@ -64,6 +64,7 @@ body {
 	color: white;
 	border-radius: 15px;
 	text-align: center;
+	display: inline-block;
 }
 #popcornDisplay {
 	color: #e6e600;
