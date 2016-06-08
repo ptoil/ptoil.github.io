@@ -1,4 +1,4 @@
-w66dow.onload = function () {
+window.onload = function () {
 	Game.popcornCount = Number(getCookie("popcorn"));
 	Game.stove.count = Number(getCookie("stove"));
 	Game.microwave.count = Number(getCookie("microwave"));
