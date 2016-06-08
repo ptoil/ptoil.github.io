@@ -48,16 +48,6 @@ function getCookie(cname) {
     }
     return "";
 }
-function deleteAllCookies() {
-    var cookies = document.cookie.split(";");
-
-    for (var i = 0; i < cookies.length; i++) {
-    	var cookie = cookies[i];
-    	var eqPos = cookie.indexOf("=");
-    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    	document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
-}
 
 var Game = function () {
 	this.popcornCount = 0;
@@ -371,7 +361,14 @@ window.setInterval(function () {
 
 //reset button
 reset.addEventListener("click", function () {
-	deleteAllCookies();
+	document.cookie = "popcorn=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+	document.cookie = "stove=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+	document.cookie = "microwave=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+	document.cookie = "vendingMachine=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+	document.cookie = "oven=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+	document.cookie = "theater=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+	document.cookie = "factory=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+	document.cookie = "mall=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 	window.reload;
 });
 
