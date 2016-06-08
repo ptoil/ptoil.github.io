@@ -240,8 +240,8 @@ var shown = true;
 	}
 	shown = !shown;
 });*/
-buildingDropdown.addEventListener("click", function (event) {
-	console.log(event);
+buildingDropdown.addEventListener("click", function () {
+	document.getElementById("stoveDisplay").style.display = "none";
 });
 
 stoveDisplay.addEventListener("click", function () {
