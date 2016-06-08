@@ -199,7 +199,7 @@ popZone.addEventListener("click", function (event) {
 	}
 });
 function fadePopcorn (count) {
-	var id = "#pop" + (count - 30);
+	var id = "#pop" + (count - 50);
 	$(id).fadeOut(3000);
 }
 
@@ -361,7 +361,7 @@ window.setInterval(function () {
 
 //reset button
 reset.addEventListener("click", function () {
-	var validate = confirm("Are you sure that you want to reset your Popcorn Clicker save?", "Satan will hunt you if you don't keep popping popcorn");
+	var validate = confirm("Are you sure that you want to reset your Popcorn Clicker save (Satan will hunt you if you don't keep popping popcorn)?");
 	if (validate) {
 		document.cookie = "popcorn=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "stove=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
