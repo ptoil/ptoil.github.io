@@ -361,15 +361,18 @@ window.setInterval(function () {
 
 //reset button
 reset.addEventListener("click", function () {
-	document.cookie = "popcorn=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
-	document.cookie = "stove=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
-	document.cookie = "microwave=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
-	document.cookie = "vendingMachine=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
-	document.cookie = "oven=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
-	document.cookie = "theater=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
-	document.cookie = "factory=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
-	document.cookie = "mall=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
-	location.reload();
+	var validate = confirm("Are you sure that you want to reset your Popcorn Clicker save?", "Satan will hunt you if you don't keep popping popcorn");
+	if (validate) {
+		document.cookie = "popcorn=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "stove=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "microwave=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "vendingMachine=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "oven=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "theater=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "factory=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "mall=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		location.reload();
+	}
 });
 
 //Konami Code John Cena
