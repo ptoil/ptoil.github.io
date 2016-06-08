@@ -241,7 +241,7 @@ var shown = true;
 	shown = !shown;
 });*/
 buildingDropdown.addEventListener("click", function () {
-	document.getElementById("stoveDisplay").style.display = "none";
+	$("#stoveDisplay").toggle();
 });
 
 stoveDisplay.addEventListener("click", function () {
