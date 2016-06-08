@@ -59,6 +59,12 @@ body {
 	-webkit-user-select: none;
 	-ms-user-select: none;
 }
+#reset {
+	background-color: red;
+	color: white;
+	border-radius: 15px;
+	text-align: center;
+}
 #popcornDisplay {
 	color: #e6e600;
 	font-size: 40px;
