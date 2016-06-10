@@ -199,7 +199,7 @@ popZone.addEventListener("click", function (event) {
 	}
 });
 function fadePopcorn (count) {
-	var id = "#pop" + (count - 100);
+	var id = "#pop" + (count - 150);
 	$(id).fadeOut(3000);
 }
 
