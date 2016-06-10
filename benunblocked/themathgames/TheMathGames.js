@@ -440,6 +440,9 @@ function main () {
 					selectAgain.style.display = "none";
 					enter.style.display = "none";
 					text.innerHTML = "You just played The Math Games by Suhail Mallick";
+					window.setTimeout(function () {
+						window.location = "../";
+					}, 3000);
 				}
 			}
 		}
