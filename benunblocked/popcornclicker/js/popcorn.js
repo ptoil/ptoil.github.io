@@ -201,6 +201,10 @@ popZone.addEventListener("click", function (event) {
 function fadePopcorn (count) {
 	var id = "#pop" + (count - 150);
 	$(id).fadeOut(3000);
+	id = "#pop" + count;
+	setTimeout(function () {
+		$(id).fadeOut(3000);
+	}, 90000);
 }
 
 var shown = true;
@@ -241,7 +245,14 @@ var shown = true;
 	shown = !shown;
 });*/
 buildingDropdown.addEventListener("click", function () {
-	$("#stoveDisplay").toggle();
+	$("#stoveDisplay").fadeOut(100);
+	$("#microwaveDisplay").fadeOut(100);
+	$("#vendingMachineDisplay").fadeOut(100);
+	$("#ovenDisplay").fadeOut(100);
+	$("#theaterDisplay").fadeOut(100);
+	$("#mallDisplay").fadeOut(100);
+	$("#factoryDisplay").fadeOut(100);
+	$("#inductionFurnaceDisplay").fadeOut(100);
 });
 
 stoveDisplay.addEventListener("click", function () {
