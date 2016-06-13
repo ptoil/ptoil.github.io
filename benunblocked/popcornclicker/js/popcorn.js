@@ -428,6 +428,7 @@ reset.addEventListener("click", function () {
 		document.cookie = "theater=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "factory=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "mall=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "clicker=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		location.reload();
 	}
 });
