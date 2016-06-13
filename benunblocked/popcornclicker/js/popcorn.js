@@ -241,52 +241,27 @@ function fadePopcorn (count) {
 	}, 90000);
 }
 
-var shown = true;
-/*buildingDropdown.addEventListener("click", function () {
-	console.log(document.getElementsByClassName("buildings"));
-	var elements = document.getElementsByClassName("buildings");
-	for (i = 0; i < elements.length; i++) {
-		if (shown == true) {
-			elements[i].style.display = "none";
-			console.log("hide");
-		} else {
-			elements[i].style.display = "initial";
-			console.log("show");
-		}
-	}
-
-	if (shown == true) {
-		stoveDisplay.style.display = "none";
-		microwaveDisplay.style.display = "none";
-		vendingMachineDisplay.style.display = "none";
-		ovenDisplay.style.display = "none";
-		theaterDisplay.style.display = "none";
-		factoryDisplay.style.display = "none";
-		mallDisplay.style.display = "none";
-		inductionFurnaceDisplay.style.display = "none";
-		console.log("hide");
-	} else {
-		stoveDisplay.style.display = "initial";
-		microwaveDisplay.style.display = "initial";
-		vendingMachineDisplay.style.display = "initial";
-		ovenDisplay.style.display = "initial";
-		theaterDisplay.style.display = "initial";
-		factoryDisplay.style.display = "initial";
-		mallDisplay.style.display = "initial";
-		inductionFurnaceDisplay.style.display = "initial";
-		console.log("show");
-	}
-	shown = !shown;
-});*/
+var buildingsShown = false;
+var upgradesShown = false;
 buildingDropdown.addEventListener("click", function () {
-	$("#stoveDisplay").fadeOut(100);
-	$("#microwaveDisplay").fadeOut(100);
-	$("#vendingMachineDisplay").fadeOut(100);
-	$("#ovenDisplay").fadeOut(100);
-	$("#theaterDisplay").fadeOut(100);
-	$("#mallDisplay").fadeOut(100);
-	$("#factoryDisplay").fadeOut(100);
-	$("#inductionFurnaceDisplay").fadeOut(100);
+	if (buildingsShown == true) {
+		buildings.style.display = "none";
+		buildingDropdownImg.src = "images/upArrow.png";
+	} else {
+		buildings.style.display = "";
+		buildingDropdownImg.src = "images/downArrow.png";
+	}
+	buildingsShown = !buildingsShown;
+});
+upgradeDropdown.addEventListener("click", function () {
+	if (upgradesShown == true) {
+		upgrades.style.display = "none";
+		upgradeDropdownImg.src = "images/upArrow.png"
+	} else {
+		upgrades.style.display = "";
+		upgradeDropdownImg.src = "images/downArrow.png"
+	}
+	upgradesShown = !upgradesShown;
 });
 
 stoveDisplay.addEventListener("click", function () {
@@ -340,68 +315,95 @@ window.setInterval(function () {
 
 	stoveCountDisplay.innerHTML = "Stove: " + Game.stove.count;
 	stoveCostDisplay.innerHTML = "Cost: " + commas(Game.stove.cost);
-	if (Game.popcornCount - Game.stove.cost >= 0)
-		stoveDisplay.style = "background-color: blue; cursor: pointer";
-	else
-		stoveDisplay.style = "background-color: #000066; cursor: auto";
+	if (Game.popcornCount - Game.stove.cost >= 0) {
+		stoveDisplay.style.backgroundColor = "blue";
+		stoveDisplay.style.cursor = "pointer";
+	} else {
+		stoveDisplay.style.backgroundColor = "#000066";
+		stoveDisplay.style.cursor = "auto";
+	}
 
 	microwaveCountDisplay.innerHTML = "Microwave: " + Game.microwave.count;
 	microwaveCostDisplay.innerHTML = "Cost: " + commas(Game.microwave.cost);
-	if (Game.popcornCount - Game.microwave.cost >= 0)
-		microwaveDisplay.style = "background-color: blue; cursor: pointer";
-	else
-		microwaveDisplay.style = "background-color: #000066; cursor: auto";
+	if (Game.popcornCount - Game.microwave.cost >= 0) {
+		microwaveDisplay.style.backgroundColor = "blue";
+		microwaveDisplay.style.cursor = "pointer";
+	} else {
+		microwaveDisplay.style.backgroundColor = "#000066";
+		microwaveDisplay.style.cursor = "auto";
+	}
 
 	vendingMachineCountDisplay.innerHTML = "Vending Machine: " + Game.vendingMachine.count;
 	vendingMachineCostDisplay.innerHTML = "Cost: " + commas(Game.vendingMachine.cost);
-	if (Game.popcornCount - Game.vendingMachine.cost >= 0)
-		vendingMachineDisplay.style = "background-color: blue; cursor: pointer";
-	else
-		vendingMachineDisplay.style = "background-color: #000066; cursor: auto";
+	if (Game.popcornCount - Game.vendingMachine.cost >= 0) {
+		vendingMachineDisplay.style.backgroundColor = "blue";
+		vendingMachineDisplay.style.cursor = "pointer";
+	} else {
+		vendingMachineDisplay.style.backgroundColor = "#000066";
+		vendingMachineDisplay.style.cursor = "auto";
+	}
 
 	ovenCountDisplay.innerHTML = "Oven: " + Game.oven.count;
 	ovenCostDisplay.innerHTML = "Cost: " + commas(Game.oven.cost);
-	if (Game.popcornCount - Game.oven.cost >= 0)
-		ovenDisplay.style = "background-color: blue; cursor: pointer";
-	else
-		ovenDisplay.style = "background-color: #000066; cursor: auto";
-
+	if (Game.popcornCount - Game.oven.cost >= 0) {
+		ovenDisplay.style.backgroundColor = "blue";
+		ovenDisplay.style.cursor = "pointer";
+	} else {
+		ovenDisplay.style.backgroundColor = "#000066";
+		ovenDisplay.style.cursor = "auto";
+	}
 
 	theaterCountDisplay.innerHTML = "Theater: " + Game.theater.count;
 	theaterCostDisplay.innerHTML = "Cost: " + commas(Game.theater.cost);
-	if (Game.popcornCount - Game.theater.cost >= 0)
-		theaterDisplay.style = "background-color: blue; cursor: pointer";
-	else
-		theaterDisplay.style = "background-color: #000066; cursor: auto";
+	if (Game.popcornCount - Game.theater.cost >= 0) {
+		theaterDisplay.style.backgroundColor = "blue";
+		theaterDisplay.style.cursor = "pointer";
+	} else {
+		theaterDisplay.style.backgroundColor = "#000066";
+		theaterDisplay.style.cursor = "auto";
+	}
 
 	factoryCountDisplay.innerHTML = "Factory: " + Game.factory.count;
 	factoryCostDisplay.innerHTML = "Cost: " + commas(Game.factory.cost);
-	if (Game.popcornCount - Game.factory.cost >= 0)
-		factoryDisplay.style = "background-color: blue; cursor: pointer";
-	else
-		factoryDisplay.style = "background-color: #000066; cursor: auto";
+	if (Game.popcornCount - Game.factory.cost >= 0) {
+		factoryDisplay.style.backgroundColor = "blue";
+		factoryDisplay.style.cursor = "pointer";
+	} else {
+		factoryDisplay.style.backgroundColor = "#000066";
+		factoryDisplay.style.cursor = "auto";
+	}
 
 	mallCountDisplay.innerHTML = "Mall: " + Game.mall.count;
 	mallCostDisplay.innerHTML = "Cost: " + commas(Game.mall.cost);
-	if (Game.popcornCount - Game.mall.cost >= 0)
-		mallDisplay.style = "background-color: blue; cursor: pointer";
-	else
-		mallDisplay.style = "background-color: #000066; cursor: auto";
+	if (Game.popcornCount - Game.mall.cost >= 0) {
+		mallDisplay.style.backgroundColor = "blue";
+		mallDisplay.style.cursor = "pointer";
+	} else {
+		mallDisplay.style.backgroundColor = "#000066";
+		mallDisplay.style.cursor = "auto";
+	}
 
 	inductionFurnaceCountDisplay.innerHTML = "Induction Furnace: " + Game.inductionFurnace.count;
 	inductionFurnaceCostDisplay.innerHTML = "Cost: " + commas(Game.inductionFurnace.cost);
-	if (Game.popcornCount - Game.inductionFurnace.cost >= 0)
-		inductionFurnaceDisplay.style = "background-color: blue; cursor: pointer";
-	else
-		inductionFurnaceDisplay.style = "background-color: #000066; cursor: auto";
+	if (Game.popcornCount - Game.inductionFurnace.cost >= 0) {
+		inductionFurnaceDisplay.style.backgroundColor = "blue";
+		inductionFurnaceDisplay.style.cursor = "pointer";
+	} else {
+		inductionFurnaceDisplay.style.backgroundColor = "#000066";
+		inductionFurnaceDisplay.style.cursor = "auto";
+	}
 
 	clickerCountDisplay.innerHTML = "Clicker" + (Game.clicker.count + 1);
 	clickerCostDisplay.innerHTML = "Cost: " + Game.clicker.cost;
-	if (Game.popcornCount - Game.clicker.cost >= 0)
-		clickerDisplay.style = "background-color: blue; cursor: pointer";
-	else
-		clickerDisplay.style = "background-color: #000066; cursor: auto";
+	if (Game.popcornCount - Game.clicker.cost >= 0) {
+		clickerDisplay.style.backgroundColor = "blue";
+		clickerDisplay.style.cursor = "pointer";
+	} else {
+		clickerDisplay.style.backgroundColor = "#000066";
+		clickerDisplay.style.cursor = "auto";
+	}
 }, 5);
+
 
 //default: when site is in viewport
 window.setInterval(function () {
