@@ -6,6 +6,9 @@ body {
 	background-size: cover;
 	overflow: hidden;
 }
+.whiteText {
+	color: white;
+}
 #johnCenaGIF {
 	position: absolute;
 	height: 100%;

@@ -7,6 +7,8 @@ window.onload = function () {
 	Game.theater.count = Number(getCookie("theater"));
 	Game.factory.count = Number(getCookie("factory"));
 	Game.mall.count = Number(getCookie("mall"));
+	Game.inductionFurnace.count = Number(getCookie("inductionFurnace"));
+	Game.clicker.count = Number(getCookie("clicker"));
 
 	Game.stove.calcCost();
 	Game.microwave.calcCost();
@@ -15,6 +17,8 @@ window.onload = function () {
 	Game.theater.calcCost();
 	Game.factory.calcCost();
 	Game.mall.calcCost();
+	Game.inductionFurnace.calcCost();
+	Game.clicker.calcCost();
 
 	window.setInterval(function () {
 		var now = new Date();
@@ -29,6 +33,8 @@ window.onload = function () {
 		document.cookie = "theater=" + Game.theater.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "factory=" + Game.factory.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "mall=" + Game.mall.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "inductionFurnace=" + Game.inductionFurnace.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "clicker=" + Game.clicker.count + "; expires=" + now.toUTCString() + ";";
 		console.log("cookies saved");
 	}, 5000);
 	//IDEA: create Game instance in onload to stop player from playing before page loads
@@ -52,6 +58,7 @@ function getCookie(cname) {
 var Game = function () {
 	this.popcornCount = 0;
 	this.popcornPerSecond = 0;
+	this.popcornPerClick = 1;
 	this.stove            = new Building(20, .2);
 	this.microwave        = new Building(200, 1);
 	this.vendingMachine   = new Building(6430, 15);
@@ -60,8 +67,12 @@ var Game = function () {
 	this.factory          = new Building(2000765, 1344);
 	this.mall             = new Building(50000001, 3111);
 	this.inductionFurnace = new Building(631000631, 9452);
+	this.clicker          = new ClickerUpgrade();
+	this.calcClick = function () {
+		this.popcornPerClick = Math.pow(CLICK_MULTIPLIER, this.clicker.count);
+		console.log("PPC= " + this.popcornPerClick);
+	}
 }
-
 var Building = function (baseCost, pps) {
 	this.count = 0;
 	this.BASE_COST = baseCost;
@@ -85,14 +96,37 @@ var Building = function (baseCost, pps) {
 		this.cost = Math.floor(this.BASE_COST * Math.pow(BUILDING_MULTIPLIER, this.count) + .5);
 	}
 }
+var ClickerUpgrade = function () {
+	this.count = 0;
+	this.BASE_COST = 200;
+	this.cost = this.BASE_COST;
+	this.buyUpgrade = function () {
+		if (Game.popcornCount - this.cost >= 0) {
+			this.count++;
+			Game.popcornCount -= this.cost;
+			Game.calcClick();
+			this.calcCost();
+		}
+	}
+	this.calcCost = function () {
+		this.cost = this.BASE_COST * Math.pow(CLICK_MULTIPLIER, this.count);
+	}
+}
+var BuildingUpgrade = function (cost) {
+	this.cost = cost;
+	this.buyUpgrade = function () {
+
+	}
+}
 var Game = new Game();
 
 var BUILDING_MULTIPLIER = 1.16;
 var SELL_MULTIPLIER = .5;
+var CLICK_MULTIPLIER = 2;
 
 var poppedCount = 0;
 popZone.addEventListener("click", function (event) {
-	Game.popcornCount++;
+	Game.popcornCount += Game.popcornPerClick;
 	$(instruction).fadeOut(1000);
 	var x = event.pageX, y = event.pageY;
 	var leftBound = $("#popZone").position().left, topBound = $("#popZone").position().top, rightBound = $("#popZone").position().left + $("#popZone").width();
@@ -278,14 +312,19 @@ mallDisplay.addEventListener("click", function () {
 });
 inductionFurnaceDisplay.addEventListener("click", function () {
 	Game.inductionFurnace.buyBuilding();
-})
+});
+
+clickerDisplay.addEventListener("click", function () {
+	if (Game.clicker.buyUpgrade() == true) {
+		clicker1Display.style.display = "none";
+	}
+});
 
 function commas (x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 window.setInterval(function () {
-	if (document.visibilityState == "hidden") return;
 	popcornDisplay.innerHTML = commas(Math.floor(Game.popcornCount));
 	Game.popcornPerSecond = 
 		(Game.stove.count * Game.stove.PPS) +
@@ -355,6 +394,13 @@ window.setInterval(function () {
 		inductionFurnaceDisplay.style = "background-color: blue; cursor: pointer";
 	else
 		inductionFurnaceDisplay.style = "background-color: #000066; cursor: auto";
+
+	clickerCountDisplay.innerHTML = "Clicker" + (Game.clicker.count + 1);
+	clickerCostDisplay.innerHTML = "Cost: " + Game.clicker.cost;
+	if (Game.popcornCount - Game.clicker.cost >= 0)
+		clickerDisplay.style = "background-color: blue; cursor: pointer";
+	else
+		clickerDisplay.style = "background-color: #000066; cursor: auto";
 }, 5);
 
 //default: when site is in viewport
