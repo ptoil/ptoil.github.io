@@ -19,7 +19,7 @@ window.onload = function () {
 	Game.mall.calcCost();
 	Game.inductionFurnace.calcCost();
 	Game.clicker.calcCost();
-	Game.clicker.calcClick();
+	Game.calcClick();
 
 	window.setInterval(function () {
 		var now = new Date();
