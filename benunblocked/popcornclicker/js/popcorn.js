@@ -19,6 +19,7 @@ window.onload = function () {
 	Game.mall.calcCost();
 	Game.inductionFurnace.calcCost();
 	Game.clicker.calcCost();
+	Game.clicker.calcClick();
 
 	window.setInterval(function () {
 		var now = new Date();
@@ -70,7 +71,6 @@ var Game = function () {
 	this.clicker          = new ClickerUpgrade();
 	this.calcClick = function () {
 		this.popcornPerClick = Math.pow(CLICK_MULTIPLIER, this.clicker.count);
-		console.log("PPC= " + this.popcornPerClick);
 	}
 }
 var Building = function (baseCost, pps) {
