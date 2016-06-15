@@ -9,6 +9,8 @@ window.onload = function () {
 	Game.mall.count = Number(getCookie("mall"));
 	Game.inductionFurnace.count = Number(getCookie("inductionFurnace"));
 	Game.clicker.count = Number(getCookie("clicker"));
+	buildingsOpen = (getCookie("buildingsOpen") == "true");
+	upgradesOpen = (getCookie("upgradesOpen") == "true");
 
 	Game.stove.calcCost();
 	Game.microwave.calcCost();
@@ -20,6 +22,9 @@ window.onload = function () {
 	Game.inductionFurnace.calcCost();
 	Game.clicker.calcCost();
 	Game.calcClick();
+	buildingDropdownFunc(true);
+	upgradeDropdownFunc(true);
+
 
 	window.setInterval(function () {
 		var now = new Date();
@@ -36,6 +41,8 @@ window.onload = function () {
 		document.cookie = "mall=" + Game.mall.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "inductionFurnace=" + Game.inductionFurnace.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "clicker=" + Game.clicker.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "buildingsOpen=" + buildingsOpen + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "upgradesOpen=" + upgradesOpen + "; expires=" + now.toUTCString() + ";";
 		console.log("cookies saved");
 	}, 5000);
 	//IDEA: create Game instance in onload to stop player from playing before page loads
@@ -98,7 +105,7 @@ var Building = function (baseCost, pps) {
 }
 var ClickerUpgrade = function () {
 	this.count = 0;
-	this.BASE_COST = 200;
+	this.BASE_COST = 400;
 	this.cost = this.BASE_COST;
 	this.buyUpgrade = function () {
 		if (Game.popcornCount - this.cost >= 0) {
@@ -241,27 +248,33 @@ function fadePopcorn (count) {
 	}, 90000);
 }
 
-var buildingsShown = false;
-var upgradesShown = false;
-buildingDropdown.addEventListener("click", function () {
-	if (buildingsShown == true) {
+var buildingsOpen = false;
+var upgradesOpen = false;
+function buildingDropdownFunc (startup) {
+	if (buildingsOpen == true) {
 		buildings.style.display = "none";
 		buildingDropdownImg.src = "images/upArrow.png";
 	} else {
 		buildings.style.display = "";
 		buildingDropdownImg.src = "images/downArrow.png";
 	}
-	buildingsShown = !buildingsShown;
-});
-upgradeDropdown.addEventListener("click", function () {
-	if (upgradesShown == true) {
+	if (startup == false) buildingsOpen = !buildingsOpen;
+}
+function upgradeDropdownFunc (startup) {
+	if (upgradesOpen == true) {
 		upgrades.style.display = "none";
 		upgradeDropdownImg.src = "images/upArrow.png"
 	} else {
 		upgrades.style.display = "";
 		upgradeDropdownImg.src = "images/downArrow.png"
 	}
-	upgradesShown = !upgradesShown;
+	if (startup == false) upgradesOpen = !upgradesOpen;
+}
+buildingDropdown.addEventListener("click", function () {
+	buildingDropdownFunc(false);
+});
+upgradeDropdown.addEventListener("click", function () {
+	upgradeDropdownFunc(false);
 });
 
 stoveDisplay.addEventListener("click", function () {
@@ -395,6 +408,7 @@ window.setInterval(function () {
 
 	clickerCountDisplay.innerHTML = "Clicker" + (Game.clicker.count + 1);
 	clickerCostDisplay.innerHTML = "Cost: " + Game.clicker.cost;
+	clickerDisplay.title = "Each click pops " + Game.popcornPerClick + " popcorn";
 	if (Game.popcornCount - Game.clicker.cost >= 0) {
 		clickerDisplay.style.backgroundColor = "blue";
 		clickerDisplay.style.cursor = "pointer";
