@@ -22,8 +22,8 @@ window.onload = function () {
 	Game.inductionFurnace.calcCost();
 	Game.clicker.calcCost();
 	Game.calcClick();
-	buildingDropdownFunc(true);
-	upgradeDropdownFunc(true);
+	buildingDropdownFunc();
+	upgradeDropdownFunc();
 
 
 	window.setInterval(function () {
@@ -250,7 +250,7 @@ function fadePopcorn (count) {
 
 var buildingsOpen = false;
 var upgradesOpen = false;
-function buildingDropdownFunc (startup) {
+function buildingDropdownFunc () {
 	if (buildingsOpen == true) {
 		buildings.style.display = "none";
 		buildingDropdownImg.src = "images/upArrow.png";
@@ -258,10 +258,9 @@ function buildingDropdownFunc (startup) {
 		buildings.style.display = "";
 		buildingDropdownImg.src = "images/downArrow.png";
 	}
-	//if (startup == false)
 		buildingsOpen = !buildingsOpen;
 }
-function upgradeDropdownFunc (startup) {
+function upgradeDropdownFunc () {
 	if (upgradesOpen == true) {
 		upgrades.style.display = "none";
 		upgradeDropdownImg.src = "images/upArrow.png"
@@ -269,14 +268,13 @@ function upgradeDropdownFunc (startup) {
 		upgrades.style.display = "";
 		upgradeDropdownImg.src = "images/downArrow.png"
 	}
-	//if (startup == false)
 		upgradesOpen = !upgradesOpen;
 }
 buildingDropdown.addEventListener("click", function () {
-	buildingDropdownFunc(false);
+	buildingDropdownFunc();
 });
 upgradeDropdown.addEventListener("click", function () {
-	upgradeDropdownFunc(false);
+	upgradeDropdownFunc();
 });
 
 stoveDisplay.addEventListener("click", function () {
