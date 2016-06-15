@@ -258,7 +258,8 @@ function buildingDropdownFunc (startup) {
 		buildings.style.display = "";
 		buildingDropdownImg.src = "images/downArrow.png";
 	}
-	if (startup == false) buildingsOpen = !buildingsOpen;
+	//if (startup == false)
+		buildingsOpen = !buildingsOpen;
 }
 function upgradeDropdownFunc (startup) {
 	if (upgradesOpen == true) {
@@ -268,7 +269,8 @@ function upgradeDropdownFunc (startup) {
 		upgrades.style.display = "";
 		upgradeDropdownImg.src = "images/downArrow.png"
 	}
-	if (startup == false) upgradesOpen = !upgradesOpen;
+	//if (startup == false)
+		upgradesOpen = !upgradesOpen;
 }
 buildingDropdown.addEventListener("click", function () {
 	buildingDropdownFunc(false);
