@@ -9,8 +9,8 @@ window.onload = function () {
 	Game.mall.count = Number(getCookie("mall"));
 	Game.inductionFurnace.count = Number(getCookie("inductionFurnace"));
 	Game.clicker.count = Number(getCookie("clicker"));
-	buildingsOpen = (getCookie("buildingsOpen") == "true");
-	upgradesOpen = (getCookie("upgradesOpen") == "true");
+	buildingsOpen = (getCookie("buildingsOpen") == "false");
+	upgradesOpen = (getCookie("upgradesOpen") == "false");
 
 	Game.stove.calcCost();
 	Game.microwave.calcCost();
