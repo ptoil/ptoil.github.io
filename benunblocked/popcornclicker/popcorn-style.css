@@ -27,22 +27,19 @@ body {
 }
 #leftColumn {
 	height: 100%;
-	width: 14.5%;
+	width: 17%;
 	float: left;
-	left: 0px;
 	background-color: #331100;
 }
 #midColumn {
 	height: 100%;
-	width: 60%;
+	width: 57.5%;
 	float: left;
-	left: 15%;
 }
 #rightColumn {
 	height: 100%;
 	width: 24.5%;
 	float: left;
-	left: 74.5%;
 	background-color: #c3823c;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -114,7 +111,6 @@ body {
 }
 .dropButton {
 	position: relative;
-	background-color: blue;
 	height: 15px;
 	width: 15px;
 	top: -30%;
@@ -132,4 +128,17 @@ body {
 	height: 50%;
 	line-height: 45px;
 	display: inherit;
+}
+.sellButton {
+	height: 45px;
+	width: 45px;
+	line-height: 45px;
+	background-color: #990000;
+	font-size: 66px;
+	color: #999999;
+	text-align: center;
+	position: relative;
+	visibility: hidden;
+	top: -67.5px;
+	left: 85%;
 }

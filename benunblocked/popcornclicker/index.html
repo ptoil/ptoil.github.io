@@ -11,13 +11,13 @@
 	</audio>
 	<div id="wrapper">
 		<div id="leftColumn">
-			<div class="whiteText">ALPHA v2.4</div><!--Version-->
+			<div class="whiteText">ALPHA v3.0</div><!--Version-->
 			<br>
 			<span class="whiteText">Suhail Dozing Faces</span><input id="dozeCheck" type="checkbox">
 			<br><br>
 			<a href="./changelog" class="whiteText">Changelog</a>
 			<br>
-			<div class="whiteText">Report bugs to: suhailmallick@gmail.com</div>
+			<div class="whiteText">Report bugs and suggestions to: suhailmallick@gmail.com</div>
 			<br><br>
 			<div id="reset">Reset</div>
 		</div>
@@ -38,63 +38,90 @@
 			<div class="storeDivider"></div>
 			<div class="storeMenu">
 				Buildings
-				<div class="dropButton" id="buildingDropdown"><img id="buildingDropdownImg" src="images/upArrow.png"></img></div>
+				<div class="dropButton" id="buildingDropdown"><img id="buildingDropdownImg" src="images/downArrow.png"></img></div>
 			</div>
 			<div class="storeDivider"></div>
-			<div id="buildings" style="display: none">
-				<div class="storeItems buildings" id="stoveDisplay" title="Creates 0.2 popcorn every second">
-					<div class="storeItemParts" id="stoveCountDisplay">Stove: 0</div>
-					<div class="storeItemParts" id="stoveCostDisplay">Cost: 20</div>
-				</div>
-				<div class="storeDivider"></div>
-				<div class="storeItems buildings" id="microwaveDisplay" title="Creates 1 popcorn every second">
-					<div class="storeItemParts" id="microwaveCountDisplay">Microwave: 0</div>
-					<div class="storeItemParts" id="microwaveCostDisplay">Cost: 200</div>
-				</div>
-				<div class="storeDivider"></div>
-				<div class="storeItems buildings" id="vendingMachineDisplay" title="Creates 15 popcorn every second">
-					<div class="storeItemParts" id="vendingMachineCountDisplay">Vending Machine: 0</div>
-					<div class="storeItemParts" id="vendingMachineCostDisplay">Cost: 7,430</div>
-				</div>
-				<div class="storeDivider"></div>
-				<div class="storeItems buildings" id="ovenDisplay" title="Creates 67 popcorn per second">
-					<div class="storeItemParts" id="ovenCountDisplay">Oven: 0</div>
-					<div class="storeItemParts" id="ovenCostDisplay">Cost: 47,200</div>
-				</div>
-				<div class="storeDivider"></div>
-				<div class="storeItems buildings" id="theaterDisplay" title="Creates 359 popcorn per second">
-					<div class="storeItemParts" id="theaterCountDisplay">Theater: 0</div>
-					<div class="storeItemParts" id="theaterCostDisplay">Cost: 758,857</div>
-				</div>
-				<div class="storeDivider"></div>
-				<div class="storeItems buildings" id="factoryDisplay" title="Creates 1,344 popcorn per second">
-					<div class="storeItemParts" id="factoryCountDisplay">Factory: 0</div>
-					<div class="storeItemParts" id="factoryCostDisplay">Cost: 3,000,765</div>
-				</div>
-				<div class="storeDivider"></div>
-				<div class="storeItems buildings" id="mallDisplay" title="Creates 3111 popcorn per second">
-					<div class="storeItemParts" id="mallCountDisplay">Mall: 0</div>
-					<div class="storeItemParts" id="mallCostDisplay">Cost: 50,000,001</div>
-				</div>
-				<div class="storeDivider"></div>
-				<div class="storeItems buildings" id="inductionFurnaceDisplay" title="Creates 9452 popcorn per second">
-					<div class="storeItemParts" id="inductionFurnaceCountDisplay">Induction Furnace: 0</div>
-					<div class="storeItemParts" id="inductionFurnaceCostDisplay">Cost: 631,000,631</div>
-				</div>
-			</div>
+			<ul id="buildings" style="list-style-type: none; margin: 0; padding: 0; display: none">
+				<li>
+					<div class="storeItems" id="stoveDisplay" title="Creates 0.2 popcorn every second">
+						<div class="storeItemParts" id="stoveCountDisplay">Stove: 0</div>
+						<div class="storeItemParts" id="stoveCostDisplay">Cost: 20</div>
+						<div class="sellButton" id="stoveSellDisplay">X</div>
+					</div>
+				</li>
+				<li><div class="storeDivider"></div></li>
+				<li>
+					<div class="storeItems" id="microwaveDisplay" title="Creates 1 popcorn every second">
+						<div class="storeItemParts" id="microwaveCountDisplay">Microwave: 0</div>
+						<div class="storeItemParts" id="microwaveCostDisplay">Cost: 200</div>
+						<div class="sellButton" id="microwaveSellDisplay">X</div>
+					</div>
+				</li>
+				<li><div class="storeDivider"></div></li>
+				<li>
+					<div class="storeItems" id="vendingMachineDisplay" title="Creates 15 popcorn every second">
+						<div class="storeItemParts" id="vendingMachineCountDisplay">Vending Machine: 0</div>
+						<div class="storeItemParts" id="vendingMachineCostDisplay">Cost: 7,430</div>
+						<div class="sellButton" id="vendingMachineSellDisplay">X</div>
+					</div>
+				</li>
+				<li><div class="storeDivider"></div></li>
+				<li>
+					<div class="storeItems" id="ovenDisplay" title="Creates 67 popcorn per second">
+						<div class="storeItemParts" id="ovenCountDisplay">Oven: 0</div>
+						<div class="storeItemParts" id="ovenCostDisplay">Cost: 47,200</div>
+						<div class="sellButton" id="ovenSellDisplay">X</div>
+					</div>
+				</li>
+				<li><div class="storeDivider"></div></li>
+				<li>
+					<div class="storeItems" id="theaterDisplay" title="Creates 359 popcorn per second">
+						<div class="storeItemParts" id="theaterCountDisplay">Theater: 0</div>
+						<div class="storeItemParts" id="theaterCostDisplay">Cost: 758,857</div>
+						<div class="sellButton" id="theaterSellDisplay">X</div>
+					</div>
+				</li>
+				<li><div class="storeDivider"></div></li>
+				<li>
+					<div class="storeItems" id="mallDisplay" title="Creates 1,344 popcorn per second">
+						<div class="storeItemParts" id="mallCountDisplay">Mall: 0</div>
+						<div class="storeItemParts" id="mallCostDisplay">Cost: 3,000,765</div>
+						<div class="sellButton" id="mallSellDisplay">X</div>
+					</div>
+				</li>
+				<li><div class="storeDivider"></div></li>
+				<li>
+					<div class="storeItems" id="factoryDisplay" title="Creates 3,111 popcorn per second">
+						<div class="storeItemParts" id="factoryCountDisplay">Factory: 0</div>
+						<div class="storeItemParts" id="factoryCostDisplay">Cost: 50,000,001</div>
+						<div class="sellButton" id="factorySellDisplay">X</div>
+					</div>
+				</li>
+				<li><div class="storeDivider"></div></li>
+				<li>
+					<div class="storeItems" id="inductionFurnaceDisplay" title="Creates 9,452 popcorn per second">
+						<div class="storeItemParts" id="inductionFurnaceCountDisplay">Induction Furnace: 0</div>
+						<div class="storeItemParts" id="inductionFurnaceCostDisplay">Cost: 631,000,631</div>
+						<div class="sellButton" id="inductionFurnaceSellDisplay">X</div>
+					</div>
+				</li>
+			</ul>
 			<div class="storeDivider"></div>
 			<div class="storeMenu">
 				Upgrades
-				<div class="dropButton" id="upgradeDropdown"><img id="upgradeDropdownImg" src="images/upArrow.png"></img></div>
+				<div class="dropButton" id="upgradeDropdown"><img id="upgradeDropdownImg" src="images/downArrow.png"></img></div>
 			</div>
 			<div class="storeDivider"></div>
-			<div id="upgrades" style="display: none">
-				<div class="storeItems" id="clickerDisplay">
-					<div class="storeItemParts" id="clickerCountDisplay">Clicker1</div>
-					<div class="storeItemParts" id="clickerCostDisplay">Cost: 200</div>
-				</div>
-				<div class="storeDivider"></div>
-			</div>
+			<ul id="upgrades" style="list-style-type: none; margin: 0; padding: 0; display: none">
+				<li>
+					<div class="storeItems" id="clickerDisplay">
+						<div class="storeItemParts" id="clickerCountDisplay">Clicker1</div>
+						<div class="storeItemParts" id="clickerCostDisplay">Cost: 200</div>
+					</div>
+				</li>
+				<li><div class="storeDivider"></div></li>
+			</ul>
+			<div style="height: 40px"></div>
 		</div>
 	</div>
 	<script type="text/javascript" src="js\jquery.min.txt"></script>

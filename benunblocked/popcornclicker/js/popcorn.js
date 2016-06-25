@@ -72,8 +72,8 @@ var Game = function () {
 	this.vendingMachine   = new Building(6430, 15);
 	this.oven             = new Building(48200, 67);
 	this.theater          = new Building(428857, 359);
-	this.factory          = new Building(2000765, 1344);
-	this.mall             = new Building(50000001, 3111);
+	this.mall             = new Building(2000765, 1344);
+	this.factory          = new Building(50000001, 3111);
 	this.inductionFurnace = new Building(631000631, 9452);
 	this.clicker          = new ClickerUpgrade();
 	this.calcClick = function () {
@@ -105,7 +105,7 @@ var Building = function (baseCost, pps) {
 }
 var ClickerUpgrade = function () {
 	this.count = 0;
-	this.BASE_COST = 400;
+	this.BASE_COST = 1000;
 	this.cost = this.BASE_COST;
 	this.buyUpgrade = function () {
 		if (Game.popcornCount - this.cost >= 0) {
@@ -253,20 +253,20 @@ var upgradesOpen = false;
 function buildingDropdownFunc () {
 	if (buildingsOpen == true) {
 		buildings.style.display = "none";
-		buildingDropdownImg.src = "images/upArrow.png";
+		buildingDropdownImg.src = "images/downArrow.png";
 	} else {
 		buildings.style.display = "";
-		buildingDropdownImg.src = "images/downArrow.png";
+		buildingDropdownImg.src = "images/upArrow.png";
 	}
 		buildingsOpen = !buildingsOpen;
 }
 function upgradeDropdownFunc () {
 	if (upgradesOpen == true) {
 		upgrades.style.display = "none";
-		upgradeDropdownImg.src = "images/upArrow.png"
+		upgradeDropdownImg.src = "images/downArrow.png"
 	} else {
 		upgrades.style.display = "";
-		upgradeDropdownImg.src = "images/downArrow.png"
+		upgradeDropdownImg.src = "images/upArrow.png"
 	}
 		upgradesOpen = !upgradesOpen;
 }
@@ -277,29 +277,116 @@ upgradeDropdown.addEventListener("click", function () {
 	upgradeDropdownFunc();
 });
 
-stoveDisplay.addEventListener("click", function () {
+stoveDisplay.addEventListener("click", function (event) {
+	if (event.target == stoveSellDisplay) return;
 	Game.stove.buyBuilding();
 });
-microwaveDisplay.addEventListener("click", function () {
+stoveDisplay.addEventListener("mouseenter", function () {
+	stoveSellDisplay.style.visibility = "visible";
+});
+stoveDisplay.addEventListener("mouseleave", function () {
+	stoveSellDisplay.style.visibility = "hidden";
+});
+stoveSellDisplay.addEventListener("click", function () {
+	Game.stove.sellBuilding();
+});
+
+microwaveDisplay.addEventListener("click", function (event) {
+	if (event.target == microwaveSellDisplay) return;
 	Game.microwave.buyBuilding();
 });
-vendingMachineDisplay.addEventListener("click", function () {
+microwaveDisplay.addEventListener("mouseenter", function () {
+	microwaveSellDisplay.style.visibility = "visible";
+});
+microwaveDisplay.addEventListener("mouseleave", function () {
+	microwaveSellDisplay.style.visibility = "hidden";
+});
+microwaveSellDisplay.addEventListener("click", function () {
+	Game.microwave.sellBuilding();
+});
+
+vendingMachineDisplay.addEventListener("click", function (event) {
+	if (event.target == vendingMachineSellDisplay) return;
 	Game.vendingMachine.buyBuilding();
 });
-ovenDisplay.addEventListener("click", function () {
+vendingMachineDisplay.addEventListener("mouseenter", function () {
+	vendingMachineSellDisplay.style.visibility = "visible";
+});
+vendingMachineDisplay.addEventListener("mouseleave", function () {
+	vendingMachineSellDisplay.style.visibility = "hidden";
+});
+vendingMachineSellDisplay.addEventListener("click", function () {
+	Game.vendingMachine.sellBuilding();
+});
+
+ovenDisplay.addEventListener("click", function (event) {
+	if (event.target == ovenSellDisplay) return;
 	Game.oven.buyBuilding();
 });
-theaterDisplay.addEventListener("click", function () {
+ovenDisplay.addEventListener("mouseenter", function () {
+	ovenSellDisplay.style.visibility = "visible";
+});
+ovenDisplay.addEventListener("mouseleave", function () {
+	ovenSellDisplay.style.visibility = "hidden";
+});
+ovenSellDisplay.addEventListener("click", function () {
+	Game.oven.sellBuilding();
+});
+
+theaterDisplay.addEventListener("click", function (event) {
+	if (event.target == theaterSellDisplay) return;
 	Game.theater.buyBuilding();
 });
-factoryDisplay.addEventListener("click", function () {
-	Game.factory.buyBuilding();
+theaterDisplay.addEventListener("mouseenter", function () {
+	theaterSellDisplay.style.visibility = "visible";
 });
-mallDisplay.addEventListener("click", function () {
+theaterDisplay.addEventListener("mouseleave", function () {
+	theaterSellDisplay.style.visibility = "hidden";
+});
+theaterSellDisplay.addEventListener("click", function () {
+	Game.theater.sellBuilding();
+});
+
+mallDisplay.addEventListener("click", function (event) {
+	if (event.target == mallSellDisplay) return;
 	Game.mall.buyBuilding();
 });
-inductionFurnaceDisplay.addEventListener("click", function () {
+mallDisplay.addEventListener("mouseenter", function () {
+	mallSellDisplay.style.visibility = "visible";
+});
+mallDisplay.addEventListener("mouseleave", function () {
+	mallSellDisplay.style.visibility = "hidden";
+});
+mallSellDisplay.addEventListener("click", function () {
+	Game.mall.sellBuilding();
+});
+
+factoryDisplay.addEventListener("click", function (event) {
+	if (event.target == factorySellDisplay) return;
+	Game.factory.buyBuilding();
+});
+factoryDisplay.addEventListener("mouseenter", function () {
+	factorySellDisplay.style.visibility = "visible";
+});
+factoryDisplay.addEventListener("mouseleave", function () {
+	factorySellDisplay.style.visibility = "hidden";
+});
+factorySellDisplay.addEventListener("click", function () {
+	Game.factory.sellBuilding();
+});
+
+inductionFurnaceDisplay.addEventListener("click", function (event) {
+	if (event.target == inductionFurnaceSellDisplay) return;
 	Game.inductionFurnace.buyBuilding();
+});
+inductionFurnaceDisplay.addEventListener("mouseenter", function () {
+	inductionFurnaceSellDisplay.style.visibility = "visible";
+});
+inductionFurnaceDisplay.addEventListener("mouseleave", function () {
+	inductionFurnaceSellDisplay.style.visibility = "hidden";
+});
+inductionFurnaceSellDisplay.addEventListener("click", function () {
+	Game.inductionFurnace.sellBuilding();
 });
 
 clickerDisplay.addEventListener("click", function () {
@@ -320,95 +407,44 @@ window.setInterval(function () {
 		(Game.vendingMachine.count * Game.vendingMachine.PPS) +
 		(Game.oven.count * Game.oven.PPS) +
 		(Game.theater.count * Game.theater.PPS) +
-		(Game.factory.count * Game.factory.PPS) +
 		(Game.mall.count * Game.mall.PPS) +
+		(Game.factory.count * Game.factory.PPS) +
 		(Game.inductionFurnace.count * Game.inductionFurnace.PPS);
 	popcornPerSecondDisplay.innerHTML = commas(Math.round(Game.popcornPerSecond * 10) / 10) + " Popcorn/Second";
 	title.innerHTML = commas(Math.floor(Game.popcornCount)) + " Popcorn | Popcorn Clicker";
 
-	stoveCountDisplay.innerHTML = "Stove: " + Game.stove.count;
-	stoveCostDisplay.innerHTML = "Cost: " + commas(Game.stove.cost);
-	if (Game.popcornCount - Game.stove.cost >= 0) {
-		stoveDisplay.style.backgroundColor = "blue";
-		stoveDisplay.style.cursor = "pointer";
-	} else {
-		stoveDisplay.style.backgroundColor = "#000066";
-		stoveDisplay.style.cursor = "auto";
+	function updateBuildingDisplay (buildingName, buildingCount, buildingCost, buildingDisplay, buildingCountDisplay, buildingCostDisplay, buildingSellDisplay) {
+		buildingCountDisplay.innerHTML = buildingName + ": " + buildingCount;
+		buildingCostDisplay.innerHTML = "Cost: " + commas(buildingCost);
+		if (Game.popcornCount - buildingCost >= 0) {
+			buildingDisplay.style.backgroundColor = "blue";
+			buildingDisplay.style.cursor = "pointer";
+		} else {
+			buildingDisplay.style.backgroundColor = "#000066";
+			buildingDisplay.style.cursor = "default";
+		}
+		if (buildingCount > 0) {
+			buildingSellDisplay.style.backgroundColor = "red";
+			buildingSellDisplay.style.color = "white";
+			buildingSellDisplay.style.cursor = "pointer";
+		} else {
+			buildingSellDisplay.style.backgroundColor = "#990000";
+			buildingSellDisplay.style.color = "#999999";
+			buildingSellDisplay.style.cursor = "default";
+		}
 	}
-
-	microwaveCountDisplay.innerHTML = "Microwave: " + Game.microwave.count;
-	microwaveCostDisplay.innerHTML = "Cost: " + commas(Game.microwave.cost);
-	if (Game.popcornCount - Game.microwave.cost >= 0) {
-		microwaveDisplay.style.backgroundColor = "blue";
-		microwaveDisplay.style.cursor = "pointer";
-	} else {
-		microwaveDisplay.style.backgroundColor = "#000066";
-		microwaveDisplay.style.cursor = "auto";
-	}
-
-	vendingMachineCountDisplay.innerHTML = "Vending Machine: " + Game.vendingMachine.count;
-	vendingMachineCostDisplay.innerHTML = "Cost: " + commas(Game.vendingMachine.cost);
-	if (Game.popcornCount - Game.vendingMachine.cost >= 0) {
-		vendingMachineDisplay.style.backgroundColor = "blue";
-		vendingMachineDisplay.style.cursor = "pointer";
-	} else {
-		vendingMachineDisplay.style.backgroundColor = "#000066";
-		vendingMachineDisplay.style.cursor = "auto";
-	}
-
-	ovenCountDisplay.innerHTML = "Oven: " + Game.oven.count;
-	ovenCostDisplay.innerHTML = "Cost: " + commas(Game.oven.cost);
-	if (Game.popcornCount - Game.oven.cost >= 0) {
-		ovenDisplay.style.backgroundColor = "blue";
-		ovenDisplay.style.cursor = "pointer";
-	} else {
-		ovenDisplay.style.backgroundColor = "#000066";
-		ovenDisplay.style.cursor = "auto";
-	}
-
-	theaterCountDisplay.innerHTML = "Theater: " + Game.theater.count;
-	theaterCostDisplay.innerHTML = "Cost: " + commas(Game.theater.cost);
-	if (Game.popcornCount - Game.theater.cost >= 0) {
-		theaterDisplay.style.backgroundColor = "blue";
-		theaterDisplay.style.cursor = "pointer";
-	} else {
-		theaterDisplay.style.backgroundColor = "#000066";
-		theaterDisplay.style.cursor = "auto";
-	}
-
-	factoryCountDisplay.innerHTML = "Factory: " + Game.factory.count;
-	factoryCostDisplay.innerHTML = "Cost: " + commas(Game.factory.cost);
-	if (Game.popcornCount - Game.factory.cost >= 0) {
-		factoryDisplay.style.backgroundColor = "blue";
-		factoryDisplay.style.cursor = "pointer";
-	} else {
-		factoryDisplay.style.backgroundColor = "#000066";
-		factoryDisplay.style.cursor = "auto";
-	}
-
-	mallCountDisplay.innerHTML = "Mall: " + Game.mall.count;
-	mallCostDisplay.innerHTML = "Cost: " + commas(Game.mall.cost);
-	if (Game.popcornCount - Game.mall.cost >= 0) {
-		mallDisplay.style.backgroundColor = "blue";
-		mallDisplay.style.cursor = "pointer";
-	} else {
-		mallDisplay.style.backgroundColor = "#000066";
-		mallDisplay.style.cursor = "auto";
-	}
-
-	inductionFurnaceCountDisplay.innerHTML = "Induction Furnace: " + Game.inductionFurnace.count;
-	inductionFurnaceCostDisplay.innerHTML = "Cost: " + commas(Game.inductionFurnace.cost);
-	if (Game.popcornCount - Game.inductionFurnace.cost >= 0) {
-		inductionFurnaceDisplay.style.backgroundColor = "blue";
-		inductionFurnaceDisplay.style.cursor = "pointer";
-	} else {
-		inductionFurnaceDisplay.style.backgroundColor = "#000066";
-		inductionFurnaceDisplay.style.cursor = "auto";
-	}
+	updateBuildingDisplay("Stove", Game.stove.count, Game.stove.cost, stoveDisplay, stoveCountDisplay, stoveCostDisplay, stoveSellDisplay);
+	updateBuildingDisplay("Microwave", Game.microwave.count, Game.microwave.cost, microwaveDisplay, microwaveCountDisplay, microwaveCostDisplay, microwaveSellDisplay);
+	updateBuildingDisplay("Vending Machine", Game.vendingMachine.count, Game.vendingMachine.cost, vendingMachineDisplay, vendingMachineCountDisplay, vendingMachineCostDisplay, vendingMachineSellDisplay);
+	updateBuildingDisplay("Oven", Game.oven.count, Game.oven.cost, ovenDisplay, ovenCountDisplay, ovenCostDisplay, ovenSellDisplay);
+	updateBuildingDisplay("Theater", Game.theater.count, Game.theater.cost, theaterDisplay, theaterCountDisplay, theaterCostDisplay, theaterSellDisplay);
+	updateBuildingDisplay("Mall", Game.mall.count, Game.mall.cost, mallDisplay, mallCountDisplay, mallCostDisplay, mallSellDisplay);
+	updateBuildingDisplay("Factory", Game.factory.count, Game.factory.cost, factoryDisplay, factoryCountDisplay, factoryCostDisplay, factorySellDisplay);
+	updateBuildingDisplay("Induction Furnace", Game.inductionFurnace.count, Game.inductionFurnace.cost, inductionFurnaceDisplay, inductionFurnaceCountDisplay, inductionFurnaceCostDisplay, inductionFurnaceSellDisplay);
 
 	clickerCountDisplay.innerHTML = "Clicker" + (Game.clicker.count + 1);
-	clickerCostDisplay.innerHTML = "Cost: " + Game.clicker.cost;
-	clickerDisplay.title = "Each click pops " + Game.popcornPerClick + " popcorn";
+	clickerCostDisplay.innerHTML = "Cost: " + commas(Game.clicker.cost);
+	clickerDisplay.title = "Each click pops " + commas(Game.popcornPerClick) + " popcorn";
 	if (Game.popcornCount - Game.clicker.cost >= 0) {
 		clickerDisplay.style.backgroundColor = "blue";
 		clickerDisplay.style.cursor = "pointer";
@@ -444,7 +480,10 @@ reset.addEventListener("click", function () {
 		document.cookie = "theater=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "factory=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "mall=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "inductionFurnace=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "clicker=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "buildingDropdown=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "upgradeDropdown=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		location.reload();
 	}
 });
