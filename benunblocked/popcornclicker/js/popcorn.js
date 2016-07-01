@@ -9,7 +9,7 @@ window.onload = function () {
 	Game.mall.count = Number(getCookie("mall"));
 	Game.inductionFurnace.count = Number(getCookie("inductionFurnace"));
 	Game.clicker.count = Number(getCookie("clicker"));
-	buildingsOpen = (getCookie("buildingsOpen") == "false");
+	poppersOpen = (getCookie("poppersOpen") == "false");
 	upgradesOpen = (getCookie("upgradesOpen") == "false");
 
 	Game.stove.calcCost();
@@ -22,7 +22,7 @@ window.onload = function () {
 	Game.inductionFurnace.calcCost();
 	Game.clicker.calcCost();
 	Game.calcClick();
-	buildingDropdownFunc();
+	popperDropdownFunc();
 	upgradeDropdownFunc();
 
 
@@ -41,7 +41,7 @@ window.onload = function () {
 		document.cookie = "mall=" + Game.mall.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "inductionFurnace=" + Game.inductionFurnace.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "clicker=" + Game.clicker.count + "; expires=" + now.toUTCString() + ";";
-		document.cookie = "buildingsOpen=" + buildingsOpen + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "poppersOpen=" + poppersOpen + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "upgradesOpen=" + upgradesOpen + "; expires=" + now.toUTCString() + ";";
 		console.log("cookies saved");
 	}, 5000);
@@ -67,32 +67,32 @@ var Game = function () {
 	this.popcornCount = 0;
 	this.popcornPerSecond = 0;
 	this.popcornPerClick = 1;
-	this.stove            = new Building(20, .2);
-	this.microwave        = new Building(200, 1);
-	this.vendingMachine   = new Building(6430, 15);
-	this.oven             = new Building(48200, 67);
-	this.theater          = new Building(428857, 359);
-	this.mall             = new Building(2000765, 1344);
-	this.factory          = new Building(50000001, 3111);
-	this.inductionFurnace = new Building(631000631, 9452);
+	this.stove            = new Popper(20, .2);
+	this.microwave        = new Popper(200, 1);
+	this.vendingMachine   = new Popper(6430, 15);
+	this.oven             = new Popper(48200, 67);
+	this.theater          = new Popper(428857, 359);
+	this.mall             = new Popper(2000765, 1344);
+	this.factory          = new Popper(50000001, 3111);
+	this.inductionFurnace = new Popper(631000631, 9452);
 	this.clicker          = new ClickerUpgrade();
 	this.calcClick = function () {
 		this.popcornPerClick = Math.pow(CLICK_MULTIPLIER, this.clicker.count);
 	}
 }
-var Building = function (baseCost, pps) {
+var Popper = function (baseCost, pps) {
 	this.count = 0;
 	this.BASE_COST = baseCost;
 	this.cost = this.BASE_COST;
 	this.PPS = pps;
-	this.buyBuilding = function () {
+	this.buyPopper = function () {
 		if (Game.popcornCount - this.cost >= 0) {
 			this.count++;
 			Game.popcornCount -= this.cost;
 			this.calcCost();
 		}
 	}
-	this.sellBuilding = function () {
+	this.sellPopper = function () {
 		if (this.count > 0) {
 			this.count--;
 			Game.popcornCount += this.cost * SELL_MULTIPLIER;
@@ -100,7 +100,7 @@ var Building = function (baseCost, pps) {
 		}
 	}
 	this.calcCost = function () {
-		this.cost = Math.floor(this.BASE_COST * Math.pow(BUILDING_MULTIPLIER, this.count) + .5);
+		this.cost = Math.floor(this.BASE_COST * Math.pow(POPPER_MULTIPLIER, this.count) + .5);
 	}
 }
 var ClickerUpgrade = function () {
@@ -119,7 +119,7 @@ var ClickerUpgrade = function () {
 		this.cost = this.BASE_COST * Math.pow(CLICK_MULTIPLIER, this.count);
 	}
 }
-var BuildingUpgrade = function (cost) {
+var PopperUpgrade = function (cost) {
 	this.cost = cost;
 	this.buyUpgrade = function () {
 
@@ -127,7 +127,7 @@ var BuildingUpgrade = function (cost) {
 }
 var Game = new Game();
 
-var BUILDING_MULTIPLIER = 1.16;
+var POPPER_MULTIPLIER = 1.16;
 var SELL_MULTIPLIER = .5;
 var CLICK_MULTIPLIER = 2;
 
@@ -248,17 +248,17 @@ function fadePopcorn (count) {
 	}, 90000);
 }
 
-var buildingsOpen = false;
+var poppersOpen = false;
 var upgradesOpen = false;
-function buildingDropdownFunc () {
-	if (buildingsOpen == true) {
-		buildings.style.display = "none";
-		buildingDropdownImg.src = "images/downArrow.png";
+function popperDropdownFunc () {
+	if (poppersOpen == true) {
+		poppers.style.display = "none";
+		popperDropdownImg.src = "images/downArrow.png";
 	} else {
-		buildings.style.display = "";
-		buildingDropdownImg.src = "images/upArrow.png";
+		poppers.style.display = "";
+		popperDropdownImg.src = "images/upArrow.png";
 	}
-		buildingsOpen = !buildingsOpen;
+	poppersOpen = !poppersOpen;
 }
 function upgradeDropdownFunc () {
 	if (upgradesOpen == true) {
@@ -268,126 +268,38 @@ function upgradeDropdownFunc () {
 		upgrades.style.display = "";
 		upgradeDropdownImg.src = "images/upArrow.png"
 	}
-		upgradesOpen = !upgradesOpen;
+	upgradesOpen = !upgradesOpen;
 }
-buildingDropdown.addEventListener("click", function () {
-	buildingDropdownFunc();
+popperDropdown.addEventListener("click", function () {
+	popperDropdownFunc();
 });
 upgradeDropdown.addEventListener("click", function () {
 	upgradeDropdownFunc();
 });
 
-stoveDisplay.addEventListener("click", function (event) {
-	if (event.target == stoveSellDisplay) return;
-	Game.stove.buyBuilding();
-});
-stoveDisplay.addEventListener("mouseenter", function () {
-	stoveSellDisplay.style.visibility = "visible";
-});
-stoveDisplay.addEventListener("mouseleave", function () {
-	stoveSellDisplay.style.visibility = "hidden";
-});
-stoveSellDisplay.addEventListener("click", function () {
-	Game.stove.sellBuilding();
-});
-
-microwaveDisplay.addEventListener("click", function (event) {
-	if (event.target == microwaveSellDisplay) return;
-	Game.microwave.buyBuilding();
-});
-microwaveDisplay.addEventListener("mouseenter", function () {
-	microwaveSellDisplay.style.visibility = "visible";
-});
-microwaveDisplay.addEventListener("mouseleave", function () {
-	microwaveSellDisplay.style.visibility = "hidden";
-});
-microwaveSellDisplay.addEventListener("click", function () {
-	Game.microwave.sellBuilding();
-});
-
-vendingMachineDisplay.addEventListener("click", function (event) {
-	if (event.target == vendingMachineSellDisplay) return;
-	Game.vendingMachine.buyBuilding();
-});
-vendingMachineDisplay.addEventListener("mouseenter", function () {
-	vendingMachineSellDisplay.style.visibility = "visible";
-});
-vendingMachineDisplay.addEventListener("mouseleave", function () {
-	vendingMachineSellDisplay.style.visibility = "hidden";
-});
-vendingMachineSellDisplay.addEventListener("click", function () {
-	Game.vendingMachine.sellBuilding();
-});
-
-ovenDisplay.addEventListener("click", function (event) {
-	if (event.target == ovenSellDisplay) return;
-	Game.oven.buyBuilding();
-});
-ovenDisplay.addEventListener("mouseenter", function () {
-	ovenSellDisplay.style.visibility = "visible";
-});
-ovenDisplay.addEventListener("mouseleave", function () {
-	ovenSellDisplay.style.visibility = "hidden";
-});
-ovenSellDisplay.addEventListener("click", function () {
-	Game.oven.sellBuilding();
-});
-
-theaterDisplay.addEventListener("click", function (event) {
-	if (event.target == theaterSellDisplay) return;
-	Game.theater.buyBuilding();
-});
-theaterDisplay.addEventListener("mouseenter", function () {
-	theaterSellDisplay.style.visibility = "visible";
-});
-theaterDisplay.addEventListener("mouseleave", function () {
-	theaterSellDisplay.style.visibility = "hidden";
-});
-theaterSellDisplay.addEventListener("click", function () {
-	Game.theater.sellBuilding();
-});
-
-mallDisplay.addEventListener("click", function (event) {
-	if (event.target == mallSellDisplay) return;
-	Game.mall.buyBuilding();
-});
-mallDisplay.addEventListener("mouseenter", function () {
-	mallSellDisplay.style.visibility = "visible";
-});
-mallDisplay.addEventListener("mouseleave", function () {
-	mallSellDisplay.style.visibility = "hidden";
-});
-mallSellDisplay.addEventListener("click", function () {
-	Game.mall.sellBuilding();
-});
-
-factoryDisplay.addEventListener("click", function (event) {
-	if (event.target == factorySellDisplay) return;
-	Game.factory.buyBuilding();
-});
-factoryDisplay.addEventListener("mouseenter", function () {
-	factorySellDisplay.style.visibility = "visible";
-});
-factoryDisplay.addEventListener("mouseleave", function () {
-	factorySellDisplay.style.visibility = "hidden";
-});
-factorySellDisplay.addEventListener("click", function () {
-	Game.factory.sellBuilding();
-});
-
-inductionFurnaceDisplay.addEventListener("click", function (event) {
-	if (event.target == inductionFurnaceSellDisplay) return;
-	Game.inductionFurnace.buyBuilding();
-});
-inductionFurnaceDisplay.addEventListener("mouseenter", function () {
-	inductionFurnaceSellDisplay.style.visibility = "visible";
-});
-inductionFurnaceDisplay.addEventListener("mouseleave", function () {
-	inductionFurnaceSellDisplay.style.visibility = "hidden";
-});
-inductionFurnaceSellDisplay.addEventListener("click", function () {
-	Game.inductionFurnace.sellBuilding();
-});
+function addPopperEventListeners (popper, popperDisplay, popperSellDisplay) {
+	popperDisplay.addEventListener("click", function (event) {
+		if (event.target == popperSellDisplay) return;
+		popper.buyPopper();
+	});
+	popperDisplay.addEventListener("mouseenter", function () {
+		popperSellDisplay.style.visibility = "visible";
+	});
+	popperDisplay.addEventListener("mouseleave", function () {
+		popperSellDisplay.style.visibility = "hidden";
+	});
+	popperSellDisplay.addEventListener("click", function () {
+		popper.sellPopper();
+	});
+}
+addPopperEventListeners(Game.stove, stoveDisplay, stoveSellDisplay);
+addPopperEventListeners(Game.microwave, microwaveDisplay, microwaveSellDisplay);
+addPopperEventListeners(Game.vendingMachine, vendingMachineDisplay, vendingMachineSellDisplay);
+addPopperEventListeners(Game.oven, ovenDisplay, ovenSellDisplay);
+addPopperEventListeners(Game.theater, theaterDisplay, theaterSellDisplay);
+addPopperEventListeners(Game.mall, mallDisplay, mallSellDisplay);
+addPopperEventListeners(Game.factory, factoryDisplay, factorySellDisplay);
+addPopperEventListeners(Game.inductionFurnace, inductionFurnaceDisplay, inductionFurnaceSellDisplay);
 
 clickerDisplay.addEventListener("click", function () {
 	if (Game.clicker.buyUpgrade() == true) {
@@ -413,34 +325,34 @@ window.setInterval(function () {
 	popcornPerSecondDisplay.innerHTML = commas(Math.round(Game.popcornPerSecond * 10) / 10) + " Popcorn/Second";
 	title.innerHTML = commas(Math.floor(Game.popcornCount)) + " Popcorn | Popcorn Clicker";
 
-	function updateBuildingDisplay (buildingName, buildingCount, buildingCost, buildingDisplay, buildingCountDisplay, buildingCostDisplay, buildingSellDisplay) {
-		buildingCountDisplay.innerHTML = buildingName + ": " + buildingCount;
-		buildingCostDisplay.innerHTML = "Cost: " + commas(buildingCost);
-		if (Game.popcornCount - buildingCost >= 0) {
-			buildingDisplay.style.backgroundColor = "blue";
-			buildingDisplay.style.cursor = "pointer";
+	function updatePopperDisplay (popperName, popperCount, popperCost, popperDisplay, popperCountDisplay, popperCostDisplay, popperSellDisplay) {
+		popperCountDisplay.innerHTML = popperName + ": " + popperCount;
+		popperCostDisplay.innerHTML = "Cost: " + commas(popperCost);
+		if (Game.popcornCount - popperCost >= 0) {
+			popperDisplay.style.backgroundColor = "blue";
+			popperDisplay.style.cursor = "pointer";
 		} else {
-			buildingDisplay.style.backgroundColor = "#000066";
-			buildingDisplay.style.cursor = "default";
+			popperDisplay.style.backgroundColor = "#000066";
+			popperDisplay.style.cursor = "default";
 		}
-		if (buildingCount > 0) {
-			buildingSellDisplay.style.backgroundColor = "red";
-			buildingSellDisplay.style.color = "white";
-			buildingSellDisplay.style.cursor = "pointer";
+		if (popperCount > 0) {
+			popperSellDisplay.style.backgroundColor = "red";
+			popperSellDisplay.style.color = "white";
+			popperSellDisplay.style.cursor = "pointer";
 		} else {
-			buildingSellDisplay.style.backgroundColor = "#990000";
-			buildingSellDisplay.style.color = "#999999";
-			buildingSellDisplay.style.cursor = "default";
+			popperSellDisplay.style.backgroundColor = "#990000";
+			popperSellDisplay.style.color = "#999999";
+			popperSellDisplay.style.cursor = "default";
 		}
 	}
-	updateBuildingDisplay("Stove", Game.stove.count, Game.stove.cost, stoveDisplay, stoveCountDisplay, stoveCostDisplay, stoveSellDisplay);
-	updateBuildingDisplay("Microwave", Game.microwave.count, Game.microwave.cost, microwaveDisplay, microwaveCountDisplay, microwaveCostDisplay, microwaveSellDisplay);
-	updateBuildingDisplay("Vending Machine", Game.vendingMachine.count, Game.vendingMachine.cost, vendingMachineDisplay, vendingMachineCountDisplay, vendingMachineCostDisplay, vendingMachineSellDisplay);
-	updateBuildingDisplay("Oven", Game.oven.count, Game.oven.cost, ovenDisplay, ovenCountDisplay, ovenCostDisplay, ovenSellDisplay);
-	updateBuildingDisplay("Theater", Game.theater.count, Game.theater.cost, theaterDisplay, theaterCountDisplay, theaterCostDisplay, theaterSellDisplay);
-	updateBuildingDisplay("Mall", Game.mall.count, Game.mall.cost, mallDisplay, mallCountDisplay, mallCostDisplay, mallSellDisplay);
-	updateBuildingDisplay("Factory", Game.factory.count, Game.factory.cost, factoryDisplay, factoryCountDisplay, factoryCostDisplay, factorySellDisplay);
-	updateBuildingDisplay("Induction Furnace", Game.inductionFurnace.count, Game.inductionFurnace.cost, inductionFurnaceDisplay, inductionFurnaceCountDisplay, inductionFurnaceCostDisplay, inductionFurnaceSellDisplay);
+	updatePopperDisplay("Stove", Game.stove.count, Game.stove.cost, stoveDisplay, stoveCountDisplay, stoveCostDisplay, stoveSellDisplay);
+	updatePopperDisplay("Microwave", Game.microwave.count, Game.microwave.cost, microwaveDisplay, microwaveCountDisplay, microwaveCostDisplay, microwaveSellDisplay);
+	updatePopperDisplay("Vending Machine", Game.vendingMachine.count, Game.vendingMachine.cost, vendingMachineDisplay, vendingMachineCountDisplay, vendingMachineCostDisplay, vendingMachineSellDisplay);
+	updatePopperDisplay("Oven", Game.oven.count, Game.oven.cost, ovenDisplay, ovenCountDisplay, ovenCostDisplay, ovenSellDisplay);
+	updatePopperDisplay("Theater", Game.theater.count, Game.theater.cost, theaterDisplay, theaterCountDisplay, theaterCostDisplay, theaterSellDisplay);
+	updatePopperDisplay("Mall", Game.mall.count, Game.mall.cost, mallDisplay, mallCountDisplay, mallCostDisplay, mallSellDisplay);
+	updatePopperDisplay("Factory", Game.factory.count, Game.factory.cost, factoryDisplay, factoryCountDisplay, factoryCostDisplay, factorySellDisplay);
+	updatePopperDisplay("Induction Furnace", Game.inductionFurnace.count, Game.inductionFurnace.cost, inductionFurnaceDisplay, inductionFurnaceCountDisplay, inductionFurnaceCostDisplay, inductionFurnaceSellDisplay);
 
 	clickerCountDisplay.innerHTML = "Clicker" + (Game.clicker.count + 1);
 	clickerCostDisplay.innerHTML = "Cost: " + commas(Game.clicker.cost);
@@ -482,7 +394,7 @@ reset.addEventListener("click", function () {
 		document.cookie = "mall=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "inductionFurnace=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "clicker=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
-		document.cookie = "buildingDropdown=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "popperDropdown=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "upgradeDropdown=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		location.reload();
 	}
