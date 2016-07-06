@@ -1,5 +1,5 @@
 window.onload = function () {
-	Game.popcornCount = Number(getCookie("popcorn"));
+	Game.popcorn = Number(getCookie("popcorn"));
 	Game.stove.count = Number(getCookie("stove"));
 	Game.microwave.count = Number(getCookie("microwave"));
 	Game.vendingMachine.count = Number(getCookie("vendingMachine"));
@@ -31,7 +31,7 @@ window.onload = function () {
 		var time = now.getTime();
 		time += 157680000 * 1000; //5 years
 		now.setTime(time);
-		document.cookie = "popcorn=" + Math.floor(Game.popcornCount) + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "popcorn=" + Math.floor(Game.popcorn) + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "stove=" + Game.stove.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "microwave=" + Game.microwave.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "vendingMachine=" + Game.vendingMachine.count + "; expires=" + now.toUTCString() + ";";
@@ -64,7 +64,7 @@ function getCookie(cname) {
 }
 
 var Game = function () {
-	this.popcornCount = 0;
+	this.popcorn = 0;
 	this.popcornPerSecond = 0;
 	this.popcornPerClick = 1;
 	this.stove            = new Popper(20, .2);
@@ -86,16 +86,16 @@ var Popper = function (baseCost, pps) {
 	this.cost = this.BASE_COST;
 	this.PPS = pps;
 	this.buyPopper = function () {
-		if (Game.popcornCount - this.cost >= 0) {
+		if (Game.popcorn - this.cost >= 0) {
 			this.count++;
-			Game.popcornCount -= this.cost;
+			Game.popcorn -= this.cost;
 			this.calcCost();
 		}
 	}
 	this.sellPopper = function () {
 		if (this.count > 0) {
 			this.count--;
-			Game.popcornCount += this.cost * SELL_MULTIPLIER;
+			Game.popcorn += this.cost * SELL_MULTIPLIER;
 			this.calcCost();
 		}
 	}
@@ -108,9 +108,9 @@ var ClickerUpgrade = function () {
 	this.BASE_COST = 1000;
 	this.cost = this.BASE_COST;
 	this.buyUpgrade = function () {
-		if (Game.popcornCount - this.cost >= 0) {
+		if (Game.popcorn - this.cost >= 0) {
 			this.count++;
-			Game.popcornCount -= this.cost;
+			Game.popcorn -= this.cost;
 			Game.calcClick();
 			this.calcCost();
 		}
@@ -122,7 +122,7 @@ var ClickerUpgrade = function () {
 var PopperUpgrade = function (cost) {
 	this.cost = cost;
 	this.buyUpgrade = function () {
-
+		//if (Game.popcorn)
 	}
 }
 var Game = new Game();
@@ -133,7 +133,7 @@ var CLICK_MULTIPLIER = 2;
 
 var poppedCount = 0;
 popZone.addEventListener("click", function (event) {
-	Game.popcornCount += Game.popcornPerClick;
+	Game.popcorn += Game.popcornPerClick;
 	$(instruction).fadeOut(1000);
 	var x = event.pageX, y = event.pageY;
 	var leftBound = $("#popZone").position().left, topBound = $("#popZone").position().top, rightBound = $("#popZone").position().left + $("#popZone").width();
@@ -312,7 +312,7 @@ function commas (x) {
 }
 
 window.setInterval(function () {
-	popcornDisplay.innerHTML = commas(Math.floor(Game.popcornCount));
+	popcornDisplay.innerHTML = commas(Math.floor(Game.popcorn));
 	Game.popcornPerSecond = 
 		(Game.stove.count * Game.stove.PPS) +
 		(Game.microwave.count * Game.microwave.PPS) +
@@ -323,12 +323,12 @@ window.setInterval(function () {
 		(Game.factory.count * Game.factory.PPS) +
 		(Game.inductionFurnace.count * Game.inductionFurnace.PPS);
 	popcornPerSecondDisplay.innerHTML = commas(Math.round(Game.popcornPerSecond * 10) / 10) + " Popcorn/Second";
-	title.innerHTML = commas(Math.floor(Game.popcornCount)) + " Popcorn | Popcorn Clicker";
+	title.innerHTML = commas(Math.floor(Game.popcorn)) + " Popcorn | Popcorn Clicker";
 
 	function updatePopperDisplay (popperName, popperCount, popperCost, popperDisplay, popperCountDisplay, popperCostDisplay, popperSellDisplay) {
 		popperCountDisplay.innerHTML = popperName + ": " + popperCount;
 		popperCostDisplay.innerHTML = "Cost: " + commas(popperCost);
-		if (Game.popcornCount - popperCost >= 0) {
+		if (Game.popcorn - popperCost >= 0) {
 			popperDisplay.style.backgroundColor = "blue";
 			popperDisplay.style.cursor = "pointer";
 		} else {
@@ -357,7 +357,7 @@ window.setInterval(function () {
 	clickerCountDisplay.innerHTML = "Clicker" + (Game.clicker.count + 1);
 	clickerCostDisplay.innerHTML = "Cost: " + commas(Game.clicker.cost);
 	clickerDisplay.title = "Each click pops " + commas(Game.popcornPerClick) + " popcorn";
-	if (Game.popcornCount - Game.clicker.cost >= 0) {
+	if (Game.popcorn - Game.clicker.cost >= 0) {
 		clickerDisplay.style.backgroundColor = "blue";
 		clickerDisplay.style.cursor = "pointer";
 	} else {
@@ -370,14 +370,14 @@ window.setInterval(function () {
 //default: when site is in viewport
 window.setInterval(function () {
 	if (document.visibilityState == "hidden") return;
-	Game.popcornCount += Game.popcornPerSecond / 50;
+	Game.popcorn += Game.popcornPerSecond / 50;
 }, 20);
 
 //when site isn't in viewport
 window.setInterval(function () {
 	if (document.visibilityState == "visible") return;
-	Game.popcornCount += Game.popcornPerSecond;
-	popcornDisplay.innerHTML = commas(Math.floor(Game.popcornCount));
+	Game.popcorn += Game.popcornPerSecond;
+	popcornDisplay.innerHTML = commas(Math.floor(Game.popcorn));
 }, 1000);
 
 //reset button
