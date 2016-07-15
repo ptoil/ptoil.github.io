@@ -100,6 +100,16 @@ body {
 	font-size: 40px;
 	color: white;
 }
+#storeInstructions {
+	position: relative;
+	height: 0px;
+	text-align: right;
+	line-height: normal;
+	font-weight: normal;
+	font-size: 16px;
+	top: -18px;
+	right: 1px;
+}
 .storeDivider {
 	background-color: #992600;
 	height: 5px;
