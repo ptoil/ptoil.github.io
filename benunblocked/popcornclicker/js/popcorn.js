@@ -161,7 +161,6 @@ popZone.addEventListener("click", function (event) {
 		var random360 = Math.floor(Math.random() * 360 + 1);
 		if (dozeCheck.checked == true)
 			random15 = 0;
-		console.log();
 		switch (random15) {
 			case 1:
 				newPopcorn.src = "images/popcorn1.png"; x -= 125 / 2; y -= 116 / 2;
