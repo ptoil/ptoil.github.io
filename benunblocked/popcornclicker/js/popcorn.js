@@ -135,6 +135,7 @@ var PopperUpgrade = function (cost, popper) {
 		if (Game.popcorn - this.cost >= 0) {
 			this.count++;
 			Game.popcorn -= this.cost;
+
 			this.calcCost();
 		}
 	}
@@ -208,7 +209,7 @@ popZone.addEventListener("click", function (event) {
 				newPopcorn.src = "images/popcorn15.png"; x -= 108 / 2; y -= 125 / 2;
 				break;
 			default:
-				newPopcorn.src = "images/suhailDoze.png"; x -= 116 / 2; y -= 125 / 2;
+				newPopcorn.src = "images/suhailDoze.png"; x -= 93 / 2; y -= 100 / 2;
 				break;
 		}
 		newPopcorn.style.transform = "rotate(" + random360 + "deg)";
@@ -286,20 +287,6 @@ addPopperEventListeners(Game.mall, mallDisplay, mallSellDisplay);
 addPopperEventListeners(Game.factory, factoryDisplay, factorySellDisplay);
 addPopperEventListeners(Game.inductionFurnace, inductionFurnaceDisplay, inductionFurnaceSellDisplay);
 
-function addPopperUpgradeEventListeners (popperUpgrade, popperUpgradeDisplay) {
-	popperUpgradeDisplay.addEventListener("click", function () {
-		popperUpgrade.buyUpgrade();
-	});
-}
-addPopperUpgradeEventListeners(Game.stoveUpgrade, stoveUpgradeDisplay);
-addPopperUpgradeEventListeners(Game.microwaveUpgrade, microwaveUpgradeDisplay);
-addPopperUpgradeEventListeners(Game.vendingMachineUpgrade, vendingMachineUpgradeDisplay);
-addPopperUpgradeEventListeners(Game.ovenUpgrade, ovenUpgradeDisplay);
-addPopperUpgradeEventListeners(Game.theaterUpgrade, theaterUpgradeDisplay);
-addPopperUpgradeEventListeners(Game.mallUpgrade, mallUpgradeDisplay);
-addPopperUpgradeEventListeners(Game.factoryUpgrade, factoryUpgradeDisplay);
-addPopperUpgradeEventListeners(Game.inductionFurnaceUpgrade, inductionFurnaceUpgradeDisplay);
-
 clickerDisplay.addEventListener("click", function () {
 	if (Game.clicker.buyUpgrade() == true) {
 		clicker1Display.style.display = "none";
@@ -353,7 +340,7 @@ window.setInterval(function () {
 	updatePopperDisplay("Factory", Game.factory.count, Game.factory.cost, factoryDisplay, factoryCountDisplay, factoryCostDisplay, factorySellDisplay);
 	updatePopperDisplay("Induction Furnace", Game.inductionFurnace.count, Game.inductionFurnace.cost, inductionFurnaceDisplay, inductionFurnaceCountDisplay, inductionFurnaceCostDisplay, inductionFurnaceSellDisplay);
 
-	clickerCountDisplay.innerHTML = "Clicker #" + (Game.clicker.count + 1);
+	clickerCountDisplay.innerHTML = "Clicker" + (Game.clicker.count + 1);
 	clickerCostDisplay.innerHTML = "Cost: " + commas(Game.clicker.cost);
 	popZone.title = "Each click pops " + commas(Game.popcornPerClick) + " popcorn";
 	if (Game.popcorn - Game.clicker.cost >= 0) {
@@ -363,7 +350,7 @@ window.setInterval(function () {
 		clickerDisplay.style.backgroundColor = "#000066";
 		clickerDisplay.style.cursor = "auto";
 	}
-}, 50);
+}, 5);
 
 
 //default: when site is in viewport
