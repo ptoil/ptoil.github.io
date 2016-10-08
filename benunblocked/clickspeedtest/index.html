@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		#instruction {
+			text-align: center;
+		}
+		#countdown {
+			position: fixed;
+			top: 45%;
+			left: 48%;
+			font-size: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="instruction">Click anywhere to start. Once you start, a countdown will begin then you will have to click as fast as you can for 20 seconds. Afterwards, you will be given a score.</div>
+	<div id="countdown"></div>
+
+	<script>
+		var clicks = 0;
+		function startGame () {
+			console.log("started game");
+			document.removeEventListener("click", startGame);
+			
+			beginningCountdown();
+			instruction.innerHTML = "";
+			document.addEventListener("click", countClick);
+		}
+		function beginningCountdown () {
+			countdown.innerHTML = "3";
+			setTimeout(function(){
+				countdown.innerHTML = "2";
+				setTimeout(function(){
+					countdown.innerHTML = "1";
+					setTimeout(function(){
+						countdown.innerHTML = "";
+					}, 1000);
+				}, 1000);
+			}, 1000);
+		}
+		function countClick () {
+			clicks++;
+			console.log(clicks);
+		}
+		document.addEventListener("click", startGame);
+	</script>
+</body>
+</html>
