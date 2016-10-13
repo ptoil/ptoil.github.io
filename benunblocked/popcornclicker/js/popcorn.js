@@ -309,7 +309,55 @@ clickerDisplay.addEventListener("click", function () {
 function commas (x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+function romanNumerals (x) {
+	if (x >= 1000) {
+		return "M" + romanNumerals(x - 1000);
+	} else if (x >= 500) {
+		if (x == 999) {
+			return "IM" + romanNumerals(x - 999);
+		} else {
+			return "D" + romanNumerals(x - 500);
+		}
+	} else if (x >= 100) {
+		if (x == 499) {
+			return "ID" + romanNumerals(x - 499);
+		} else if (x == 400) {
+			return "CD" + romanNumerals(x - 400);
+		} else {
+			return "C" + romanNumerals(x - 100);
+		}
+	} else if (x >= 50) {
+		if (x == 99) {
+			return "IC" + romanNumerals(x - 99);
+		} else {
+			return "L" + romanNumerals(x - 50);
+		}
+	} else if (x >= 10) {
+		if (x == 49) {
+			return "IL" + romanNumerals(x - 49);
+		} else if (x == 40) {
+			return "XL" + romanNumerals(x - 40);
+		} else {
+			return "X" + romanNumerals(x - 10);
+		}
+	} else if (x >= 5) {
+		if (x == 9) {
+			return "IX" + romanNumerals(x - 9);
+		} else {
+			return "V" + romanNumerals(x - 5);
+		}
+	} else if (x >= 1) {
+		if (x == 4) {
+			return "IV" + romanNumerals(x - 4);
+		} else {
+			return "I" + romanNumerals(x - 1);
+		}
+	} else {
+		return "";
+	}
+}
 
+//these functions are outside of the setInterval to prevent them being recreated every time the interval is run
 function updatePopperDisplay (name, count, cost, display, countDisplay, costDisplay, sellDisplay) {
 	countDisplay.innerHTML = name + ": " + count;
 	costDisplay.innerHTML = "Cost: " + commas(cost);
@@ -331,7 +379,7 @@ function updatePopperDisplay (name, count, cost, display, countDisplay, costDisp
 	}
 }
 function updatePopperUpgradeDisplay (name, count, cost, display, countDisplay, costDisplay) {
-	countDisplay.innerHTML = name + (count + 1);
+	countDisplay.innerHTML = name + " " + romanNumerals(count + 1);
 	costDisplay.innerHTML = "Cost: " + commas(cost);
 	if (Game.popcorn - cost >= 0) {
 		display.style.backgroundColor = "blue";
@@ -355,16 +403,16 @@ window.setInterval(function () {
 	popcornPerSecondDisplay.innerHTML = commas(Math.round(Game.popcornPerSecond * 10) / 10) + " Popcorn/Second";
 	title.innerHTML = commas(Math.floor(Game.popcorn)) + " Popcorn | Popcorn Clicker";
 
-	updatePopperDisplay("Stove", Game.stoveUpgrade.count, Game.stoveUpgrade.cost, stoveDisplay, stoveCountDisplay, stoveCostDisplay, stoveSellDisplay);
-	updatePopperDisplay("Microwave", Game.microwaveUpgrade.count, Game.microwaveUpgrade.cost, microwaveDisplay, microwaveCountDisplay, microwaveCostDisplay, microwaveSellDisplay);
-	updatePopperDisplay("Vending Machine", Game.vendingMachineUpgrade.count, Game.vendingMachineUpgrade.cost, vendingMachineDisplay, vendingMachineCountDisplay, vendingMachineCostDisplay, vendingMachineSellDisplay);
-	updatePopperDisplay("Oven", Game.ovenUpgrade.count, Game.ovenUpgrade.cost, ovenDisplay, ovenCountDisplay, ovenCostDisplay, ovenSellDisplay);
-	updatePopperDisplay("Theater", Game.theaterUpgrade.count, Game.theaterUpgrade.cost, theaterDisplay, theaterCountDisplay, theaterCostDisplay, theaterSellDisplay);
-	updatePopperDisplay("Mall", Game.mallUpgrade.count, Game.mallUpgrade.cost, mallDisplay, mallCountDisplay, mallCostDisplay, mallSellDisplay);
-	updatePopperDisplay("Factory", Game.factoryUpgrade.count, Game.factoryUpgrade.cost, factoryDisplay, factoryCountDisplay, factoryCostDisplay, factorySellDisplay);
-	updatePopperDisplay("Induction Furnace", Game.inductionFurnaceUpgrade.count, Game.inductionFurnaceUpgrade.cost, inductionFurnaceDisplay, inductionFurnaceCountDisplay, inductionFurnaceCostDisplay, inductionFurnaceSellDisplay);
+	updatePopperDisplay("Stove", Game.stove.count, Game.stove.cost, stoveDisplay, stoveCountDisplay, stoveCostDisplay, stoveSellDisplay);
+	updatePopperDisplay("Microwave", Game.microwave.count, Game.microwave.cost, microwaveDisplay, microwaveCountDisplay, microwaveCostDisplay, microwaveSellDisplay);
+	updatePopperDisplay("Vending Machine", Game.vendingMachine.count, Game.vendingMachine.cost, vendingMachineDisplay, vendingMachineCountDisplay, vendingMachineCostDisplay, vendingMachineSellDisplay);
+	updatePopperDisplay("Oven", Game.oven.count, Game.oven.cost, ovenDisplay, ovenCountDisplay, ovenCostDisplay, ovenSellDisplay);
+	updatePopperDisplay("Theater", Game.theater.count, Game.theater.cost, theaterDisplay, theaterCountDisplay, theaterCostDisplay, theaterSellDisplay);
+	updatePopperDisplay("Mall", Game.mall.count, Game.mall.cost, mallDisplay, mallCountDisplay, mallCostDisplay, mallSellDisplay);
+	updatePopperDisplay("Factory", Game.factory.count, Game.factory.cost, factoryDisplay, factoryCountDisplay, factoryCostDisplay, factorySellDisplay);
+	updatePopperDisplay("Induction Furnace", Game.inductionFurnace.count, Game.inductionFurnace.cost, inductionFurnaceDisplay, inductionFurnaceCountDisplay, inductionFurnaceCostDisplay, inductionFurnaceSellDisplay);
 
-	clickerCountDisplay.innerHTML = "Clicker" + (Game.clicker.count + 1);
+	clickerCountDisplay.innerHTML = "Clicker " + romanNumerals(Game.clicker.count + 1);
 	clickerCostDisplay.innerHTML = "Cost: " + commas(Game.clicker.cost);
 	popZone.title = "Each click pops " + commas(Game.popcornPerClick) + " popcorn";
 	if (Game.popcorn - Game.clicker.cost >= 0) {
@@ -375,14 +423,14 @@ window.setInterval(function () {
 		clickerDisplay.style.cursor = "auto";
 	}
 
-	updatePopperUpgradeDisplay("Stove", Game.stove.count, Game.stove.cost, stoveUpgradeDisplay, stoveUpgradeCountDisplay, stoveUpgradeCostDisplay);
-	updatePopperUpgradeDisplay("Microwave", Game.microwave.count, Game.microwave.cost, microwaveUpgradeDisplay, microwaveUpgradeCountDisplay, microwaveUpgradeCostDisplay);
-	updatePopperUpgradeDisplay("Vending Machine", Game.vendingMachine.count, Game.vendingMachine.cost, vendingMachineUpgradeDisplay, vendingMachineUpgradeCountDisplay, vendingMachineUpgradeCostDisplay);
-	updatePopperUpgradeDisplay("Oven", Game.oven.count, Game.oven.cost, ovenUpgradeDisplay, ovenUpgradeCountDisplay, ovenUpgradeCostDisplay);
-	updatePopperUpgradeDisplay("Theater", Game.theater.count, Game.theater.cost, theaterUpgradeDisplay, theaterUpgradeCountDisplay, theaterUpgradeCostDisplay);
-	updatePopperUpgradeDisplay("Mall", Game.mall.count, Game.mall.cost, mallUpgradeDisplay, mallUpgradeCountDisplay, mallUpgradeCostDisplay);
-	updatePopperUpgradeDisplay("Factory", Game.factory.count, Game.factory.cost, factoryUpgradeDisplay, factoryUpgradeCountDisplay, factoryUpgradeCostDisplay);
-	updatePopperUpgradeDisplay("Induction Furnace", Game.inductionFurnace.count, Game.inductionFurnace.cost, inductionFurnaceUpgradeDisplay, inductionFurnaceUpgradeCountDisplay, inductionFurnaceUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Stove", Game.stoveUpgrade.count, Game.stoveUpgrade.cost, stoveUpgradeDisplay, stoveUpgradeCountDisplay, stoveUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Microwave", Game.microwaveUpgrade.count, Game.microwaveUpgrade.cost, microwaveUpgradeDisplay, microwaveUpgradeCountDisplay, microwaveUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Vending Machine", Game.vendingMachineUpgrade.count, Game.vendingMachineUpgrade.cost, vendingMachineUpgradeDisplay, vendingMachineUpgradeCountDisplay, vendingMachineUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Oven", Game.ovenUpgrade.count, Game.ovenUpgrade.cost, ovenUpgradeDisplay, ovenUpgradeCountDisplay, ovenUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Theater", Game.theaterUpgrade.count, Game.theaterUpgrade.cost, theaterUpgradeDisplay, theaterUpgradeCountDisplay, theaterUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Mall", Game.mallUpgrade.count, Game.mallUpgrade.cost, mallUpgradeDisplay, mallUpgradeCountDisplay, mallUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Factory", Game.factoryUpgrade.count, Game.factoryUpgrade.cost, factoryUpgradeDisplay, factoryUpgradeCountDisplay, factoryUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Induction Furnace", Game.inductionFurnaceUpgrade.count, Game.inductionFurnaceUpgrade.cost, inductionFurnaceUpgradeDisplay, inductionFurnaceUpgradeCountDisplay, inductionFurnaceUpgradeCostDisplay);
 }, 5);
 
 
