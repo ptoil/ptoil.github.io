@@ -41,6 +41,14 @@ window.onload = function () {
 		document.cookie = "mall=" + Game.mall.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "inductionFurnace=" + Game.inductionFurnace.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "clicker=" + Game.clicker.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "stoveUpgrade=" + Game.stoveUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "microwaveUpgrade=" + Game.microwaveUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "vendingMachineUpgrade=" + Game.vendingMachineUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "ovenUpgrade=" + Game.ovenUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "theaterUpgrade=" + Game.theaterUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "mallUpgrade=" + Game.mallUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "factoryUpgrade=" + Game.factoryUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "inductionFurnaceUpgrade=" + Game.inductionFurnaceUpgrade.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "poppersOpen=" + poppersOpen + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "upgradesOpen=" + upgradesOpen + "; expires=" + now.toUTCString() + ";";
 		console.log("cookies saved");
@@ -321,7 +329,7 @@ function romanNumerals (x) {
 	} else if (x >= 100) {
 		if (x == 499) {
 			return "ID" + romanNumerals(x - 499);
-		} else if (x == 400) {
+		} else if (x >= 400) {
 			return "CD" + romanNumerals(x - 400);
 		} else {
 			return "C" + romanNumerals(x - 100);
@@ -335,7 +343,7 @@ function romanNumerals (x) {
 	} else if (x >= 10) {
 		if (x == 49) {
 			return "IL" + romanNumerals(x - 49);
-		} else if (x == 40) {
+		} else if (x >= 40) {
 			return "XL" + romanNumerals(x - 40);
 		} else {
 			return "X" + romanNumerals(x - 10);
