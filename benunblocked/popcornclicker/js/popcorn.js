@@ -41,6 +41,14 @@ window.onload = function () {
 		document.cookie = "mall=" + Game.mall.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "inductionFurnace=" + Game.inductionFurnace.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "clicker=" + Game.clicker.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "stoveUpgrade=" + Game.stoveUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "microwaveUpgrade=" + Game.microwaveUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "vendingMachineUpgrade=" + Game.vendingMachineUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "ovenUpgrade=" + Game.ovenUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "theaterUpgrade=" + Game.theaterUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "mallUpgrade=" + Game.mallUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "factoryUpgrade=" + Game.factoryUpgrade.count + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "inductionFurnaceUpgrade=" + Game.inductionFurnaceUpgrade.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "poppersOpen=" + poppersOpen + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "upgradesOpen=" + upgradesOpen + "; expires=" + now.toUTCString() + ";";
 		console.log("cookies saved");
@@ -76,14 +84,14 @@ var Game = function () {
 	this.factory                 = new Popper(50000001, 3111);
 	this.inductionFurnace        = new Popper(631000631, 9452);
 	this.clicker                 = new ClickerUpgrade();
-	/*this.stoveUpgrade            = new PopperUpgrade(, Game.stove);
-	this.microwaveUpgrade        = new PopperUpgrade(, Game.microwave);
-	this.vendingMachineUpgrade   = new PopperUpgrade(, Game.vendingMachine);
-	this.ovenUpgrade             = new PopperUpgrade(, Game.oven);
-	this.theaterUpgrade          = new PopperUpgrade(, Game.theater);
-	this.mallUpgrade             = new PopperUpgrade(, Game.mall);
-	this.factoryUpgrade          = new PopperUpgrade(, Game.factory);
-	this.inductionFurnaceUpgrade = new PopperUpgrade(, Game.inductionFurnace);*/
+	this.stoveUpgrade            = new PopperUpgrade(5624, Game.stove);
+	this.microwaveUpgrade        = new PopperUpgrade(47252, Game.microwave);
+	this.vendingMachineUpgrade   = new PopperUpgrade(1104029, Game.vendingMachine);
+	this.ovenUpgrade             = new PopperUpgrade(8932995, Game.oven);
+	this.theaterUpgrade          = new PopperUpgrade(35849372, Game.theater);
+	this.mallUpgrade             = new PopperUpgrade(100000010, Game.mall);
+	this.factoryUpgrade          = new PopperUpgrade(9876543201, Game.factory);
+	this.inductionFurnaceUpgrade = new PopperUpgrade(50322182045, Game.inductionFurnace);
 	this.calcClick = function () {
 		this.popcornPerClick = Math.pow(CLICK_MULTIPLIER, this.clicker.count);
 	}
@@ -148,7 +156,7 @@ var Game = new Game();
 var POPPER_COST_MULTIPLIER = 1.16;
 var SELL_MULTIPLIER = .5;
 var CLICK_MULTIPLIER = 2;
-var POPPER_UPGRADE_MULTIPLIER = 1.5;
+var POPPER_UPGRADE_MULTIPLIER = 1.79;
 
 var poppedCount = 0;
 popZone.addEventListener("click", function (event) {
@@ -286,6 +294,19 @@ addPopperEventListeners(Game.theater, theaterDisplay, theaterSellDisplay);
 addPopperEventListeners(Game.mall, mallDisplay, mallSellDisplay);
 addPopperEventListeners(Game.factory, factoryDisplay, factorySellDisplay);
 addPopperEventListeners(Game.inductionFurnace, inductionFurnaceDisplay, inductionFurnaceSellDisplay);
+function addPopperUpgradeEventListeners (popperUpgrade, popperUpgradeDisplay) {
+	popperUpgradeDisplay.addEventListener("click", function () {
+		popperUpgrade.buyUpgrade();
+	});
+}
+addPopperUpgradeEventListeners(Game.stoveUpgrade, stoveUpgradeDisplay);
+addPopperUpgradeEventListeners(Game.microwaveUpgrade, microwaveUpgradeDisplay);
+addPopperUpgradeEventListeners(Game.vendingMachineUpgrade, vendingMachineUpgradeDisplay);
+addPopperUpgradeEventListeners(Game.ovenUpgrade, ovenUpgradeDisplay);
+addPopperUpgradeEventListeners(Game.theaterUpgrade, theaterUpgradeDisplay);
+addPopperUpgradeEventListeners(Game.mallUpgrade, mallUpgradeDisplay);
+addPopperUpgradeEventListeners(Game.factoryUpgrade, factoryUpgradeDisplay);
+addPopperUpgradeEventListeners(Game.inductionFurnaceUpgrade, inductionFurnaceUpgradeDisplay);
 
 clickerDisplay.addEventListener("click", function () {
 	if (Game.clicker.buyUpgrade() == true) {
@@ -296,7 +317,86 @@ clickerDisplay.addEventListener("click", function () {
 function commas (x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+function romanNumerals (x) {
+	if (x >= 1000) {
+		return "M" + romanNumerals(x - 1000);
+	} else if (x >= 500) {
+		if (x == 999) {
+			return "IM" + romanNumerals(x - 999);
+		} else {
+			return "D" + romanNumerals(x - 500);
+		}
+	} else if (x >= 100) {
+		if (x == 499) {
+			return "ID" + romanNumerals(x - 499);
+		} else if (x >= 400) {
+			return "CD" + romanNumerals(x - 400);
+		} else {
+			return "C" + romanNumerals(x - 100);
+		}
+	} else if (x >= 50) {
+		if (x == 99) {
+			return "IC" + romanNumerals(x - 99);
+		} else {
+			return "L" + romanNumerals(x - 50);
+		}
+	} else if (x >= 10) {
+		if (x == 49) {
+			return "IL" + romanNumerals(x - 49);
+		} else if (x >= 40) {
+			return "XL" + romanNumerals(x - 40);
+		} else {
+			return "X" + romanNumerals(x - 10);
+		}
+	} else if (x >= 5) {
+		if (x == 9) {
+			return "IX" + romanNumerals(x - 9);
+		} else {
+			return "V" + romanNumerals(x - 5);
+		}
+	} else if (x >= 1) {
+		if (x == 4) {
+			return "IV" + romanNumerals(x - 4);
+		} else {
+			return "I" + romanNumerals(x - 1);
+		}
+	} else {
+		return "";
+	}
+}
 
+//these functions are outside of the setInterval to prevent them being recreated every time the interval is run
+function updatePopperDisplay (name, count, cost, display, countDisplay, costDisplay, sellDisplay) {
+	countDisplay.innerHTML = name + ": " + count;
+	costDisplay.innerHTML = "Cost: " + commas(cost);
+	if (Game.popcorn - cost >= 0) {
+		display.style.backgroundColor = "blue";
+		display.style.cursor = "pointer";
+	} else {
+		display.style.backgroundColor = "#000066";
+		display.style.cursor = "default";
+	}
+	if (count > 0) {
+		sellDisplay.style.backgroundColor = "red";
+		sellDisplay.style.color = "white";
+		sellDisplay.style.cursor = "pointer";
+	} else {
+		sellDisplay.style.backgroundColor = "#990000";
+		sellDisplay.style.color = "#999999";
+		sellDisplay.style.cursor = "default";
+	}
+}
+function updatePopperUpgradeDisplay (name, count, cost, display, countDisplay, costDisplay) {
+	countDisplay.innerHTML = name + " " + romanNumerals(count + 1);
+	costDisplay.innerHTML = "Cost: " + commas(cost);
+	if (Game.popcorn - cost >= 0) {
+		display.style.backgroundColor = "blue";
+		display.style.cursor = "pointer";
+	} else {
+		display.style.backgroundColor = "#000066";
+		display.style.cursor = "default";
+	}
+}
 window.setInterval(function () {
 	popcornDisplay.innerHTML = commas(Math.floor(Game.popcorn));
 	Game.popcornPerSecond = 
@@ -311,26 +411,6 @@ window.setInterval(function () {
 	popcornPerSecondDisplay.innerHTML = commas(Math.round(Game.popcornPerSecond * 10) / 10) + " Popcorn/Second";
 	title.innerHTML = commas(Math.floor(Game.popcorn)) + " Popcorn | Popcorn Clicker";
 
-	function updatePopperDisplay (popperName, popperCount, popperCost, popperDisplay, popperCountDisplay, popperCostDisplay, popperSellDisplay) {
-		popperCountDisplay.innerHTML = popperName + ": " + popperCount;
-		popperCostDisplay.innerHTML = "Cost: " + commas(popperCost);
-		if (Game.popcorn - popperCost >= 0) {
-			popperDisplay.style.backgroundColor = "blue";
-			popperDisplay.style.cursor = "pointer";
-		} else {
-			popperDisplay.style.backgroundColor = "#000066";
-			popperDisplay.style.cursor = "default";
-		}
-		if (popperCount > 0) {
-			popperSellDisplay.style.backgroundColor = "red";
-			popperSellDisplay.style.color = "white";
-			popperSellDisplay.style.cursor = "pointer";
-		} else {
-			popperSellDisplay.style.backgroundColor = "#990000";
-			popperSellDisplay.style.color = "#999999";
-			popperSellDisplay.style.cursor = "default";
-		}
-	}
 	updatePopperDisplay("Stove", Game.stove.count, Game.stove.cost, stoveDisplay, stoveCountDisplay, stoveCostDisplay, stoveSellDisplay);
 	updatePopperDisplay("Microwave", Game.microwave.count, Game.microwave.cost, microwaveDisplay, microwaveCountDisplay, microwaveCostDisplay, microwaveSellDisplay);
 	updatePopperDisplay("Vending Machine", Game.vendingMachine.count, Game.vendingMachine.cost, vendingMachineDisplay, vendingMachineCountDisplay, vendingMachineCostDisplay, vendingMachineSellDisplay);
@@ -340,7 +420,7 @@ window.setInterval(function () {
 	updatePopperDisplay("Factory", Game.factory.count, Game.factory.cost, factoryDisplay, factoryCountDisplay, factoryCostDisplay, factorySellDisplay);
 	updatePopperDisplay("Induction Furnace", Game.inductionFurnace.count, Game.inductionFurnace.cost, inductionFurnaceDisplay, inductionFurnaceCountDisplay, inductionFurnaceCostDisplay, inductionFurnaceSellDisplay);
 
-	clickerCountDisplay.innerHTML = "Clicker" + (Game.clicker.count + 1);
+	clickerCountDisplay.innerHTML = "Clicker " + romanNumerals(Game.clicker.count + 1);
 	clickerCostDisplay.innerHTML = "Cost: " + commas(Game.clicker.cost);
 	popZone.title = "Each click pops " + commas(Game.popcornPerClick) + " popcorn";
 	if (Game.popcorn - Game.clicker.cost >= 0) {
@@ -350,6 +430,15 @@ window.setInterval(function () {
 		clickerDisplay.style.backgroundColor = "#000066";
 		clickerDisplay.style.cursor = "auto";
 	}
+
+	updatePopperUpgradeDisplay("Stove", Game.stoveUpgrade.count, Game.stoveUpgrade.cost, stoveUpgradeDisplay, stoveUpgradeCountDisplay, stoveUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Microwave", Game.microwaveUpgrade.count, Game.microwaveUpgrade.cost, microwaveUpgradeDisplay, microwaveUpgradeCountDisplay, microwaveUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Vending Machine", Game.vendingMachineUpgrade.count, Game.vendingMachineUpgrade.cost, vendingMachineUpgradeDisplay, vendingMachineUpgradeCountDisplay, vendingMachineUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Oven", Game.ovenUpgrade.count, Game.ovenUpgrade.cost, ovenUpgradeDisplay, ovenUpgradeCountDisplay, ovenUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Theater", Game.theaterUpgrade.count, Game.theaterUpgrade.cost, theaterUpgradeDisplay, theaterUpgradeCountDisplay, theaterUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Mall", Game.mallUpgrade.count, Game.mallUpgrade.cost, mallUpgradeDisplay, mallUpgradeCountDisplay, mallUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Factory", Game.factoryUpgrade.count, Game.factoryUpgrade.cost, factoryUpgradeDisplay, factoryUpgradeCountDisplay, factoryUpgradeCostDisplay);
+	updatePopperUpgradeDisplay("Induction Furnace", Game.inductionFurnaceUpgrade.count, Game.inductionFurnaceUpgrade.cost, inductionFurnaceUpgradeDisplay, inductionFurnaceUpgradeCountDisplay, inductionFurnaceUpgradeCostDisplay);
 }, 5);
 
 
