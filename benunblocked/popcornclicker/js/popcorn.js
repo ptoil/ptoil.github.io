@@ -171,14 +171,6 @@ popZone.addEventListener("click", function (event) {
 		if (dozeCheck.checked == true)
 			random15 = 0;
 		random15 = 1;
-		newPopcorn.style.transform = "rotate(" + random360 + "deg)";
-		newPopcorn.float = "true";
-		newPopcorn.style.position = "absolute";
-		//newPopcorn.style.left = x + "px";
-		//newPopcorn.style.top = y + "px";
-		newPopcorn.style.zIndex = -1;
-		newPopcorn.id = "pop" + poppedCount;
-		newPopcorn.className = "unselectable";
 		switch (random15) {
 			case 1:
 				newPopcorn.src = "images/popcorn1.png"; x -= 125 / 2; y -= 116 / 2;
@@ -186,13 +178,6 @@ popZone.addEventListener("click", function (event) {
 				newPopcorn.style.width = "0px";
 				newPopcorn.style.top = (125 / 2) + "px";
 				newPopcorn.style.left = (116 / 2) + "px";
-				popZone.appendChild(newPopcorn);
-				$(newPopcorn.id).animate({
-					height: 125,
-					width: 116,
-					top: 125,
-					left: 116
-				}, 1000);
 				break;
 			case 2:
 				newPopcorn.src = "images/popcorn2.png"; x -= 125 / 2; y -= 102 / 2;
@@ -240,7 +225,18 @@ popZone.addEventListener("click", function (event) {
 				newPopcorn.src = "images/suhailDoze.png"; x -= 93 / 2; y -= 100 / 2;
 				break;
 		}
-		
+		newPopcorn.style.transform = "rotate(" + random360 + "deg)";
+		newPopcorn.float = "true";
+		newPopcorn.style.position = "absolute";
+		//newPopcorn.style.left = x + "px";
+		//newPopcorn.style.top = y + "px";
+		newPopcorn.style.zIndex = -1;
+		newPopcorn.id = "pop" + poppedCount;
+		newPopcorn.className = "unselectable";
+		popZone.appendChild(newPopcorn);
+		$(newPopcorn.id).animate({
+			height
+		});
 		fadePopcorn(poppedCount);
 		poppedCount++;
 	}
