@@ -192,7 +192,7 @@ popZone.addEventListener("click", function (event) {
 					width: "+=116",
 					top: "+=125",
 					left: "+=116"
-				});
+				}, 1000);
 				break;
 			case 2:
 				newPopcorn.src = "images/popcorn2.png"; x -= 125 / 2; y -= 102 / 2;
