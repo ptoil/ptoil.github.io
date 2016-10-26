@@ -188,10 +188,10 @@ popZone.addEventListener("click", function (event) {
 				newPopcorn.style.left = (116 / 2) + "px";
 				popZone.appendChild(newPopcorn);
 				$(newPopcorn.id).animate({
-					height: "+=125",
-					width: "+=116",
-					top: "+=125",
-					left: "+=116"
+					height: 125,
+					width: 116,
+					top: 125,
+					left: 116
 				}, 1000);
 				break;
 			case 2:
