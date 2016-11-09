@@ -174,6 +174,8 @@ popZone.addEventListener("click", function (event) {
 			random15 = -2;
 		if (hillaryCheck.checked)
 			random15 = -3;
+		if (harambeCheck.checked)
+			random15 = -4;
 		switch (random15) {
 			case 1:
 				newPopcorn.src = "images/popcorn1.png"; x -= 125 / 2; y -= 116 / 2;
@@ -228,6 +230,9 @@ popZone.addEventListener("click", function (event) {
 				break;
 			case -3:
 				newPopcorn.src = "images/hillary.png"; x -= 115 / 2; y -= 125 / 2;
+				break;
+			case -4:
+				newPopcorn.src = "images/harambe.png"; x -= 125 / 2; y -= 125 / 2;
 				break;
 			default:
 				console.log("Error choosing popcorn images");
