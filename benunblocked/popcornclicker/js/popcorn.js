@@ -242,7 +242,7 @@ popZone.addEventListener("click", function (event) {
 		newPopcorn.id = "pop" + poppedCount;
 		newPopcorn.className = "unselectable";
 		popZone.appendChild(newPopcorn);
-		fadePopcorn(poppedCount);
+		//fadePopcorn(poppedCount);
 		poppedCount++;
 	}
 });
