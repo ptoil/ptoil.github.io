@@ -168,8 +168,10 @@ popZone.addEventListener("click", function (event) {
 		var newPopcorn = document.createElement("img");
 		var random15 = Math.floor(Math.random() * 15 + 1);
 		var random360 = Math.floor(Math.random() * 360 + 1);
-		if (dozeCheck.checked == true)
-			random15 = 0;
+		if (dozeCheck.checked)
+			random15 = -1;
+		if (trumpCheck.checked)
+			random15 = -2;
 		switch (random15) {
 			case 1:
 				newPopcorn.src = "images/popcorn1.png"; x -= 125 / 2; y -= 116 / 2;
@@ -216,8 +218,14 @@ popZone.addEventListener("click", function (event) {
 			case 15:
 				newPopcorn.src = "images/popcorn15.png"; x -= 108 / 2; y -= 125 / 2;
 				break;
-			default:
+			case -1:
 				newPopcorn.src = "images/suhailDoze.png"; x -= 93 / 2; y -= 100 / 2;
+				break;
+			case -2:
+				newPopcorn.src = "images/trump.png"; x -= 125 / 2; y -= 125 / 2;
+				break;
+			default:
+				console.log("Error choosing popcorn images");
 				break;
 		}
 		newPopcorn.style.transform = "rotate(" + random360 + "deg)";
