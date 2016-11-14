@@ -495,7 +495,7 @@ reset.addEventListener("click", function () {
 //freePopcorn for debug
 freePopcorn.addEventListener("click", function () {
 	Game.popcorn += 1000000;
-}
+});
 
 //Konami Code John Cena
 var inputs = [];
