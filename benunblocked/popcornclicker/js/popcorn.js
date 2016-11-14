@@ -406,7 +406,7 @@ function updatePopperDisplay (name, count, cost, display, countDisplay, costDisp
 }
 function updatePopperUpgradeDisplay (name, count, cost, display, countDisplay, costDisplay) {
 	countDisplay.innerHTML = name + " " + romanNumerals(count + 1);
-	costDisplay.innerHTML = "Cost: " + commas(cost);
+	costDisplay.innerHTML = "Cost: " + commas(Math.floor(cost + .5));
 	if (Game.popcorn - cost >= 0) {
 		display.style.backgroundColor = "blue";
 		display.style.cursor = "pointer";
