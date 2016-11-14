@@ -70,6 +70,17 @@ body {
 	display: inline-block;
 	cursor: pointer;
 }
+#freePopcorn {
+	height: 25px;
+	width: 45px;
+	line-height: 25px;
+	background-color: green;
+	color: white;
+	border-radius: 15px;
+	text-align: center;
+	display: inline-block;
+	cursor: pointer;
+}
 #popcornDisplay {
 	color: #e6e600;
 	font-size: 40px;
