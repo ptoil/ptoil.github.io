@@ -497,12 +497,15 @@ freePopcorn.addEventListener("click", function () {
 	Game.popcorn += 1000000;
 });
 
-//Konami Code John Cena
+
+
+//Passcode checker
 var inputs = [];
 var completed = false;
 document.addEventListener("keydown", function (event) {
 	inputs.push(event.keyCode);
 	for (i = 0; i < inputs.length; i++) {
+		//Konami code for John Cena
 		if (inputs[i]     == 38) { //up
 		if (inputs[i + 1] == 38) { //up
 		if (inputs[i + 2] == 40) { //down
@@ -520,6 +523,18 @@ document.addEventListener("keydown", function (event) {
 			johnCenaGIF.style.display = "block";
 			johnCenaMPEG.play();
 		}}}}}}}}}}}}
+		//"faces" code
+		if (inputs[i]     == 70) { //f
+		if (inputs[i + 1] == 65) { //a
+		if (inputs[i + 2] == 67) { //c
+		if (inputs[i + 3] == 69) { //e
+		if (inputs[i + 4] == 83) { //s
+			popcornCheck.style.display = "block";
+			dozeCheck.style.display = "block";
+			harambeCheck.style.display = "block";
+			trumpCheck.style.display = "block";
+			hillaryCheck.style.display = "block";
+		}}}}}
 	}
 });
 
