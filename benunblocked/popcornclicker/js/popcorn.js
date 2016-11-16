@@ -529,11 +529,11 @@ document.addEventListener("keydown", function (event) {
 		if (inputs[i + 2] == 67) { //c
 		if (inputs[i + 3] == 69) { //e
 		if (inputs[i + 4] == 83) { //s
-			popcornCheck.style.display = "block";
-			dozeCheck.style.display = "block";
-			harambeCheck.style.display = "block";
-			trumpCheck.style.display = "block";
-			hillaryCheck.style.display = "block";
+			popcornCheck.style.display = "default";
+			dozeCheck.style.display = "default";
+			harambeCheck.style.display = "default";
+			trumpCheck.style.display = "default";
+			hillaryCheck.style.display = "default";
 		}}}}}
 	}
 });
