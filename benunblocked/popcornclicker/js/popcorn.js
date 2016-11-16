@@ -529,7 +529,6 @@ document.addEventListener("keydown", function (event) {
 		if (inputs[i + 2] == 67) { //c
 		if (inputs[i + 3] == 69) { //e
 		if (inputs[i + 4] == 83) { //s
-			console.log("faces");
 			popcornSelect.style.display = "initial";
 		}}}}}
 	}
