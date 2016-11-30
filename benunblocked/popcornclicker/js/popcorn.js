@@ -234,6 +234,9 @@ popZone.addEventListener("click", function (event) {
 			case -4:
 				newPopcorn.src = "images/harambe.png"; x -= 125 / 2; y -= 125 / 2;
 				break;
+			case -5:
+				newPopcorn.src = "images/cornboy.png"; x -= 103 / 2; y -= 127 / 2;
+				break;
 			default:
 				console.log("Error choosing popcorn images");
 				break;
