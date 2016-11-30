@@ -75,6 +75,7 @@ var Game = function () {
 	this.popcorn = 0;
 	this.popcornPerSecond = 0;
 	this.popcornPerClick = 1;
+	this.coins = 0;
 	this.stove                   = new Popper(20, .2);
 	this.microwave               = new Popper(200, 1);
 	this.vendingMachine          = new Popper(6430, 15);
