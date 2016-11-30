@@ -84,10 +84,6 @@ body {
 	display: inline-block;
 	cursor: pointer;
 }
-#popcornColumn {
-	width: 50%;	
-	background-color: #ff99ff;
-}
 #popcornDisplay {
 	color: #e6e600;
 	font-size: 40px;
@@ -98,17 +94,7 @@ body {
 	font-size: 20px;
 	font-weight: bold;
 }
-#coinColumn {
-	width: 50%;
-	background-color: #ff00ff;
-}
-#coinDisplay {
-	color: gold;
-	font-size: 40px;
-	font-weight: bold;
-}
 #popZone {
-	position: relative;
 	height: 100%;
 	cursor: pointer;
 }
