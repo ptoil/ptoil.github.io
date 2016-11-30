@@ -176,6 +176,8 @@ popZone.addEventListener("click", function (event) {
 			random15 = -3;
 		if (harambeCheck.checked)
 			random15 = -4;
+		if (cornboyCheck.checked)
+			random15 = -5;
 		switch (random15) {
 			case 1:
 				newPopcorn.src = "images/popcorn1.png"; x -= 125 / 2; y -= 116 / 2;
