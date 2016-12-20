@@ -120,6 +120,15 @@ var Popper = function (baseCost, pps) {
 		this.cost = Math.floor(this.BASE_COST * Math.pow(POPPER_COST_MULTIPLIER, this.count) + .5);
 	}
 }
+var Shipment = function (baseCost, cps) {
+	this.count = 0;
+	this.BASE_COST = baseCost;
+	this.cost = this.BASE_COST;
+	this.CPS = cps;
+	this.buyShipment = function () {
+		if (Game.coins - this.cost >= 0) { //all poppers need to be converted to coins cyrrency
+	}
+}
 var ClickerUpgrade = function () {
 	this.count = 0;
 	this.BASE_COST = 1000;
