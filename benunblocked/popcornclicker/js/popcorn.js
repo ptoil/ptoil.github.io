@@ -126,7 +126,21 @@ var Shipment = function (baseCost, cps) {
 	this.cost = this.BASE_COST;
 	this.CPS = cps;
 	this.buyShipment = function () {
-		if (Game.coins - this.cost >= 0) { //all poppers need to be converted to coins cyrrency
+		if (Game.coins - this.cost >= 0) { //all poppers need to be converted to coins currency
+			this.count++;
+			Game.coins -= this.cost;
+			this.calcCost();
+		}
+	}
+	this.sellShipment = function () {
+		if (this.count > 0) {
+			this.count--;
+			Game.coins += this.cost * SELL_MULTIPLIER;
+			this.calcCost();
+		}
+	}
+	this.calcCost = function () {
+		this.cost = 0; //TODO
 	}
 }
 var ClickerUpgrade = function () {
@@ -505,6 +519,7 @@ reset.addEventListener("click", function () {
 //freePopcorn for debug
 freePopcorn.addEventListener("click", function () {
 	Game.popcorn += 1000000;
+	console.log($("coinDisplay").height());
 });
 
 
