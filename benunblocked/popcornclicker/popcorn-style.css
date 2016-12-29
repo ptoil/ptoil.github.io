@@ -85,9 +85,9 @@ body {
 	cursor: pointer;
 }
 #popcornColumn {
-	display: inline-block;
-	width: 50%;	
-	background-color: #ff99ff;
+	float: left;
+	height: 100%;
+	width: 50%;
 }
 #popcornDisplay {
 	color: #e6e600;
@@ -100,14 +100,18 @@ body {
 	font-weight: bold;
 }
 #coinColumn {
-	display: inline-block;
+	float: left;
+	height: 100%;
 	width: 50%;
-	position: relative;
-	background-color: gold;
 }
 #coinDisplay {
 	color: gold;
 	font-size: 40px;
+	font-weight: bold;
+}
+#coinsPerShipmentDisplay {
+	color: gold;
+	font-size: 20px;
 	font-weight: bold;
 }
 #popZone {
@@ -158,14 +162,14 @@ body {
 	left: 80%;
 	cursor: pointer;
 }
-.storeItems {
+.storeItem {
 	background-color: #000066;
 	height: 90px;
 	line-height: 90px;
 	font-size: 20px;
 	color: white;
 }
-.storeItemParts {
+.storeItemPart {
 	height: 50%;
 	line-height: 45px;
 	display: inherit;
