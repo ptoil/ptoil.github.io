@@ -76,6 +76,7 @@ var Game = function () {
 	this.popcornPerSecond = 0;
 	this.popcornPerClick = 1;
 	this.coins = 0;
+	this.coinsPerShipment = 0;
 	this.stove                   = new Popper(20, .2);
 	this.microwave               = new Popper(200, 1);
 	this.vendingMachine          = new Popper(6430, 15);
@@ -84,6 +85,7 @@ var Game = function () {
 	this.mall                    = new Popper(2000765, 1344);
 	this.factory                 = new Popper(50000001, 3111);
 	this.inductionFurnace        = new Popper(631000631, 9452);
+	//this. = new Shipment();
 	this.clicker                 = new ClickerUpgrade();
 	this.stoveUpgrade            = new PopperUpgrade(5624, Game.stove);
 	this.microwaveUpgrade        = new PopperUpgrade(47252, Game.microwave);
@@ -103,16 +105,16 @@ var Popper = function (baseCost, pps) {
 	this.cost = this.BASE_COST;
 	this.PPS = pps;
 	this.buyPopper = function () {
-		if (Game.popcorn - this.cost >= 0) {
+		if (Game.coins - this.cost >= 0) {
 			this.count++;
-			Game.popcorn -= this.cost;
+			Game.coins -= this.cost;
 			this.calcCost();
 		}
 	}
 	this.sellPopper = function () {
 		if (this.count > 0) {
 			this.count--;
-			Game.popcorn += this.cost * SELL_MULTIPLIER;
+			Game.coins += this.cost * SELL_MULTIPLIER;
 			this.calcCost();
 		}
 	}
@@ -148,9 +150,9 @@ var ClickerUpgrade = function () {
 	this.BASE_COST = 1000;
 	this.cost = this.BASE_COST;
 	this.buyUpgrade = function () {
-		if (Game.popcorn - this.cost >= 0) {
+		if (Game.coins - this.cost >= 0) {
 			this.count++;
-			Game.popcorn -= this.cost;
+			Game.coins -= this.cost;
 			Game.calcClick();
 			this.calcCost();
 		}
@@ -164,9 +166,9 @@ var PopperUpgrade = function (cost, popper) {
 	this.BASE_COST = cost;
 	this.cost = this.BASE_COST;
 	this.buyUpgrade = function () {
-		if (Game.popcorn - this.cost >= 0) {
+		if (Game.coins - this.cost >= 0) {
 			this.count++;
-			Game.popcorn -= this.cost;
+			Game.coins -= this.cost;
 
 			this.calcCost();
 		}
@@ -336,6 +338,21 @@ addPopperEventListeners(Game.theater, theaterDisplay, theaterSellDisplay);
 addPopperEventListeners(Game.mall, mallDisplay, mallSellDisplay);
 addPopperEventListeners(Game.factory, factoryDisplay, factorySellDisplay);
 addPopperEventListeners(Game.inductionFurnace, inductionFurnaceDisplay, inductionFurnaceSellDisplay);
+function addShipmentEventListeners (shipment, shipmentDisplay, shipmentSellDisplay) {
+	shipmentDisplay.addEventListener("click", function (event) {
+		if (event.target == shipmentSellDisplay) return;
+		shipment.buyShipment();
+	});
+	shipmentDisplay.addEventListener("mouseenter", function () {
+		shipmentSellDisplay.style.visibility = "visible";
+	});
+	shipmentDisplay.addEventListener("mouseleave", function () {
+		shipmentSellDisplay.style.visibility = "hidden";
+	});
+	shipmentSellDisplay.addEventListener("click", function () {
+		shipment.sellShipment();
+	});
+}
 function addPopperUpgradeEventListeners (popperUpgrade, popperUpgradeDisplay) {
 	popperUpgradeDisplay.addEventListener("click", function () {
 		popperUpgrade.buyUpgrade();
@@ -408,7 +425,7 @@ function romanNumerals (x) {
 }
 
 //these functions are outside of the setInterval to prevent them being recreated every time the interval is run
-function updatePopperDisplay (name, count, cost, display, countDisplay, costDisplay, sellDisplay) {
+function updateStoreItemDisplay (name, count, cost, display, countDisplay, costDisplay, sellDisplay) {
 	countDisplay.innerHTML = name + ": " + count;
 	costDisplay.innerHTML = "Cost: " + commas(cost);
 	if (Game.popcorn - cost >= 0) {
@@ -453,14 +470,14 @@ window.setInterval(function () {
 	popcornPerSecondDisplay.innerHTML = commas(Math.round(Game.popcornPerSecond * 10) / 10) + " Popcorn/Second";
 	title.innerHTML = commas(Math.floor(Game.popcorn)) + " Popcorn | Popcorn Clicker";
 
-	updatePopperDisplay("Stove", Game.stove.count, Game.stove.cost, stoveDisplay, stoveCountDisplay, stoveCostDisplay, stoveSellDisplay);
-	updatePopperDisplay("Microwave", Game.microwave.count, Game.microwave.cost, microwaveDisplay, microwaveCountDisplay, microwaveCostDisplay, microwaveSellDisplay);
-	updatePopperDisplay("Vending Machine", Game.vendingMachine.count, Game.vendingMachine.cost, vendingMachineDisplay, vendingMachineCountDisplay, vendingMachineCostDisplay, vendingMachineSellDisplay);
-	updatePopperDisplay("Oven", Game.oven.count, Game.oven.cost, ovenDisplay, ovenCountDisplay, ovenCostDisplay, ovenSellDisplay);
-	updatePopperDisplay("Theater", Game.theater.count, Game.theater.cost, theaterDisplay, theaterCountDisplay, theaterCostDisplay, theaterSellDisplay);
-	updatePopperDisplay("Mall", Game.mall.count, Game.mall.cost, mallDisplay, mallCountDisplay, mallCostDisplay, mallSellDisplay);
-	updatePopperDisplay("Factory", Game.factory.count, Game.factory.cost, factoryDisplay, factoryCountDisplay, factoryCostDisplay, factorySellDisplay);
-	updatePopperDisplay("Induction Furnace", Game.inductionFurnace.count, Game.inductionFurnace.cost, inductionFurnaceDisplay, inductionFurnaceCountDisplay, inductionFurnaceCostDisplay, inductionFurnaceSellDisplay);
+	updateStoreItemDisplay("Stove", Game.stove.count, Game.stove.cost, stoveDisplay, stoveCountDisplay, stoveCostDisplay, stoveSellDisplay);
+	updateStoreItemDisplay("Microwave", Game.microwave.count, Game.microwave.cost, microwaveDisplay, microwaveCountDisplay, microwaveCostDisplay, microwaveSellDisplay);
+	updateStoreItemDisplay("Vending Machine", Game.vendingMachine.count, Game.vendingMachine.cost, vendingMachineDisplay, vendingMachineCountDisplay, vendingMachineCostDisplay, vendingMachineSellDisplay);
+	updateStoreItemDisplay("Oven", Game.oven.count, Game.oven.cost, ovenDisplay, ovenCountDisplay, ovenCostDisplay, ovenSellDisplay);
+	updateStoreItemDisplay("Theater", Game.theater.count, Game.theater.cost, theaterDisplay, theaterCountDisplay, theaterCostDisplay, theaterSellDisplay);
+	updateStoreItemDisplay("Mall", Game.mall.count, Game.mall.cost, mallDisplay, mallCountDisplay, mallCostDisplay, mallSellDisplay);
+	updateStoreItemDisplay("Factory", Game.factory.count, Game.factory.cost, factoryDisplay, factoryCountDisplay, factoryCostDisplay, factorySellDisplay);
+	updateStoreItemDisplay("Induction Furnace", Game.inductionFurnace.count, Game.inductionFurnace.cost, inductionFurnaceDisplay, inductionFurnaceCountDisplay, inductionFurnaceCostDisplay, inductionFurnaceSellDisplay);
 
 	clickerCountDisplay.innerHTML = "Clicker " + romanNumerals(Game.clicker.count + 1);
 	clickerCostDisplay.innerHTML = "Cost: " + commas(Game.clicker.cost);
