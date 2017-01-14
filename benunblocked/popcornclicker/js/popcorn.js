@@ -170,14 +170,16 @@ popZone.addEventListener("click", function (event) {
 		var random360 = Math.floor(Math.random() * 360 + 1);
 		if (dozeCheck.checked)
 			random15 = -1;
-		if (trumpCheck.checked)
+		if (cornboyCheck.checked)
 			random15 = -2;
-		if (hillaryCheck.checked)
+		if (creepymattCheck.checked)
 			random15 = -3;
 		if (harambeCheck.checked)
 			random15 = -4;
-		if (cornboyCheck.checked)
+		if (trumpCheck.checked)
 			random15 = -5;
+		if (hillaryCheck.checked)
+			random15 = -6;
 		switch (random15) {
 			case 1:
 				newPopcorn.src = "images/popcorn1.png"; x -= 125 / 2; y -= 116 / 2;
@@ -225,20 +227,22 @@ popZone.addEventListener("click", function (event) {
 				newPopcorn.src = "images/popcorn15.png"; x -= 108 / 2; y -= 125 / 2;
 				break;
 			case -1:
-				newPopcorn.src = "images/suhailDoze.png"; x -= 93 / 2; y -= 100 / 2;
+				newPopcorn.src = "images/suhailDoze.png"; x -= 166 / 2; y -= 125 / 2;
 				break;
 			case -2:
-				newPopcorn.src = "images/trump.png"; x -= 125 / 2; y -= 125 / 2;
+				newPopcorn.src = "images/cornboy.png"; x -= 103 / 2; y -= 127 / 2;
 				break;
 			case -3:
-				newPopcorn.src = "images/hillary.png"; x -= 115 / 2; y -= 125 / 2;
+				newPopcorn.src = "images/creepymatt.png"; x -= 96 / 2; y -= 128 / 2;
 				break;
 			case -4:
 				newPopcorn.src = "images/harambe.png"; x -= 125 / 2; y -= 125 / 2;
 				break;
 			case -5:
-				newPopcorn.src = "images/cornboy.png"; x -= 103 / 2; y -= 127 / 2;
+				newPopcorn.src = "images/trump.png"; x -= 125 / 2; y -= 125 / 2;
 				break;
+			case -6:
+				newPopcorn.src = "images/hillary.png"; x -= 115 / 2; y -= 125 / 2;
 			default:
 				console.log("Error choosing popcorn images");
 				break;
