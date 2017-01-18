@@ -9,6 +9,14 @@ window.onload = function () {
 	Game.mall.count = Number(getCookie("mall"));
 	Game.inductionFurnace.count = Number(getCookie("inductionFurnace"));
 	Game.clicker.count = Number(getCookie("clicker"));
+	Game.stoveUpgrade.count = Number(getCookie("stoveUpgrade"));
+	Game.microwaveUpgrade.count = Number(getCookie("microwaveUpgrade"));
+	Game.vendingMachineUpgrade.count = Number(getCookie("vendingMachineUpgrade"));
+	Game.ovenUpgrade.count = Number(getCookie("ovenUpgrade"));
+	Game.theaterUpgrade.count = Number(getCookie("theaterUpgrade"));
+	Game.factoryUpgrade.count = Number(getCookie("factoryUpgrade"));
+	Game.mallUpgrade.count = Number(getCookie("mallUpgrade"));
+	Game.inductionFurnaceUpgrade.count = Number(getCookie("inductionFurnaceUpgrade"));
 	poppersOpen = (getCookie("poppersOpen") == "false");
 	upgradesOpen = (getCookie("upgradesOpen") == "false");
 
@@ -32,6 +40,7 @@ window.onload = function () {
 		time += 157680000 * 1000; //5 years
 		now.setTime(time);
 		document.cookie = "popcorn=" + Math.floor(Game.popcorn) + "; expires=" + now.toUTCString() + ";";
+		document.cookie = "popcorn=" + Game.coins + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "stove=" + Game.stove.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "microwave=" + Game.microwave.count + "; expires=" + now.toUTCString() + ";";
 		document.cookie = "vendingMachine=" + Game.vendingMachine.count + "; expires=" + now.toUTCString() + ";";
@@ -85,7 +94,8 @@ var Game = function () {
 	this.mall                    = new Popper(2000765, 1344);
 	this.factory                 = new Popper(50000001, 3111);
 	this.inductionFurnace        = new Popper(631000631, 9452);
-	//this. = new Shipment();
+	this.deliveryBoy             = new Shipment();
+	this.
 	this.clicker                 = new ClickerUpgrade();
 	this.stoveUpgrade            = new PopperUpgrade(5624, Game.stove);
 	this.microwaveUpgrade        = new PopperUpgrade(47252, Game.microwave);
@@ -128,7 +138,7 @@ var Shipment = function (baseCost, cps) {
 	this.cost = this.BASE_COST;
 	this.CPS = cps;
 	this.buyShipment = function () {
-		if (Game.coins - this.cost >= 0) { //all poppers need to be converted to coins currency
+		if (Game.coins - this.cost >= 0) {
 			this.count++;
 			Game.coins -= this.cost;
 			this.calcCost();
@@ -353,6 +363,7 @@ function addShipmentEventListeners (shipment, shipmentDisplay, shipmentSellDispl
 		shipment.sellShipment();
 	});
 }
+
 function addPopperUpgradeEventListeners (popperUpgrade, popperUpgradeDisplay) {
 	popperUpgradeDisplay.addEventListener("click", function () {
 		popperUpgrade.buyUpgrade();
@@ -376,7 +387,8 @@ clickerDisplay.addEventListener("click", function () {
 function commas (x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-function romanNumerals (x) {
+
+function romanNumerals (x) { //great example of recursion
 	if (x >= 1000) {
 		return "M" + romanNumerals(x - 1000);
 	} else if (x >= 500) {
@@ -427,7 +439,7 @@ function romanNumerals (x) {
 //these functions are outside of the setInterval to prevent them being recreated every time the interval is run
 function updateStoreItemDisplay (name, count, cost, display, countDisplay, costDisplay, sellDisplay) {
 	countDisplay.innerHTML = name + ": " + count;
-	costDisplay.innerHTML = "Cost: " + commas(cost);
+	costDisplay.innerHTML = "Cost: " + commas(cost) + " coins";
 	if (Game.popcorn - cost >= 0) {
 		display.style.backgroundColor = "blue";
 		display.style.cursor = "pointer";
@@ -447,7 +459,7 @@ function updateStoreItemDisplay (name, count, cost, display, countDisplay, costD
 }
 function updatePopperUpgradeDisplay (name, count, cost, display, countDisplay, costDisplay) {
 	countDisplay.innerHTML = name + " " + romanNumerals(count + 1);
-	costDisplay.innerHTML = "Cost: " + commas(Math.floor(cost + .5));
+	costDisplay.innerHTML = "Cost: " + commas(cost) + " coins";
 	if (Game.popcorn - cost >= 0) {
 		display.style.backgroundColor = "blue";
 		display.style.cursor = "pointer";
@@ -468,7 +480,9 @@ window.setInterval(function () {
 		(Game.factory.count * Game.factory.PPS) +
 		(Game.inductionFurnace.count * Game.inductionFurnace.PPS);
 	popcornPerSecondDisplay.innerHTML = commas(Math.round(Game.popcornPerSecond * 10) / 10) + " Popcorn/Second";
-	title.innerHTML = commas(Math.floor(Game.popcorn)) + " Popcorn | Popcorn Clicker";
+	coinDisplay.innerHTML = commas(Game.coins);
+	coinPerShipmentDisplay.innerHTML = commas(Game.coinsPerShipment); //TODO IMPLEMENT IN HTML
+	title.innerHTML = commas(Math.floor(Game.popcorn)) + "P, " + commas(Math.floor(Game.coins)) + "C | Popcorn Clicker";
 
 	updateStoreItemDisplay("Stove", Game.stove.count, Game.stove.cost, stoveDisplay, stoveCountDisplay, stoveCostDisplay, stoveSellDisplay);
 	updateStoreItemDisplay("Microwave", Game.microwave.count, Game.microwave.cost, microwaveDisplay, microwaveCountDisplay, microwaveCostDisplay, microwaveSellDisplay);
@@ -519,6 +533,7 @@ reset.addEventListener("click", function () {
 	var validate = confirm("Are you sure that you want to reset your Popcorn Clicker save (Satan will hunt you if you don't keep popping popcorn)?");
 	if (validate) {
 		document.cookie = "popcorn=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "coins=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "stove=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "microwave=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "vendingMachine=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
@@ -528,6 +543,14 @@ reset.addEventListener("click", function () {
 		document.cookie = "mall=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "inductionFurnace=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "clicker=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "stoveUpgrade=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "microwaveUpgrade=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "vendingMachineUpgrade=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "ovenUpgrade=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "theaterUpgrade=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "factoryUpgrade=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "mallUpgrade=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
+		document.cookie = "inductionFurnaceUpgrade=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "popperDropdown=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "upgradeDropdown=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		location.reload();
