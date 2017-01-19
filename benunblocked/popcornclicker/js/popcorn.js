@@ -11,7 +11,6 @@ window.onload = function () {
 	Game.clicker.count = Number(getCookie("clicker"));
 	poppersOpen = (getCookie("poppersOpen") == "false");
 	upgradesOpen = (getCookie("upgradesOpen") == "false");
-	shipmentsOpen = (getCookie("shipmentsOpen") == "false");
 
 	Game.stove.calcCost();
 	Game.microwave.calcCost();
@@ -23,9 +22,9 @@ window.onload = function () {
 	Game.inductionFurnace.calcCost();
 	Game.clicker.calcCost();
 	Game.calcClick();
-	dropdownFunc(poppers, popperDropdownImg, poppersOpen);
-	dropdownFunc(shipments, shipmentDropdownImg, shipmentsOpen);
-	dropdownFunc(upgrades, upgradeDropdownImg, upgradesOpen);
+	popperDropdownFunc();
+	upgradeDropdownFunc();
+
 
 	window.setInterval(function () {
 		var now = new Date();
@@ -55,7 +54,6 @@ window.onload = function () {
 		console.log("cookies saved");
 	}, 5000);
 	//IDEA: create Game instance in onload to stop player from playing before page loads
-	//create parameters for Game for cookies that need to be put into the game
 }
 
 function getCookie(cname) {
@@ -78,7 +76,6 @@ var Game = function () {
 	this.popcornPerSecond = 0;
 	this.popcornPerClick = 1;
 	this.coins = 0;
-	this.coinsPerShipment = 0;
 	this.stove                   = new Popper(20, .2);
 	this.microwave               = new Popper(200, 1);
 	this.vendingMachine          = new Popper(6430, 15);
@@ -190,101 +187,93 @@ popZone.addEventListener("click", function (event) {
 	Game.popcorn += Game.popcornPerClick;
 	$(instruction).fadeOut(1000);
 	var x = event.pageX, y = event.pageY;
-	var newPopcorn = document.createElement("img");
-	var random15 = Math.floor(Math.random() * 15 + 1);
-	var random360 = Math.floor(Math.random() * 360 + 1);
-	if (dozeCheck.checked)
-		random15 = -1;
-	if (harambeCheck.checked)
-		random15 = -2;
-	if (trumpCheck.checked)
-		random15 = -3;
-	if (hillaryCheck.checked)
-		random15 = -4;
-	switch (random15) {
-		case 1:
-			newPopcorn.src = "images/popcorn1.png"; x -= 125 / 2; y -= 116 / 2;
-			break;
-		case 2:
-			newPopcorn.src = "images/popcorn2.png"; x -= 125 / 2; y -= 102 / 2;
-			break;
-		case 3:
-			newPopcorn.src = "images/popcorn3.png"; x -= 125 / 2; y -= 102 / 2;
-			break;
-		case 4:
-			newPopcorn.src = "images/popcorn4.png"; x -= 122 / 2; y -= 125 / 2;
-			break;
-		case 5:
-			newPopcorn.src = "images/popcorn5.png"; x -= 117 / 2; y -= 125 / 2;
-			break;
-		case 6:
-			newPopcorn.src = "images/popcorn6.png"; x -= 125 / 2; y -= 105 / 2;
-			break;
-		case 7:
-			newPopcorn.src = "images/popcorn7.png"; x -= 125 / 2; y -= 93 / 2;
-			break;
-		case 8:
-			newPopcorn.src = "images/popcorn8.png"; x -= 111 / 2; y -= 125 / 2;
-			break;
-		case 9:
-			newPopcorn.src = "images/popcorn9.png"; x -= 119 / 2; y -= 125 / 2;
-			break;
-		case 10:
-			newPopcorn.src = "images/popcorn10.png"; x -= 125 / 2; y -= 102 / 2;
-			break;
-		case 11:
-			newPopcorn.src = "images/popcorn11.png"; x -= 125 / 2; y -= 85 / 2;
-			break;
-		case 12:
-			newPopcorn.src = "images/popcorn12.png"; x -= 125 / 2; y -= 115 / 2;
-			break;
-		case 13:
-			newPopcorn.src = "images/popcorn13.png"; x -= 125 / 2; y -= 87 / 2;
-			break;
-		case 14:
-			newPopcorn.src = "images/popcorn14.png"; x -= 125 / 2; y -= 104 / 2;
-			break;
-		case 15:
-			newPopcorn.src = "images/popcorn15.png"; x -= 108 / 2; y -= 125 / 2;
-			break;
-		case -1:
-			newPopcorn.src = "images/suhailDoze.png"; x -= 93 / 2; y -= 100 / 2;
-			break;
-		case -2:
-			newPopcorn.src = "images/harambe.png"; x -= 125 / 2; y -= 125 / 2;
-			break;
-		case -3:
-			newPopcorn.src = "images/trump.png"; x -= 115 / 2; y -= 125 / 2;
-			break;
-		case -4:
-			newPopcorn.src = "images/hillary.png"; x -= 125 / 2; y -= 125 / 2;
-			break;
-		default:
-			console.log("Error choosing popcorn images");
-			break;
+	var leftBound = $("#popZone").position().left, topBound = $("#popZone").position().top, rightBound = $("#popZone").position().left + $("#popZone").width();
+	if (!(x < leftBound || y < topBound || x > rightBound)) {
+		var newPopcorn = document.createElement("img");
+		var random15 = Math.floor(Math.random() * 15 + 1);
+		var random360 = Math.floor(Math.random() * 360 + 1);
+		if (dozeCheck.checked)
+			random15 = -1;
+		if (trumpCheck.checked)
+			random15 = -2;
+		if (hillaryCheck.checked)
+			random15 = -3;
+		if (harambeCheck.checked)
+			random15 = -4;
+		switch (random15) {
+			case 1:
+				newPopcorn.src = "images/popcorn1.png"; x -= 125 / 2; y -= 116 / 2;
+				break;
+			case 2:
+				newPopcorn.src = "images/popcorn2.png"; x -= 125 / 2; y -= 102 / 2;
+				break;
+			case 3:
+				newPopcorn.src = "images/popcorn3.png"; x -= 125 / 2; y -= 102 / 2;
+				break;
+			case 4:
+				newPopcorn.src = "images/popcorn4.png"; x -= 122 / 2; y -= 125 / 2;
+				break;
+			case 5:
+				newPopcorn.src = "images/popcorn5.png"; x -= 117 / 2; y -= 125 / 2;
+				break;
+			case 6:
+				newPopcorn.src = "images/popcorn6.png"; x -= 125 / 2; y -= 105 / 2;
+				break;
+			case 7:
+				newPopcorn.src = "images/popcorn7.png"; x -= 125 / 2; y -= 93 / 2;
+				break;
+			case 8:
+				newPopcorn.src = "images/popcorn8.png"; x -= 111 / 2; y -= 125 / 2;
+				break;
+			case 9:
+				newPopcorn.src = "images/popcorn9.png"; x -= 119 / 2; y -= 125 / 2;
+				break;
+			case 10:
+				newPopcorn.src = "images/popcorn10.png"; x -= 125 / 2; y -= 102 / 2;
+				break;
+			case 11:
+				newPopcorn.src = "images/popcorn11.png"; x -= 125 / 2; y -= 85 / 2;
+				break;
+			case 12:
+				newPopcorn.src = "images/popcorn12.png"; x -= 125 / 2; y -= 115 / 2;
+				break;
+			case 13:
+				newPopcorn.src = "images/popcorn13.png"; x -= 125 / 2; y -= 87 / 2;
+				break;
+			case 14:
+				newPopcorn.src = "images/popcorn14.png"; x -= 125 / 2; y -= 104 / 2;
+				break;
+			case 15:
+				newPopcorn.src = "images/popcorn15.png"; x -= 108 / 2; y -= 125 / 2;
+				break;
+			case -1:
+				newPopcorn.src = "images/suhailDoze.png"; x -= 93 / 2; y -= 100 / 2;
+				break;
+			case -2:
+				newPopcorn.src = "images/trump.png"; x -= 125 / 2; y -= 125 / 2;
+				break;
+			case -3:
+				newPopcorn.src = "images/hillary.png"; x -= 115 / 2; y -= 125 / 2;
+				break;
+			case -4:
+				newPopcorn.src = "images/harambe.png"; x -= 125 / 2; y -= 125 / 2;
+				break;
+			default:
+				console.log("Error choosing popcorn images");
+				break;
+		}
+		newPopcorn.style.transform = "rotate(" + random360 + "deg)";
+		newPopcorn.float = "true";
+		newPopcorn.style.position = "absolute";
+		newPopcorn.style.left = x + "px";
+		newPopcorn.style.top = y + "px";
+		newPopcorn.style.zIndex = -1;
+		newPopcorn.id = "pop" + poppedCount;
+		newPopcorn.className = "unselectable";
+		popZone.appendChild(newPopcorn);
+		//fadePopcorn(poppedCount);
+		poppedCount++;
 	}
-	newPopcorn.style.transform = "rotate(" + random360 + "deg)";
-	newPopcorn.float = "true";
-	newPopcorn.style.position = "fixed"; //if popcorn is too far to the right make sure the position is fixed
-	newPopcorn.style.left = x + "px";
-	newPopcorn.style.top = y + "px";
-	newPopcorn.style.zIndex = -1;
-	newPopcorn.id = "pop" + poppedCount;
-	newPopcorn.className = "unselectable";
-	popZone.appendChild(newPopcorn);
-	//fadePopcorn(poppedCount);
-	poppedCount++;
-	/*
-	console.log("click"); //for debugging
-	console.log(event.pageX);
-	console.log(event.pageY);
-	console.log("xy");
-	console.log(x);
-	console.log(y);
-	console.log("popcorn");
-	console.log(newPopcorn.style.left);
-	console.log(newPopcorn.style.top);
-	*/
 });
 function fadePopcorn (count) {
 	var id = "#pop" + (count - 150);
@@ -297,16 +286,7 @@ function fadePopcorn (count) {
 
 var poppersOpen = false;
 var upgradesOpen = false;
-function dropdownFunc (list, listDropdownImg, listOpen) {
-	if (listOpen) {
-		list.style.display = "none";
-		listDropdownImg.src = "images/downArrow.png";
-	} else {
-		list.style.display = "";
-		listDropdownImg.src = "images/upArrow.png";
-	}
-}
-/*function popperDropdownFunc () {
+function popperDropdownFunc () {
 	if (poppersOpen == true) {
 		poppers.style.display = "none";
 		popperDropdownImg.src = "images/downArrow.png";
@@ -325,18 +305,12 @@ function upgradeDropdownFunc () {
 		upgradeDropdownImg.src = "images/upArrow.png"
 	}
 	upgradesOpen = !upgradesOpen;
-}*/
+}
 popperDropdown.addEventListener("click", function () {
-	dropdownFunc(poppers, popperDropdownImg, poppersOpen);
-	poppersOpen = !poppersOpen;
-});
-shipmentDropdown.addEventListener("click", function () {
-	dropdownFunc(shipments, shipmentDropdownImg, shipmentsOpen);
-	shipmentsOpen = !shipmentsOpen;
+	popperDropdownFunc();
 });
 upgradeDropdown.addEventListener("click", function () {
-	dropdownFunc(upgrades, upgradeDropdownImg, upgradesOpen);
-	upgradesOpen = !upgradesOpen;
+	upgradeDropdownFunc();
 });
 
 function addPopperEventListeners (popper, popperDisplay, popperSellDisplay) {
@@ -466,7 +440,7 @@ function updatePopperUpgradeDisplay (name, count, cost, display, countDisplay, c
 	}
 }
 window.setInterval(function () {
-	popcornDisplay.innerHTML = commas(Math.floor(Game.popcorn)) + " Popcorn";
+	popcornDisplay.innerHTML = commas(Math.floor(Game.popcorn));
 	Game.popcornPerSecond = 
 		(Game.stove.count * Game.stove.PPS) +
 		(Game.microwave.count * Game.microwave.PPS) +
@@ -476,13 +450,8 @@ window.setInterval(function () {
 		(Game.mall.count * Game.mall.PPS) +
 		(Game.factory.count * Game.factory.PPS) +
 		(Game.inductionFurnace.count * Game.inductionFurnace.PPS);
-	popcornPerSecondDisplay.innerHTML = commas(Math.round(Game.popcornPerSecond * 10) / 10) + " Popcorn/Second"; //multiplied before round and divided after to allow for tenths place decimals
+	popcornPerSecondDisplay.innerHTML = commas(Math.round(Game.popcornPerSecond * 10) / 10) + " Popcorn/Second";
 	title.innerHTML = commas(Math.floor(Game.popcorn)) + " Popcorn | Popcorn Clicker";
-
-	coinDisplay.innerHTML = commas(Math.floor(Game.coins)) + " Coins";
-	Game.coinsPerShipment = 0; //TODO calculations
-	coinsPerShipmentDisplay.innerHTML = commas(Math.round(Game.coinsPerShipment)) + " Coins/Shipment";
-
 
 	updatePopperDisplay("Stove", Game.stove.count, Game.stove.cost, stoveDisplay, stoveCountDisplay, stoveCostDisplay, stoveSellDisplay);
 	updatePopperDisplay("Microwave", Game.microwave.count, Game.microwave.cost, microwaveDisplay, microwaveCountDisplay, microwaveCostDisplay, microwaveSellDisplay);
@@ -543,7 +512,6 @@ reset.addEventListener("click", function () {
 		document.cookie = "inductionFurnace=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "clicker=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		document.cookie = "popperDropdown=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
-		document.cookie = "shipmentDropdown=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400";
 		document.cookie = "upgradeDropdown=0; expires=Sun, 31 Dec 2000 16:02:00 GMT-0400;";
 		location.reload();
 	}

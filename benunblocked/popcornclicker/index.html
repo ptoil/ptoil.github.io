@@ -13,7 +13,7 @@
 	</audio>
 	<div id="wrapper">
 		<div id="leftColumn">
-			<div class="whiteText">ALPHA v5.0</div><!--Version-->
+			<div class="whiteText">ALPHA v4.1</div><!--Version-->
 			<br>
 			<div id="popcornSelect">
 				<span class="whiteText">Popcorn</span><input id="popcornCheck" type="radio" name="popcornSelect" checked><br>
@@ -42,8 +42,7 @@
 				<div id="popcornPerSecondDisplay" align="center"></div>
 			</div>
 			<div id="coinColumn">
-				<div id="coinDisplay" align="center"></div>
-				<div id="coinsPerShipmentDisplay" align="center"></div>
+				<div id="coinDisplay" align="center">COINS</div>
 			</div>
 			<div id="popZone" title="Each click pops "></div>
 			<div id="instruction">Click to pop popcorn</div>
@@ -54,7 +53,7 @@
 		<div id="rightColumn" class="unselectable">
 			<div id="storeTitle">
 				Store
-				<div id="storeInstructions">Hover over an item to learn more</div> <!--TODO complete all titles-->
+				<div id="storeInstructions">Hover over an item to learn more</div>
 			</div>
 			<div class="storeDivider"></div>
 			<div class="storeMenu">
@@ -64,82 +63,70 @@
 			<div class="storeDivider"></div>
 			<ul id="poppers" style="list-style-type: none; margin: 0; padding: 0; display: none">
 				<li>
-					<div class="storeItem" id="stoveDisplay" title="Pops 0.2 popcorn every second">
-						<div class="storeItemPart" id="stoveCountDisplay"></div>
-						<div class="storeItemPart" id="stoveCostDisplay"></div>
+					<div class="storeItems" id="stoveDisplay" title="Pops 0.2 popcorn every second">
+						<div class="storeItemParts" id="stoveCountDisplay"></div>
+						<div class="storeItemParts" id="stoveCostDisplay"></div>
 						<div class="sellButton" id="stoveSellDisplay">X</div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="microwaveDisplay" title="Pops 1 popcorn every second">
-						<div class="storeItemPart" id="microwaveCountDisplay"></div>
-						<div class="storeItemPart" id="microwaveCostDisplay"></div>
+					<div class="storeItems" id="microwaveDisplay" title="Pops 1 popcorn every second">
+						<div class="storeItemParts" id="microwaveCountDisplay"></div>
+						<div class="storeItemParts" id="microwaveCostDisplay"></div>
 						<div class="sellButton" id="microwaveSellDisplay">X</div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="vendingMachineDisplay" title="Pops 15 popcorn every second">
-						<div class="storeItemPart" id="vendingMachineCountDisplay"></div>
-						<div class="storeItemPart" id="vendingMachineCostDisplay"></div>
+					<div class="storeItems" id="vendingMachineDisplay" title="Pops 15 popcorn every second">
+						<div class="storeItemParts" id="vendingMachineCountDisplay"></div>
+						<div class="storeItemParts" id="vendingMachineCostDisplay"></div>
 						<div class="sellButton" id="vendingMachineSellDisplay">X</div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="ovenDisplay" title="Pops 67 popcorn per second">
-						<div class="storeItemPart" id="ovenCountDisplay"></div>
-						<div class="storeItemPart" id="ovenCostDisplay"></div>
+					<div class="storeItems" id="ovenDisplay" title="Pops 67 popcorn per second">
+						<div class="storeItemParts" id="ovenCountDisplay"></div>
+						<div class="storeItemParts" id="ovenCostDisplay"></div>
 						<div class="sellButton" id="ovenSellDisplay">X</div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="theaterDisplay" title="Pops 359 popcorn per second">
-						<div class="storeItemPart" id="theaterCountDisplay"></div>
-						<div class="storeItemPart" id="theaterCostDisplay"></div>
+					<div class="storeItems" id="theaterDisplay" title="Pops 359 popcorn per second">
+						<div class="storeItemParts" id="theaterCountDisplay"></div>
+						<div class="storeItemParts" id="theaterCostDisplay"></div>
 						<div class="sellButton" id="theaterSellDisplay">X</div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="mallDisplay" title="Pops 1,344 popcorn per second">
-						<div class="storeItemPart" id="mallCountDisplay"></div>
-						<div class="storeItemPart" id="mallCostDisplay"></div>
+					<div class="storeItems" id="mallDisplay" title="Pops 1,344 popcorn per second">
+						<div class="storeItemParts" id="mallCountDisplay"></div>
+						<div class="storeItemParts" id="mallCostDisplay"></div>
 						<div class="sellButton" id="mallSellDisplay">X</div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="factoryDisplay" title="Pops 3,111 popcorn per second">
-						<div class="storeItemPart" id="factoryCountDisplay"></div>
-						<div class="storeItemPart" id="factoryCostDisplay"></div>
+					<div class="storeItems" id="factoryDisplay" title="Pops 3,111 popcorn per second">
+						<div class="storeItemParts" id="factoryCountDisplay"></div>
+						<div class="storeItemParts" id="factoryCostDisplay"></div>
 						<div class="sellButton" id="factorySellDisplay">X</div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="inductionFurnaceDisplay" title="Pops 9,452 popcorn per second">
-						<div class="storeItemPart" id="inductionFurnaceCountDisplay"></div>
-						<div class="storeItemPart" id="inductionFurnaceCostDisplay"></div>
+					<div class="storeItems" id="inductionFurnaceDisplay" title="Pops 9,452 popcorn per second">
+						<div class="storeItemParts" id="inductionFurnaceCountDisplay"></div>
+						<div class="storeItemParts" id="inductionFurnaceCostDisplay"></div>
 						<div class="sellButton" id="inductionFurnaceSellDisplay">X</div>
 					</div>
 				</li>
 			</ul>
 			<div class="storeDivider"></div>
-
-			<div class="storeMenu">
-				Shipments
-				<div class="dropButton" id="shipmentDropdown"><img id="shipmentDropdownImg" src="images/downArrow.png"></img></div>
-			</div>
-			<div class="storeDivider"></div>
-			<ul id="shipments" style="list-style-type: none; margin: 0; padding: 0; display: none">
-				<li>
-					<!--TODO create shipments-->
-				</li>
-			</ul>
-
 			<div class="storeMenu">
 				Upgrades
 				<div class="dropButton" id="upgradeDropdown"><img id="upgradeDropdownImg" src="images/downArrow.png"></img></div>
@@ -147,65 +134,65 @@
 			<div class="storeDivider"></div>
 			<ul id="upgrades" style="list-style-type: none; margin: 0; padding: 0; display: none">
 				<li>
-					<div class="storeItem" id="clickerDisplay">
-						<div class="storeItemPart" id="clickerCountDisplay"></div>
-						<div class="storeItemPart" id="clickerCostDisplay"></div>
+					<div class="storeItems" id="clickerDisplay">
+						<div class="storeItemParts" id="clickerCountDisplay"></div>
+						<div class="storeItemParts" id="clickerCostDisplay"></div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="stoveUpgradeDisplay">
-						<div class="storeItemPart" id="stoveUpgradeCountDisplay"></div>
-						<div class="storeItemPart" id="stoveUpgradeCostDisplay"></div>
+					<div class="storeItems" id="stoveUpgradeDisplay">
+						<div class="storeItemParts" id="stoveUpgradeCountDisplay"></div>
+						<div class="storeItemParts" id="stoveUpgradeCostDisplay"></div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="microwaveUpgradeDisplay">
-						<div class="storeItemPart" id="microwaveUpgradeCountDisplay"></div>
-						<div class="storeItemPart" id="microwaveUpgradeCostDisplay"></div>
+					<div class="storeItems" id="microwaveUpgradeDisplay">
+						<div class="storeItemParts" id="microwaveUpgradeCountDisplay"></div>
+						<div class="storeItemParts" id="microwaveUpgradeCostDisplay"></div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="vendingMachineUpgradeDisplay">
-						<div class="storeItemPart" id="vendingMachineUpgradeCountDisplay"></div>
-						<div class="storeItemPart" id="vendingMachineUpgradeCostDisplay"></div>
+					<div class="storeItems" id="vendingMachineUpgradeDisplay">
+						<div class="storeItemParts" id="vendingMachineUpgradeCountDisplay"></div>
+						<div class="storeItemParts" id="vendingMachineUpgradeCostDisplay"></div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="ovenUpgradeDisplay">
-						<div class="storeItemPart" id="ovenUpgradeCountDisplay"></div>
-						<div class="storeItemPart" id="ovenUpgradeCostDisplay"></div>
+					<div class="storeItems" id="ovenUpgradeDisplay">
+						<div class="storeItemParts" id="ovenUpgradeCountDisplay"></div>
+						<div class="storeItemParts" id="ovenUpgradeCostDisplay"></div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="theaterUpgradeDisplay">
-						<div class="storeItemPart" id="theaterUpgradeCountDisplay"></div>
-						<div class="storeItemPart" id="theaterUpgradeCostDisplay"></div>
+					<div class="storeItems" id="theaterUpgradeDisplay">
+						<div class="storeItemParts" id="theaterUpgradeCountDisplay"></div>
+						<div class="storeItemParts" id="theaterUpgradeCostDisplay"></div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="mallUpgradeDisplay">
-						<div class="storeItemPart" id="mallUpgradeCountDisplay"></div>
-						<div class="storeItemPart" id="mallUpgradeCostDisplay"></div>
+					<div class="storeItems" id="mallUpgradeDisplay">
+						<div class="storeItemParts" id="mallUpgradeCountDisplay"></div>
+						<div class="storeItemParts" id="mallUpgradeCostDisplay"></div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="factoryUpgradeDisplay">
-						<div class="storeItemPart" id="factoryUpgradeCountDisplay"></div>
-						<div class="storeItemPart" id="factoryUpgradeCostDisplay"></div>
+					<div class="storeItems" id="factoryUpgradeDisplay">
+						<div class="storeItemParts" id="factoryUpgradeCountDisplay"></div>
+						<div class="storeItemParts" id="factoryUpgradeCostDisplay"></div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
 				<li>
-					<div class="storeItem" id="inductionFurnaceUpgradeDisplay">
-						<div class="storeItemPart" id="inductionFurnaceUpgradeCountDisplay"></div>
-						<div class="storeItemPart" id="inductionFurnaceUpgradeCostDisplay"></div>
+					<div class="storeItems" id="inductionFurnaceUpgradeDisplay">
+						<div class="storeItemParts" id="inductionFurnaceUpgradeCountDisplay"></div>
+						<div class="storeItemParts" id="inductionFurnaceUpgradeCostDisplay"></div>
 					</div>
 				</li>
 				<li><div class="storeDivider"></div></li>
