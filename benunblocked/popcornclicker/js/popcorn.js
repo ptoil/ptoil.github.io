@@ -172,13 +172,13 @@ popZone.addEventListener("click", function (event) {
 			random15 = -1;
 		if (cornboyCheck.checked)
 			random15 = -2;
-		if (creepymattCheck.checked)
+		if (raehaanCheck.checked)
 			random15 = -3;
-		if (harambeCheck.checked)
+		if (creepymattCheck.checked)
 			random15 = -4;
-		if (trumpCheck.checked)
+		if (harambeCheck.checked)
 			random15 = -5;
-		if (hillaryCheck.checked)
+		if (trumpCheck.checked)
 			random15 = -6;
 		switch (random15) {
 			case 1:
