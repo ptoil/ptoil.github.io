@@ -233,16 +233,17 @@ popZone.addEventListener("click", function (event) {
 				newPopcorn.src = "images/cornboy.png"; x -= 103 / 2; y -= 127 / 2;
 				break;
 			case -3:
-				newPopcorn.src = "images/creepymatt.png"; x -= 96 / 2; y -= 128 / 2;
+				newPopcorn.src = "images/raehaan.png"; x -= 108 / 2; y -= 125 / 2;
 				break;
 			case -4:
-				newPopcorn.src = "images/harambe.png"; x -= 125 / 2; y -= 125 / 2;
+				newPopcorn.src = "images/creepymatt.png"; x -= 96 / 2; y -= 128 / 2;
 				break;
 			case -5:
-				newPopcorn.src = "images/trump.png"; x -= 125 / 2; y -= 125 / 2;
+				newPopcorn.src = "images/harambe.png"; x -= 125 / 2; y -= 125 / 2;
 				break;
 			case -6:
-				newPopcorn.src = "images/hillary.png"; x -= 115 / 2; y -= 125 / 2;
+				newPopcorn.src = "images/trump.png"; x -= 125 / 2; y -= 125 / 2;
+				break;
 			default:
 				console.log("Error choosing popcorn images");
 				break;
