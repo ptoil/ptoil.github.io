@@ -95,7 +95,7 @@ var Game = function () {
 	this.factory                 = new Popper(50000001, 3111);
 	this.inductionFurnace        = new Popper(631000631, 9452);
 	this.deliveryBoy             = new Shipment();
-	this.
+	//this.
 	this.clicker                 = new ClickerUpgrade();
 	this.stoveUpgrade            = new PopperUpgrade(5624, Game.stove);
 	this.microwaveUpgrade        = new PopperUpgrade(47252, Game.microwave);
