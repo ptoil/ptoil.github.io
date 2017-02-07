@@ -1,0 +1,40 @@
+body {
+	background: url("images/kernals.jpg") center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	overflow: hidden;
+}
+#wrapper {		
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+}
+#leftMargin {
+	height: 100%;
+	width: 29.5%;
+	float: left;
+	background-color: #331100;
+}
+#main {
+	height: 100%;
+	width: 40%;
+	float: left;
+}
+#rightMargin {
+	height: 100%;
+	width: 29.5%;
+	float: left;
+	background-color: #331100;
+}
+.columnDivider {
+	height: 100%;
+	width: .5%;
+	float: left;
+	background-color: #992600;
+}
