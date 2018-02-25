@@ -11,7 +11,7 @@ window.onload = function () {
 	Game.clicker.count = Number(getCookie("clicker"));
 	poppersOpen = (getCookie("poppersOpen") == "false");
 	upgradesOpen = (getCookie("upgradesOpen") == "false");
-
+	//hjasfdjasodjhsiaodjoiasjdijasd
 	Game.stove.calcCost();
 	Game.microwave.calcCost();
 	Game.vendingMachine.calcCost();
