@@ -257,12 +257,12 @@ popZone.addEventListener("click", function (event) {
 		newPopcorn.id = "pop" + poppedCount;
 		newPopcorn.className = "unselectable";
 		popZone.appendChild(newPopcorn);
-		//fadePopcorn(poppedCount);
+		fadePopcorn(poppedCount);
 		poppedCount++;
 	}
 });
 function fadePopcorn (count) {
-	var id = "#pop" + (count - 150);
+	var id = "#pop" + (count - 200);
 	$(id).fadeOut(3000);
 	id = "#pop" + count;
 	setTimeout(function () {
