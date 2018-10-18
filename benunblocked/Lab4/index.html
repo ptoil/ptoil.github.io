@@ -1,0 +1,92 @@
+<html>
+<head>
+
+</head>
+<body>
+	<p id="Q1">1</p>
+	<input type="text" id="in1">
+	<br>
+	
+	<p id="Q2">2</p>
+	<input type="text" id="in2">
+	<br>
+	
+	<p id="Q3">3</p>
+	<input type="text" id="in3">
+	<br>
+	
+	<p id="Q4">4</p>
+	<input type="text" id="in4">
+	<br>
+	
+	<p id="Q5">What’s your favorite number?</p>
+	<input type="text" id="in5">
+	<br>
+	<br>
+	
+	<input type="button" id="generateButton" value="Generate Password" onClick="generate();">
+
+	<br>
+	<br>
+	<p id="result"></p>
+	
+	<br>
+	<br>
+	<a href="./help.html"><input type="button" value="Help"></a>
+	<script>
+		var questions = ["What’s your favorite color?",
+				 "What’s your favorite genre of music?",
+				 "What’s your favorite animal?",
+				 "Where were you born?",
+				 "What is your best memory of traveling?",
+				 "Do you know a second language?",
+				 "How many books have you read?",
+				 "Who was favorite teacher in high school?",
+				 "When did you start highschool?",
+				 "What's your favorite sports team?",
+				 "Who is your favorite athlete?",
+				 "What is your favorite pass time?",
+				 "Who is your favorite superhero?",
+				 "What’s the make of your first car?"];
+		
+		function getRand13() {
+			return (Math.floor(Math.random() * 14)); //rand number from 0 to 13
+		}
+		
+		var notFinished = true;
+		while (notFinished) {
+			var rand1 = getRand13();
+			var rand2 = getRand13();
+			var rand3 = getRand13();
+			var rand4 = getRand13();
+			if (!(rand1 == rand2 || rand1 == rand3 || rand1 == rand4 || rand2 == rand3 || rand2 == rand4 || rand3 == rand4)) {
+				notFinished = false;
+			}
+		}
+		document.getElementById('Q1').innerHTML = questions[rand1];
+		document.getElementById('Q2').innerHTML = questions[rand2];
+		document.getElementById('Q3').innerHTML = questions[rand3];
+		document.getElementById('Q4').innerHTML = questions[rand4];
+
+		function getRand4() {
+			return Math.floor(Math.random() * 4);
+		}
+		
+		function generate() {
+			var input1 = document.getElementById('in1').value;
+			var input2 = document.getElementById('in2').value;
+			var input3 = document.getElementById('in3').value;
+			var input4 = document.getElementById('in4').value;
+			var input5 = document.getElementById('in5').value;
+			var inputs = [input1, input2, input3, input4, input5];
+			
+			inputs[getRand4()] = "";
+			
+			var password = input4 + input2 + input1 + input3 + input5;
+			
+			
+			document.getElementById('result').innerHTML = "Your password is " + password;
+		}
+	</script>
+</body>
+</html>
